@@ -1,0 +1,13 @@
+# Convenience entrypoint für die Open-Core-Shell: `docker compose up --build` vom Repo-Root.
+# Bündelt exakt dieselben Overlays wie der explizite Befehl in der README:
+#   infra/docker-compose.yml       — Basis-Services (shell, bff, engine, graph-db, graph-core, …)
+#   infra/docker-compose.tenant.yml — mountet tenants/${TENANT:-cnode}/tenant.yaml read-only
+#   infra/docker-compose.oss.yml    — baut alles aus dem Quellcode + CPU-Embedder (semantisches Gedächtnis, keine GPU)
+#
+# TENANT ist per Default `cnode`. Anderer Mandant: `TENANT=<slug> docker compose up --build`.
+# Jede eingebundene Datei behält ihre eigenen relativen Pfade (Compose löst sie relativ zur
+# jeweiligen Datei auf), daher funktioniert das Zusammenspiel identisch zum `-f`-Aufruf.
+include:
+  - infra/docker-compose.yml
+  - infra/docker-compose.tenant.yml
+  - infra/docker-compose.oss.yml

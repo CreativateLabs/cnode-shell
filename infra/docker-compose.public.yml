@@ -1,0 +1,28 @@
+# Öffentliche c:node-Demo — legt sich über Basis + Tenant-Overlay (Tenant `cnode`, Marke „c:node").
+#
+# Zweck: eine frictionless, config-arme Demo zum Ausprobieren — Cloud-LLM (Gemini), keine
+# lokale Ollama-Installation nötig. IP-abgeriegelt: NUR die eigene Client-Ebene (PUBLIC_DEMO=1);
+# Market/Mesh, Ontologie-Studio und Domänen-Services werden NICHT mitgestartet/exponiert.
+#
+# Secrets NUR als Referenz (.env / SSM / Vault), nie inline:
+#   GOOGLE_API_KEY=…            (Gemini)
+#   PUBLIC_BASE_URL=https://try.c-node.ai
+#
+# Nur die abgesicherte Service-Teilmenge starten (KEIN ontology-studio, KEINE domain-*):
+#   TENANT=cnode docker compose \
+#     -f infra/docker-compose.yml -f infra/docker-compose.tenant.yml -f infra/docker-compose.public.yml \
+#     --env-file .env up -d graph-db graph-core postgres engine assets bff        (== make public-up)
+services:
+  engine:
+    environment:
+      - PUBLIC_DEMO=1                       # IP-Abriegelung: nur eigene Ebene, keine Mesh-Contribution
+      - DEFAULT_PROVIDER=${DEFAULT_PROVIDER:-gemini}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-flash-latest}
+
+  bff:
+    environment:
+      - PUBLIC_DEMO=1
+      - DEFAULT_PROVIDER=${DEFAULT_PROVIDER:-gemini}
+      - DEFAULT_MODEL=${GEMINI_MODEL:-gemini-flash-latest}
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://localhost:8080}

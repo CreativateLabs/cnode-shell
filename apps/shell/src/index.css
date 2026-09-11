@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  /* Tenant-Marke: Primär-/Sekundärfarbe als RGB-Triplet (Default = c:node-Violett/Mint —
+     dieselbe Identität wie Login/Signup). App überschreibt sie zur Laufzeit aus tenant.yaml. */
+  --c-primary: 124 58 237;
+  --c-secondary: 54 195 153;
+  /* Hero-CTA: identischer Verlauf wie der Login-Button (Violett → Indigo). */
+  --cta-from: #7C3AED;
+  --cta-to: #6366F1;
+}
+
+/* Hero-CTA — 1:1 der Login-„primaryBtn": Verlauf, weiche violette Schatten, sanftes Aufhellen.
+   Für die HAUPT-Aktion pro Fläche (Senden, Upgrade, primärer Button im Overlay). */
+.cta-grad {
+  background-image: linear-gradient(to bottom right, var(--cta-from), var(--cta-to));
+  color: #fff;
+  border-radius: 9999px;
+  box-shadow: 0 10px 22px -8px rgba(124, 58, 237, 0.5);
+  transition: filter 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+.cta-grad:hover:not(:disabled) { filter: brightness(1.08); }
+.cta-grad:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+/* Sandbox-Info-Leiste: einzeilige Marquee. Der Text scrollt langsam+nahtlos in einem
+   overflow-hidden-Track (zwei identische Kopien → -50% ist genau eine Kopienbreite).
+   Die „Upgrade"-CTA liegt außerhalb des Tracks und bleibt immer sichtbar. */
+@keyframes cnode-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.cnode-marquee-track { flex: 1 1 auto; min-width: 0; overflow: hidden; }
+.cnode-marquee {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  will-change: transform;
+  animation: cnode-marquee 32s linear infinite;
+}
+.cnode-marquee-track:hover .cnode-marquee { animation-play-state: paused; }
+/* Passt auf eine Zeile (genug Platz, z.B. Desktop) → statisch, keine Animation. */
+.cnode-marquee.is-static {
+  display: block;
+  animation: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+/* Reduced-Motion: keine Animation → statisch mit Ellipsis-Truncation, Duplikat versteckt. */
+@media (prefers-reduced-motion: reduce) {
+  .cnode-marquee {
+    display: block;
+    animation: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  .cnode-marquee .cnode-marquee-dup { display: none; }
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  /* Tiefe wie auf der Login-Seite: dezente violette/indigo Glows über hellem Grund. */
+  background-color: #F5F6FB;
+  background-image:
+    radial-gradient(120% 80% at 100% 0%, rgba(124, 58, 237, 0.06), transparent 55%),
+    radial-gradient(90% 70% at 0% 100%, rgba(99, 102, 241, 0.05), transparent 55%);
+  background-attachment: fixed;
+  color: #181B26;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CFD4E1;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B4BAC9;
+}
+
+/* --- Rendered markdown inside chat bubbles / artifacts --- */
+.md > *:first-child {
+  margin-top: 0;
+}
+.md > *:last-child {
+  margin-bottom: 0;
+}
+.md p {
+  margin: 0.6em 0;
+  line-height: 1.65;
+}
+.md h1,
+.md h2,
+.md h3 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 1em 0 0.5em;
+}
+.md h1 {
+  font-size: 1.4em;
+}
+.md h2 {
+  font-size: 1.2em;
+}
+.md h3 {
+  font-size: 1.05em;
+}
+.md ul,
+.md ol {
+  margin: 0.6em 0;
+  padding-left: 1.4em;
+}
+.md li {
+  margin: 0.25em 0;
+  line-height: 1.6;
+}
+.md a {
+  color: rgb(var(--c-primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.md strong {
+  color: #0E1119;
+  font-weight: 600;
+}
+.md code {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.86em;
+  background: #EEF1F8;
+  padding: 0.12em 0.4em;
+  border-radius: 5px;
+  color: #3B57D6;
+}
+.md pre {
+  background: #F1F3F9;
+  border: 1px solid #E2E5EF;
+  border-radius: 10px;
+  padding: 0.9em 1em;
+  overflow-x: auto;
+  margin: 0.8em 0;
+}
+.md pre code {
+  background: none;
+  padding: 0;
+  color: #1B2130;
+  font-size: 0.82em;
+  line-height: 1.6;
+}
+.md blockquote {
+  border-left: 3px solid rgb(var(--c-primary));
+  margin: 0.8em 0;
+  padding: 0.1em 0 0.1em 1em;
+  color: #5C6273;
+}
+.md table {
+  border-collapse: collapse;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  width: 100%;
+}
+.md th,
+.md td {
+  border: 1px solid #E2E5EF;
+  padding: 0.45em 0.7em;
+  text-align: left;
+}
+.md th {
+  background: #F1F3F9;
+  font-weight: 600;
+}
+.md hr {
+  border: none;
+  border-top: 1px solid #E2E5EF;
+  margin: 1.1em 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "_meta": {
+    "domain": "Creativate — Portfolio & Entscheidungen (Demo-Mini-Domäne)",
+    "note": "Seed für die Live-Demo. Jede Kante trägt eine Quelle (provenance) — neuro-symbolisch: belegbar statt geraten.",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    { "id": "creativate", "label": "Creativate Technologies GmbH", "type": "Company", "props": { "sitz": "Frankfurt am Main", "fokus": "EU-souveräne KI-Bausteine", "status": "aktiv" } },
+    { "id": "partner", "label": "White-Label-Partner (Beispiel)", "type": "Company", "props": { "rolle": "Marke/Vision/Vertrieb", "markt": "KMU DACH", "versprechen": "Faktentreue + menschliche Kontrolle" } },
+
+    { "id": "cnode", "label": "cNode", "type": "Product", "props": { "art": "neuro-symbolische Decision Intelligence", "status": "produktiv", "url": "c-node.ai" } },
+    { "id": "claudio", "label": "Claudio", "type": "Product", "props": { "art": "Voice-Assistent", "status": "produktiv", "url": "talk2claudio.ai" } },
+    { "id": "foerder", "label": "Förder", "type": "Product", "props": { "art": "KI-Antragsassistent Förderung", "status": "produktiv" } },
+    { "id": "leadscout", "label": "LeadScout (Scout-Familie)", "type": "Product", "props": { "art": "Lead-Discovery + Outreach", "status": "produktiv", "url": "leadscout.creativate.tech" } },
+    { "id": "lms", "label": "LMS-Baukasten", "type": "Product", "props": { "art": "Wissensvermittlung", "status": "produktiv" } },
+    { "id": "nen", "label": "NEN — Neuronales Enterprise Netzwerk", "type": "Product", "props": { "art": "neuronale Grundlage von cNode", "status": "FuE-gefördert 2024-2027" } },
+
+    { "id": "area_dialog", "label": "Bereich: Dialog-Plattform", "type": "Area", "props": { "traeger": "cNode + Claudio", "status": "produktiv" } },
+    { "id": "area_bibliothek", "label": "Bereich: Unternehmens-Bibliothek", "type": "Area", "props": { "traeger": "cNode + LMS", "status": "produktiv" } },
+    { "id": "area_archiv", "label": "Bereich: Gedanken-Archiv", "type": "Area", "props": { "traeger": "cNode Wissensgraph", "status": "produktiv" } },
+    { "id": "area_vertrauen", "label": "Bereich: Vertrauens-Architektur", "type": "Area", "props": { "traeger": "cNode Kontrollinstanz", "status": "produktiv" } },
+    { "id": "area_vertrieb", "label": "Bereich: Vertriebs-Turbo", "type": "Area", "props": { "traeger": "Scout-Familie", "status": "produktiv" } },
+    { "id": "area_foerderung", "label": "Bereich: Förder-Plattform", "type": "Area", "props": { "traeger": "Förder", "status": "produktiv" } },
+    { "id": "area_security", "label": "Bereich: Sicherheitsarchitektur", "type": "Area", "props": { "traeger": "cNode Rollen/Audit", "status": "produktiv" } },
+    { "id": "area_energie", "label": "Bereich: Umwelt-/Energieplattform", "type": "Area", "props": { "traeger": "cNode Decision Intelligence", "status": "adaptierbar" } },
+
+    { "id": "dec_partner", "label": "Entscheidung: White-Label-Partnerschaft", "type": "Decision", "props": { "status": "empfohlen", "begruendung": "7/8 Bereiche produktiv, White-Label möglich" } },
+    { "id": "dec_onprem", "label": "Entscheidung: On-Prem-First Deployment", "type": "Decision", "props": { "status": "beschlossen", "begruendung": "Datenhoheit + EU AI Act + kommunal zulässig" } },
+
+    { "id": "compliance_aiact", "label": "EU AI Act", "type": "Compliance", "props": { "artikel": "Art. 12 Protokollierung, Art. 13 Transparenz, Art. 14 Aufsicht" } },
+    { "id": "compliance_nis2", "label": "NIS2 / DORA / ISO 42001", "type": "Compliance", "props": {} },
+    { "id": "compliance_dsgvo", "label": "DSGVO", "type": "Compliance", "props": { "prinzip": "kein Training auf Kundendaten, EU-Hosting" } },
+
+    { "id": "fund_forschungszulage", "label": "Forschungszulage (BSFZ)", "type": "FundingProgram", "props": { "betrag": "442k €", "status": "bewilligt", "zeitraum": "2024-2027" } },
+    { "id": "fund_efre", "label": "EFRE Digitalisierung (Bund)", "type": "FundingProgram", "props": { "status": "aktiv" } },
+    { "id": "fund_aws", "label": "aws Pre-Seed (Österreich)", "type": "FundingProgram", "props": { "status": "einbringbar" } },
+
+    { "id": "doc_pitch", "label": "Doc: Partner-Pitch", "type": "Document", "props": { "typ": "Pitch", "pfad": "docs/sales-proposals/partner/Partner-Pitch-16x9" } },
+    { "id": "doc_aiact", "label": "Doc: EU AI Act Compliance-Mapping", "type": "Document", "props": { "typ": "Compliance" } },
+    { "id": "doc_nen_grant", "label": "Doc: NEN Forschungszulage-Bescheid", "type": "Document", "props": { "typ": "Förderbescheid" } },
+    { "id": "doc_beispiel_poc", "label": "Doc: Beispiel PoC Ergebnisprotokoll", "type": "Document", "props": { "typ": "PoC" } },
+
+    { "id": "person_leo", "label": "Leonardo Bornhäußer", "type": "Person", "props": { "rolle": "Founder · Strategy/Engineering" } },
+    { "id": "person_lisa", "label": "Lisa Bennewitz", "type": "Person", "props": { "rolle": "Co-Founder" } },
+    { "id": "person_stella", "label": "Stella Manga-Chesnay", "type": "Person", "props": { "rolle": "Legal · GDPR/EU AI Act" } },
+    { "id": "person_nino", "label": "Nino Bornhäußer", "type": "Person", "props": { "rolle": "AI Projekt-Lead" } },
+    { "id": "person_alane", "label": "Alane Mouaffo", "type": "Person", "props": { "rolle": "UX/UI · Product" } },
+
+    { "id": "lead_stadtwerke", "label": "Stadtwerke Musterstadt", "type": "Lead", "props": { "segment": "kommunal", "passung": "hoch" } },
+    { "id": "lead_mittelstand", "label": "TechMittelstand AG", "type": "Lead", "props": { "segment": "KMU Industrie", "passung": "mittel" } }
+  ],
+  "edges": [
+    { "source": "creativate", "target": "cnode", "rel": "BAUT", "provenance": "doc_pitch" },
+    { "source": "creativate", "target": "claudio", "rel": "BAUT", "provenance": "doc_pitch" },
+    { "source": "creativate", "target": "foerder", "rel": "BAUT", "provenance": "doc_pitch" },
+    { "source": "creativate", "target": "leadscout", "rel": "BAUT", "provenance": "doc_pitch" },
+    { "source": "creativate", "target": "lms", "rel": "BAUT", "provenance": "doc_pitch" },
+    { "source": "cnode", "target": "nen", "rel": "BASIERT_AUF", "provenance": "doc_nen_grant" },
+
+    { "source": "partner", "target": "creativate", "rel": "PARTNER_MIT", "provenance": "doc_pitch" },
+    { "source": "dec_partner", "target": "partner", "rel": "BETRIFFT", "provenance": "doc_pitch" },
+    { "source": "dec_partner", "target": "creativate", "rel": "BETRIFFT", "provenance": "doc_pitch" },
+
+    { "source": "cnode", "target": "area_dialog", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "claudio", "target": "area_dialog", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "cnode", "target": "area_bibliothek", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "lms", "target": "area_bibliothek", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "cnode", "target": "area_archiv", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "cnode", "target": "area_vertrauen", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "cnode", "target": "area_security", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "leadscout", "target": "area_vertrieb", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "foerder", "target": "area_foerderung", "rel": "TRAEGT", "provenance": "doc_pitch" },
+    { "source": "cnode", "target": "area_energie", "rel": "ADAPTIERBAR_FUER", "provenance": "doc_pitch" },
+
+    { "source": "cnode", "target": "compliance_aiact", "rel": "ERFUELLT", "provenance": "doc_aiact" },
+    { "source": "cnode", "target": "compliance_nis2", "rel": "ERFUELLT", "provenance": "doc_aiact" },
+    { "source": "cnode", "target": "compliance_dsgvo", "rel": "ERFUELLT", "provenance": "doc_aiact" },
+    { "source": "area_vertrauen", "target": "compliance_aiact", "rel": "BELEGT_DURCH", "provenance": "doc_aiact" },
+
+    { "source": "nen", "target": "fund_forschungszulage", "rel": "GEFOERDERT_DURCH", "provenance": "doc_nen_grant" },
+    { "source": "nen", "target": "fund_efre", "rel": "GEFOERDERT_DURCH", "provenance": "doc_nen_grant" },
+    { "source": "cnode", "target": "fund_aws", "rel": "EINBRINGBAR_IN", "provenance": "doc_pitch" },
+
+    { "source": "dec_onprem", "target": "compliance_dsgvo", "rel": "BEGRUENDET_DURCH", "provenance": "doc_beispiel_poc" },
+    { "source": "dec_onprem", "target": "compliance_aiact", "rel": "BEGRUENDET_DURCH", "provenance": "doc_aiact" },
+    { "source": "dec_partner", "target": "doc_pitch", "rel": "QUELLE", "provenance": "doc_pitch" },
+
+    { "source": "person_leo", "target": "creativate", "rel": "GRUENDER_VON", "provenance": "doc_pitch" },
+    { "source": "person_lisa", "target": "creativate", "rel": "CO_FOUNDER_VON", "provenance": "doc_pitch" },
+    { "source": "person_stella", "target": "compliance_aiact", "rel": "VERANTWORTET", "provenance": "doc_pitch" },
+    { "source": "person_nino", "target": "cnode", "rel": "LEITET", "provenance": "doc_pitch" },
+    { "source": "person_alane", "target": "creativate", "rel": "DESIGN_BEI", "provenance": "doc_pitch" },
+
+    { "source": "leadscout", "target": "lead_stadtwerke", "rel": "FINDET", "provenance": "doc_pitch" },
+    { "source": "leadscout", "target": "lead_mittelstand", "rel": "FINDET", "provenance": "doc_pitch" },
+    { "source": "lead_stadtwerke", "target": "area_energie", "rel": "INTERESSE_AN", "provenance": "doc_pitch" },
+    { "source": "foerder", "target": "fund_efre", "rel": "MATCHT", "provenance": "doc_pitch" },
+    { "source": "foerder", "target": "fund_forschungszulage", "rel": "MATCHT", "provenance": "doc_nen_grant" }
+  ]
+}

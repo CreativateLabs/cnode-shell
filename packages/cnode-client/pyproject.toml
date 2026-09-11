@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cnode-client"
+version = "0.1.0"
+description = "Offizieller Python-Client für die cNode Cloud-API (souveräne KI-Wissensgraph-Plattform)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "Creativate Labs" }]
+dependencies = ["httpx>=0.26"]
+
+[project.urls]
+Homepage = "https://c-node.ai"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cnode_client*"]

@@ -1,0 +1,232 @@
+# c:node Assistant — local stack (v1 architecture).
+#   docker compose -f infra/docker-compose.yml up -d --build
+# Engine fronts the already-running NEN AI (:8001) + Ollama (:11434) on the host.
+# Graph lives in NEN AI; BFF keeps its own SQLite. Ports frozen per SCOPE.md.
+name: cnode-platform
+
+services:
+  graph-db:
+    image: pgvector/pgvector:pg16
+    container_name: cnode-graph-db
+    environment:
+      POSTGRES_USER: cnode
+      POSTGRES_PASSWORD: cnode
+      POSTGRES_DB: graph
+    expose:
+      - "5432"
+    volumes:
+      - graph_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cnode -d graph"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  graph-core:
+    build: ../services/graph-core
+    container_name: cnode-graph-core
+    environment:
+      PG_DSN: ${GRAPH_PG_DSN:-postgresql://cnode:cnode@graph-db:5432/graph}
+      OLLAMA_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
+      SEED_PATH: /seed/graph.json
+      SEED_GROUP: ${SEED_GROUP:-creativate}
+    volumes:
+      - ../seed:/seed
+    ports:
+      - "8010:8010"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      graph-db:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: cnode-postgres
+    environment:
+      POSTGRES_USER: cnode
+      POSTGRES_PASSWORD: cnode
+      POSTGRES_DB: cnode
+    expose:
+      - "5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cnode"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  voice:
+    build: ../services/voice
+    container_name: cnode-voice
+    environment:
+      WHISPER_MODEL: ${WHISPER_MODEL:-small}
+      WHISPER_COMPUTE: ${WHISPER_COMPUTE:-int8}
+      HF_HOME: /models
+    volumes:
+      - whisper_models:/models
+    ports:
+      - "8060:8060"
+
+  engine:
+    build: ../services/engine
+    container_name: cnode-engine
+    environment:
+      GRAPH_BACKEND: ${GRAPH_BACKEND:-graph-core}
+      GRAPH_CORE_URL: ${GRAPH_CORE_URL:-http://graph-core:8010}
+      ASSETS_URL: ${ASSETS_URL:-http://assets:8030}
+      NEN_AI_URL: ${NEN_AI_URL:-http://host.docker.internal:8001}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:7b}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-sonnet-5}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-flash-latest}
+      # Cloud-LLM erzwingen (faithful synthesis): LLM_PROVIDER=gemini|claude + zugehöriger Key.
+      LLM_PROVIDER: ${LLM_PROVIDER:-}
+    ports:
+      - "8020:8020"
+    volumes:
+      - engine_data:/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  assets:
+    build:
+      context: ..
+      dockerfile: services/assets/Dockerfile
+    container_name: cnode-assets
+    environment:
+      ENGINE_URL: ${ENGINE_URL:-http://engine:8020}
+      LEADSCOUT_API_URL: ${LEADSCOUT_API_URL:-https://api.leadscout.creativate.tech}
+      LEADSCOUT_API_KEY: ${LEADSCOUT_API_KEY:-}
+      FOERDER_DB_PATH: ${FOERDER_DB_PATH:-/data/foerder.sqlite}
+      LIBRARY_DIR: /data/library
+      SERPAPI_KEY: ${SERPAPI_KEY:-}
+      # StartupScout: optionaler GitHub-Token → höhere Limits + Region-Filter (Owner-Location).
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+    volumes:
+      - ../seed:/seed
+      - assets_data:/data
+      # echter data-foerder-Datensatz (9.945 LeiKa-Leistungen), read-only eingehängt
+      - ${DATAFOERDER_DB:-../../data-foerder/db/foerder.sqlite}:/data/foerder.sqlite:ro
+    ports:
+      - "8030:8030"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - engine
+
+  ontology-studio:
+    build: ../services/ontology-studio
+    container_name: cnode-ontology
+    environment:
+      ENGINE_URL: ${ENGINE_URL:-http://engine:8020}
+    ports:
+      - "8070:8070"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - engine
+
+  # Referenz-Domänen-Service (G5-Schablone). Zustandsloser Producer; die Engine
+  # persistiert seine Fragmente über den Graph-Adapter. Aktivierung je Tenant in
+  # tenant.yaml (domains:). Teilt das Compose-Netz mit engine + fres-engine.
+  domain-example:
+    build: ../services/domain-example
+    container_name: cnode-domain-example
+    volumes:
+      - ../packages/cnode-sdk:/pkg/cnode-sdk:ro
+    ports:
+      - "8090:8090"
+
+  # Erste echte Domäne (G6): Förder-/Antragswissen (Förder). Layer market/mesh —
+  # geteiltes Wissen über Tenants hinweg. Aktivierung je tenant.yaml (domains:).
+  domain-funding:
+    build: ../services/domain-funding
+    container_name: cnode-domain-funding
+    volumes:
+      - ../packages/cnode-sdk:/pkg/cnode-sdk:ro
+    ports:
+      - "8091:8091"
+
+  # Weitere Domänen (G8) — dieselbe Schablone. Aktivierung je tenant.yaml (domains:).
+  domain-sales:
+    build: ../services/domain-sales
+    container_name: cnode-domain-sales
+    volumes:
+      - ../packages/cnode-sdk:/pkg/cnode-sdk:ro
+    ports:
+      - "8092:8092"
+
+  domain-legal:
+    build: ../services/domain-legal
+    container_name: cnode-domain-legal
+    volumes:
+      - ../packages/cnode-sdk:/pkg/cnode-sdk:ro
+    ports:
+      - "8093:8093"
+
+  bff:
+    build: ../services/bff
+    container_name: cnode-bff
+    environment:
+      ENGINE_URL: ${ENGINE_URL:-http://engine:8020}
+      ASSETS_URL: ${ASSETS_URL:-http://assets:8030}
+      VOICE_URL: ${VOICE_URL:-http://voice:8060}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://cnode:cnode@postgres:5432/cnode}
+      AUTH_SECRET: ${AUTH_SECRET:-dev-only-change-me-please-32bytes-min}
+      SUPERADMIN_EMAIL: ${SUPERADMIN_EMAIL:-leonardo@creativate.tech}
+      DB_PATH: /data/bff.db
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8080}
+      DEFAULT_PROVIDER: ${DEFAULT_PROVIDER:-ollama}
+      DEFAULT_MODEL: ${DEFAULT_MODEL:-qwen2.5:7b}
+      # E-Mail-Versand (OTP / Magic-Link) über Resend. Ohne Key kein Versand
+      # (dev_code nur außerhalb PUBLIC_DEMO sichtbar). EMAIL_FROM muss eine in
+      # Resend verifizierte Sending-Domain sein.
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      EMAIL_FROM: ${EMAIL_FROM:-c:node <noreply@c-node.ai>}
+      PUBLIC_DEMO: ${PUBLIC_DEMO:-}
+      SELF_SERVICE_SIGNUP: ${SELF_SERVICE_SIGNUP:-}
+      # Kosten-Deckel der öffentlichen Sandbox: globaler Tages-Cap (alle IPs zusammen)
+      # zusätzlich zu den per-IP-/Tier-Caps. 0 = aus.
+      RL_GLOBAL_PER_DAY: ${RL_GLOBAL_PER_DAY:-0}
+      RL_GLOBAL_TOKENS_PER_DAY: ${RL_GLOBAL_TOKENS_PER_DAY:-0}
+      # Langlebige Service-Keys (Bearer) für programmatischen Zugriff (z.B. MCP-Server):
+      # "label:secret[:role], …". Rolle Default member. Tenant = Deployment-Org.
+      CNODE_API_KEYS: ${CNODE_API_KEYS:-}
+      # Google Gmail/Drive — trage die Werte in creativate-shell/.env ein (oder exportiere sie).
+      # Claudio-Namensschema (GMAIL_*) wird ebenfalls akzeptiert.
+      GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:-}
+      GOOGLE_OAUTH_CLIENT_SECRET: ${GOOGLE_OAUTH_CLIENT_SECRET:-}
+      GMAIL_CLIENT_ID: ${GMAIL_CLIENT_ID:-}
+      GMAIL_CLIENT_SECRET: ${GMAIL_CLIENT_SECRET:-}
+      GOOGLE_OAUTH_REDIRECT_URI: ${GOOGLE_OAUTH_REDIRECT_URI:-http://localhost:8080/integrations/google/oauth/callback}
+      GOOGLE_OAUTH_SCOPES: ${GOOGLE_OAUTH_SCOPES:-https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.compose https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/calendar.events}
+      # Microsoft / Outlook (Graph) — Azure-App-Werte in creativate-shell/.env eintragen.
+      MICROSOFT_CLIENT_ID: ${MICROSOFT_CLIENT_ID:-}
+      MICROSOFT_CLIENT_SECRET: ${MICROSOFT_CLIENT_SECRET:-}
+      MICROSOFT_TENANT: ${MICROSOFT_TENANT:-common}
+      MICROSOFT_REDIRECT_URI: ${MICROSOFT_REDIRECT_URI:-http://localhost:8080/integrations/microsoft/oauth/callback}
+      MICROSOFT_SCOPES: ${MICROSOFT_SCOPES:-offline_access User.Read Mail.ReadWrite Mail.Send Calendars.ReadWrite}
+    volumes:
+      - bff_data:/data
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      engine:
+        condition: service_started
+      assets:
+        condition: service_started
+
+volumes:
+  bff_data:
+  pg_data:
+  graph_pg_data:
+  engine_data:
+  whisper_models:
+  assets_data:

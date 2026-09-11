@@ -1,0 +1,54 @@
+# tenant.yaml — Vorlage. `make tenant-new NAME=<slug>` füllt id/name/group_id.
+# Voller Scope ist Default; hier nur abschalten/anpassen, was der Tenant NICHT bekommt.
+tenant:
+  id: _template
+  name: "_Template"
+  mode: dedicated          # dedicated (Datei, on-prem) | shared (DB, SaaS)
+  locale: de               # de | en | fr
+
+brand:
+  wordmark: "cNode"
+  logo: ./brand/logo.svg
+  primary: "#4B6EF5"     # Primärfarbe → Logo-Bracket, CTAs, Highlights (färbt die ganze UI)
+  secondary: "#36C399"   # Sekundärfarbe → Akzent-Punkt im Logo
+  accent: "#36C399"      # Fallback, wenn secondary leer
+  favicon: "🕸️"
+
+modules:
+  scouts: [lead, startup, trend, competitor, regulatorik]
+  agents: [recherche, memo, outreach, funding, governance]
+  ontology_studio: true
+  verifiable_reasoning: true
+
+llm:
+  provider: ollama         # ollama (on-prem) | api (hosted)
+  model: qwen2.5:7b
+  api_base: ""             # nur bei provider=api
+  rationale: true
+
+graph:
+  backend: nen             # nen (CIG) | neo4j-local
+  url: http://nen:8001
+  group_id: _template      # Tenant-Isolation
+
+storage:
+  driver: local            # local | s3
+  bucket: ""
+
+db:
+  driver: sqlite           # sqlite | postgres
+  url: "sqlite:////data/_template.db"
+
+connectors:                # Secrets nur als Referenz (env:/ssm:/vault:)
+  google:    { enabled: false, secret_ref: "" }
+  microsoft: { enabled: false, secret_ref: "" }
+  hubspot:   { enabled: false, secret_ref: "" }
+
+auth:
+  mode: magic-link         # magic-link | password | sso
+  admin_emails: []
+
+extensions: []             # additiv aus dem Tenant-Repo (cnode-sdk)
+
+secrets:
+  source: env              # env | ssm | vault

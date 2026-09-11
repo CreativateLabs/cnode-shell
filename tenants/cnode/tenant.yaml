@@ -1,0 +1,66 @@
+# tenant.yaml — cNode „main". Der kanonische, saubere Produkt-Tenant.
+#
+# Zweck:
+#   • Default-SANDBOX zum Gegenbauen lokal:  make sandbox   (== TENANT=cnode make tenant-up)
+#   • REFERENZ, aus der jeder Whitelabel-Tenant (c:node, Beispiel-Mandant …) forkt.
+#   • CLOUD-BASIS: dieselbe Config, per Cloud-Overlay auf Cloud-LLM + API-Key-Auth geschaltet
+#     (infra/docker-compose.cloud.yml — flippt DEFAULT_PROVIDER=api + CNODE_API_KEYS).
+#
+# Bewusst CLEAN: keine tenant-spezifischen Formulare (FraBö) und keine vorab aktivierten
+# Domänen/Connectoren. Voller Modul-Scope ist Default; Whitelabels schalten ab/ergänzen.
+tenant:
+  id: cnode
+  name: "c:node"           # öffentliche Sandbox-Marke (Produkt/Repo intern: cNode)
+  mode: dedicated          # dedicated (Datei, on-prem/Cloud-Single-Tenant) | shared (DB, SaaS)
+  locale: de               # de | en | fr
+
+brand:
+  wordmark: "c:node"
+  logo: ./brand/logo.svg   # fehlt → eingebautes cNode-Bracket-Logo (Fallback in der Shell)
+  primary: "#7C3AED"       # cNode-Primär (Violett — gleiche Identität wie Login/Signup)
+  secondary: "#36C399"     # Akzent-Punkt (Mint)
+  accent: "#36C399"
+  favicon: "🕸️"
+
+modules:
+  scouts: [lead, startup, trend, competitor, regulatorik]
+  agents: [recherche, memo, outreach, funding, governance]
+  ontology_studio: true
+  verifiable_reasoning: true
+
+llm:
+  provider: ollama         # SANDBOX: lokal, souverän, zero-cost. CLOUD-Overlay → api.
+  model: qwen2.5:7b
+  api_base: ""             # nur bei provider=api (Cloud-LLM); Key kommt als env-Ref, nie inline
+  rationale: true
+
+graph:
+  backend: nen             # graph-core (PG+pgvector) ist der souveräne Default
+  url: http://graph-core:8010
+  group_id: cnode          # isolierter Tenant-Graph dieser Instanz
+
+storage:
+  driver: local            # local | s3 (Cloud)
+  bucket: ""
+
+db:
+  driver: sqlite           # sqlite (dedicated) | postgres (shared/SaaS)
+  url: "sqlite:////data/cnode.db"
+
+connectors:                # Bibliothek: 29 recherchierte Integrationen (docs/CONNECTORS.md).
+  # Default alles AUS — je Deployment gezielt freischalten. Secrets NUR als Ref.
+  google:    { enabled: false, secret_ref: "" }
+  microsoft: { enabled: false, secret_ref: "" }
+  hubspot:   { enabled: false, secret_ref: "" }
+
+auth:
+  mode: magic-link         # SANDBOX/On-Prem: magic-link. CLOUD zusätzlich: API-Key (Service-Token).
+  admin_emails:
+    - leonardo@creativate.tech
+
+extensions: []             # additiv aus einem Tenant-Repo (cnode-sdk entry-points)
+
+domains: []                # keine vorab aktive Domäne — clean. Whitelabels aktivieren gezielt.
+
+secrets:
+  source: env              # env (dedicated/Sandbox) | ssm | vault (Cloud)

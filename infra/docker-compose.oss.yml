@@ -1,0 +1,28 @@
+# OSS-Overlay: baut ALLES aus dem Quellcode (kein ECR) + schaltet das semantische Gedächtnis
+# frei (fastembed-Embedder, CPU, kein GPU). Für lokalen Self-Host mit `docker compose up`.
+#
+#   TENANT=cnode docker compose \
+#     -f infra/docker-compose.yml -f infra/docker-compose.tenant.yml \
+#     -f infra/docker-compose.oss.yml up --build
+#
+# LLM: Standard ist lokales Ollama (souverän, offline). Cloud-LLM optional per BYOK
+# (GOOGLE_API_KEY / ANTHROPIC_API_KEY in .env → DEFAULT_PROVIDER=gemini|claude).
+services:
+  embed:
+    build: ../services/embed
+    container_name: cnode-embed
+    volumes:
+      - embed_models:/models
+    restart: unless-stopped
+
+  graph-core:
+    environment:
+      OLLAMA_URL: http://embed:11434     # graph-core bettet über den Mini-Embedder ein
+      EMBED_MODEL: nomic-embed-text
+      EMBED_DIM: "768"
+    depends_on:
+      embed:
+        condition: service_started
+
+volumes:
+  embed_models:

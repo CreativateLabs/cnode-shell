@@ -1,0 +1,77 @@
+{
+  "_note": "Stub-Fallback für StartupScout, wenn die GitHub-Live-Suche nicht erreichbar ist (z.B. air-gapped/Sandbox). In Produktion liefert GitHub echte Treffer. Bewusst generische Demo-Beispiele.",
+  "startups": [
+    {
+      "name": "Helion Robotics",
+      "segment": "robotics",
+      "keywords": ["robotics", "automation", "manufacturing", "hardware", "ai"],
+      "website": "https://example.com/helion",
+      "location": "München, DE",
+      "traction": "412★ GitHub",
+      "traction_score": 26,
+      "source": "seed",
+      "contact": "",
+      "reason": "Aktive GitHub-Org mit Hardware-/Automations-Fokus, eigene Website vorhanden"
+    },
+    {
+      "name": "Verda Health",
+      "segment": "healthtech",
+      "keywords": ["health", "clinical", "diagnostics", "medtech", "biotech"],
+      "website": "https://example.com/verda",
+      "location": "Heidelberg, DE",
+      "traction": "registrierte klinische Studie",
+      "traction_score": 22,
+      "source": "seed",
+      "contact": "",
+      "reason": "HealthTech mit klinischer Evidenz — Frühindikator vor Funding-Runde"
+    },
+    {
+      "name": "Nordwind Energy",
+      "segment": "climatetech",
+      "keywords": ["energy", "renewable", "grid", "climate", "storage"],
+      "website": "https://example.com/nordwind",
+      "location": "Hamburg, DE",
+      "traction": "203★ GitHub",
+      "traction_score": 18,
+      "source": "seed",
+      "contact": "",
+      "reason": "Erneuerbare-Energie-Org mit Code-Aktivität, DACH-Standort"
+    },
+    {
+      "name": "Kairon AI",
+      "segment": "ai/ml",
+      "keywords": ["ai", "ml", "llm", "developer", "infrastructure"],
+      "website": "https://example.com/kairon",
+      "location": "Berlin, DE",
+      "traction": "587★ GitHub",
+      "traction_score": 29,
+      "source": "seed",
+      "contact": "",
+      "reason": "Starke technische Traktion (Developer-Tooling), Organisation statt Einzel-Account"
+    },
+    {
+      "name": "Fintraq",
+      "segment": "fintech",
+      "keywords": ["fintech", "payments", "banking", "compliance", "api"],
+      "website": "https://example.com/fintraq",
+      "location": "Frankfurt, DE",
+      "traction": "156★ GitHub",
+      "traction_score": 15,
+      "source": "seed",
+      "contact": "",
+      "reason": "Fintech-Infrastruktur mit API-Fokus, Compliance-nah — passt zu regulierten ICPs"
+    },
+    {
+      "name": "Struktura Labs",
+      "segment": "devtools",
+      "keywords": ["developer", "tooling", "graph", "data", "platform"],
+      "website": "https://example.com/struktura",
+      "location": "Karlsruhe, DE",
+      "traction": "341★ GitHub",
+      "traction_score": 24,
+      "source": "seed",
+      "contact": "",
+      "reason": "Daten-/Graph-Plattform mit solider Traktion, Hochschul-nahes Ökosystem"
+    }
+  ]
+}

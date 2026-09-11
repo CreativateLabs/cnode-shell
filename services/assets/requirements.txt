@@ -1,0 +1,12 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+httpx==0.28.1
+pydantic==2.10.4
+python-multipart==0.0.20
+# Upload-Extraktion in /library/upload (SCOPE v3 "Assets — Upload-Extraktion + Library")
+pypdf==5.1.0
+python-docx==1.1.2
+openpyxl==3.1.5
+# readability-lite HTML-Extraktion in /scrape (SCOPE v2 Web-Scraping);
+# Code fällt ohne selectolax sauber auf stdlib html.parser zurück
+selectolax==0.3.27
