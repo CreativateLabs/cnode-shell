@@ -1,0 +1,8 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+httpx==0.28.1
+pydantic==2.10.4
+pyyaml==6.0.2
+psycopg[binary]==3.2.3
+pyjwt==2.10.1
+python-multipart==0.0.20

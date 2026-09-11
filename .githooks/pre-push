@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Blockt versehentliche Direkt-Pushes auf geschützte Branches.
+# Konvention (cnode-platform): Feature-Branch -> PR -> main, keine Direkt-Commits auf main.
+#
+# Aktivieren (einmalig pro Clone):
+#   git config core.hooksPath .githooks
+#
+# Notfall-Override (bewusst, z. B. Hotfix):
+#   git push --no-verify
+#
+# Hinweis: clientseitig (pro Clone). Serverseitige Branch-Protection braucht auf privaten
+# Repos einen bezahlten GitHub-Plan; auf dem PUBLIC-Mirror cnode-shell ist sie gratis möglich.
+set -euo pipefail
+PROTECTED="${CNODE_PROTECTED_BRANCH:-main}"
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  if [ "$remote_ref" = "refs/heads/${PROTECTED}" ]; then
+    echo "" >&2
+    echo "  ✗ Direkt-Push auf '${PROTECTED}' ist blockiert." >&2
+    echo "    Konvention: Feature-Branch -> PR -> ${PROTECTED}." >&2
+    echo "    Branch anlegen:   git switch -c feature/<was>" >&2
+    echo "    Notfall-Override: git push --no-verify" >&2
+    echo "" >&2
+    exit 1
+  fi
+done
+exit 0

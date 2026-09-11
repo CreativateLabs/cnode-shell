@@ -1,0 +1,34 @@
+# Tenant-Overlay — legt einen Tenant über den Basis-Stack (docker-compose.yml).
+# Non-breaking: setzt nur TENANT_ID/TENANT_CONFIG + mountet die tenant.yaml read-only.
+# Services, die den TenantContext noch nicht lesen, ignorieren das folgenlos.
+#
+#   TENANT=cnode docker compose \
+#     -f infra/docker-compose.yml -f infra/docker-compose.tenant.yml --env-file .env up -d
+services:
+  bff:
+    environment:
+      - TENANT_ID=${TENANT:-cnode}
+      - TENANT_CONFIG=/config/tenant.yaml
+      # Tenant-Layer + Plugin-Framework in den Container legen (local-first; in Prod pip-installiert).
+      - PYTHONPATH=/pkg/tenant-core:/pkg/cnode-sdk:/pkg/platform
+    volumes:
+      - ../tenants/${TENANT:-cnode}:/config:ro
+      - ../packages/tenant-core:/pkg/tenant-core:ro
+      - ../packages/cnode-sdk:/pkg/cnode-sdk:ro
+      - ../platform:/pkg/platform:ro
+
+  engine:
+    environment:
+      - TENANT_ID=${TENANT:-cnode}
+      - TENANT_CONFIG=/config/tenant.yaml
+      - PYTHONPATH=/pkg/tenant-core
+    volumes:
+      - ../tenants/${TENANT:-cnode}:/config:ro
+      - ../packages/tenant-core:/pkg/tenant-core:ro
+
+  assets:
+    environment:
+      - TENANT_ID=${TENANT:-cnode}
+      - TENANT_CONFIG=/config/tenant.yaml
+    volumes:
+      - ../tenants/${TENANT:-cnode}:/config:ro

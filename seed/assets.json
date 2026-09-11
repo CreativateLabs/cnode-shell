@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "note": "Feste Demo-Antworten für asset-scout und asset-foerder (Stubs). Kein Live-API-Call im kritischen Demo-Pfad."
+  },
+  "scout": {
+    "default_segment": "kommunal",
+    "leads": [
+      { "name": "Stadtwerke Musterstadt", "segment": "kommunal", "region": "Hessen", "score": 0.91, "reason": "Energie-/Beteiligungscontrolling, cNode-Fit hoch, öffentlicher Sektor → On-Prem-Story trägt.", "contact": "leitung@stadtwerke-musterstadt.de" },
+      { "name": "TechMittelstand AG", "segment": "KMU Industrie", "region": "BW", "score": 0.78, "reason": "Wissensmanagement + Dialog-Plattform gesucht, Interesse an EU-souveräner KI.", "contact": "innovation@techmittelstand.de" },
+      { "name": "Kreisverwaltung Beispielkreis", "segment": "öffentliche Verwaltung", "region": "Sachsen", "score": 0.74, "reason": "Förder-Antragslast hoch → Förder-Fit, Vertrauens-Architektur Pflicht.", "contact": "digitalisierung@beispielkreis.de" }
+    ]
+  },
+  "foerder": {
+    "programs": [
+      { "name": "Forschungszulage (BSFZ)", "fit": 0.95, "max_foerderung": "bis 1,0 Mio €/Jahr", "reason": "FuE-Tätigkeit an neuronaler Architektur (NEN) klar förderfähig, bereits zertifiziert.", "frist": "laufend" },
+      { "name": "EFRE Digitalisierung (Bund)", "fit": 0.82, "max_foerderung": "projektabhängig", "reason": "Digitalisierungsvorhaben KMU, EU-Kofinanzierung.", "frist": "Q4-Call" },
+      { "name": "aws Pre-Seed (Österreich)", "fit": 0.70, "max_foerderung": "bis 89k € Zuschuss", "reason": "Geprüfte FuE-IP einbringbar für AT-Expansion.", "frist": "rolling" }
+    ]
+  }
+}

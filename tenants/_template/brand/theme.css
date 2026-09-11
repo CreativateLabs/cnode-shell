@@ -1,0 +1,7 @@
+/* Brand-Overrides je Tenant. Die Shell liest primary/accent aus tenant.yaml;
+   hier lassen sich zusätzliche CSS-Variablen pro Whitelabel überschreiben. */
+:root {
+  --brand-primary: #4B6EF5;
+  --brand-accent:  #36C399;
+  /* --brand-radius, --brand-font etc. bei Bedarf ergänzen */
+}

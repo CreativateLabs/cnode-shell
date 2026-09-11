@@ -1,0 +1,12 @@
+# deps / build
+node_modules/
+apps/shell/dist/
+apps/shell/src-tauri/target/
+__pycache__/
+*.pyc
+.venv/
+# env / local
+.env
+.env.local
+# os
+.DS_Store

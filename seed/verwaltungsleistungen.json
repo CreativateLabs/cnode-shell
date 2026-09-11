@@ -1,0 +1,2009 @@
+{
+ "_meta": {
+  "note": "Repraesentativer Seed-Katalog (~200 Verwaltungsleistungen), gezogen aus dem echten data-foerder-Datensatz (leistung-Tabelle, LeiKa). Der volle ~10k/14k-Datensatz wird zur Laufzeit bevorzugt geladen, wenn FOERDER_DB_PATH bzw. eine lokale data-foerder-DB gefunden wird (siehe catalog.py).",
+  "source": "data-foerder/db/foerder.sqlite",
+  "count": 200
+ },
+ "leistungen": [
+  {
+   "leika": "99059008026002",
+   "name": "Eheschließung im Ausland Beurkundung von im Ausland geschlossener Ehen als staatenlos anerkannten oder als Flüchtlinge anerkannten Personen bzw. ihrer Beteiligung",
+   "buergernah": "Nachbeurkundung einer im Ausland geschlossenen Ehe als staatenlos anerkannte Personen oder als Flüchtling anerkannte Personen  oder mit ihrer Beteiligung  beantragen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Nachbeurkundung einer im Ausland geschlossenen Ehe als staatenlos anerkannte Personen oder als Flüchtling anerkannte Personen  oder mit ihrer Beteiligung  beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99013038037000",
+   "name": "Monatliche Pauschalbeträge für laufende Leistungen zum Unterhalt der in Pflegefamilien untergebrachten Minderjährigen und jungen Volljährigen Feststellung",
+   "buergernah": "Monatliche Leistungen für den Unterhalt von Pflegekindern beantragen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Monatliche Leistungen für den Unterhalt von Pflegekindern beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99079002026002",
+   "name": "Außer Kraft - Begründung einer Lebenspartnerschaft Beurkundung von im Ausland begründeten Lebenspartnerschaften Deutscher ohne Inlandswohnsitz",
+   "buergernah": "Außer Kraft - Begründung einer Lebenspartnerschaft Beurkundung von im Ausland begründeten Lebenspartnerschaften Deutscher ohne Inlandswohnsitz",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Außer Kraft - Begründung einer Lebenspartnerschaft Beurkundung von im Ausland begründeten Lebenspartnerschaften Deutscher ohne Inlandswohnsitz",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99079002026001",
+   "name": "Außer Kraft - Begründung einer Lebenspartnerschaft Beurkundung von im Ausland begründeten Lebenspartnerschaften Deutscher mit Inlandswohnsitz",
+   "buergernah": "Außer Kraft - Begründung einer Lebenspartnerschaft Beurkundung von im Ausland begründeten Lebenspartnerschaften Deutscher mit Inlandswohnsitz",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Außer Kraft - Begründung einer Lebenspartnerschaft Beurkundung von im Ausland begründeten Lebenspartnerschaften Deutscher mit Inlandswohnsitz",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99602006001001",
+   "name": "Beratung, Unterstützung und sonstige Hilfen zur Vermeidung von Betreuung Erteilung Vermittlung geeigneter Hilfen und erweiterte Unterstützung",
+   "buergernah": "Als mögliche von Betreuung Betroffene umfassendere Unterstützung in Anspruch nehmen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Als mögliche von Betreuung Betroffene umfassendere Unterstützung in Anspruch nehmen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99013038000000",
+   "name": "Monatliche Pauschalbeträge für laufende Leistungen zum Unterhalt der in Pflegefamilien untergebrachten Minderjährigen und jungen Volljährigen",
+   "buergernah": "Monatliche Pauschalbeträge für laufende Leistungen zum Unterhalt der in Pflegefamilien untergebrachten Minderjährigen und jungen Volljährigen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Monatliche Pauschalbeträge für laufende Leistungen zum Unterhalt der in Pflegefamilien untergebrachten Minderjährigen und jungen Volljährigen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99059002012001",
+   "name": "Ehefähigkeitszeugnis Ausstellung für Staatenlose, heimatlose Ausländer oder anerkannte Flüchtlinge mit gewöhnlichem Aufenthalt im Inland",
+   "buergernah": "Ehefähigkeitszeugnis Ausstellung für Staatenlose, heimatlose Ausländer oder anerkannte Flüchtlinge mit gewöhnlichem Aufenthalt im Inland",
+   "kategorie": "Familie & Kind",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Ehefähigkeitszeugnis Ausstellung für Staatenlose, heimatlose Ausländer oder anerkannte Flüchtlinge mit gewöhnlichem Aufenthalt im Inland",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99013019261000",
+   "name": "Bereiterklärung der Adoptionsbewerber zur Annahme eines ihnen zur internationalen Adoption vorgeschlagenen Kindes Entgegennahme",
+   "buergernah": "Als Adoptionsbewerber Bereitschaft zur Adoption eines Kindes aus dem Ausland erklären",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Als Adoptionsbewerber Bereitschaft zur Adoption eines Kindes aus dem Ausland erklären",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99060013080000",
+   "name": "Eingliederungshilfe für Kinder und Jugendliche mit seelischer Behinderung oder drohender seelischer Behinderung Gewährung",
+   "buergernah": "Eingliederungshilfe für Kinder und Jugendliche mit seelischer Behinderung oder drohender seelischer Behinderung beantragen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Eingliederungshilfe für Kinder und Jugendliche mit seelischer Behinderung oder drohender seelischer Behinderung beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99013019000000",
+   "name": "Bereiterklärung der Adoptionsbewerber zur Annahme eines ihnen zur internationalen Adoption vorgeschlagenen Kindes",
+   "buergernah": "Bereiterklärung der Adoptionsbewerber zur Annahme eines ihnen zur internationalen Adoption vorgeschlagenen Kindes",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Bereiterklärung der Adoptionsbewerber zur Annahme eines ihnen zur internationalen Adoption vorgeschlagenen Kindes",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99083001011002",
+   "name": "Familienname Änderung aufgrund der Erklärung über die Namenswahl, die Angleichung von Familiennamen und Vornamen",
+   "buergernah": "Änderung des Familiennamens aufgrund der Erklärung über die Namenswahl, die Angleichung von Familiennamen und Vornamen beantragen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Änderung des Familiennamens aufgrund der Erklärung über die Namenswahl, die Angleichung von Familiennamen und Vornamen beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99060013000000",
+   "name": "Eingliederungshilfe für Kinder und Jugendliche mit seelischer Behinderung oder drohender seelischer Behinderung",
+   "buergernah": "Eingliederungshilfe für Kinder und Jugendliche mit seelischer Behinderung oder drohender seelischer Behinderung",
+   "kategorie": "Familie & Kind",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Eingliederungshilfe für Kinder und Jugendliche mit seelischer Behinderung oder drohender seelischer Behinderung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99083001011009",
+   "name": "Familienname Änderung aufgrund der Erklärung von Vertriebenen, Spätaussiedlern, deren Ehegatten und Abkömmlinge",
+   "buergernah": "Änderung des Familiennamens als vertriebene oder spätaussiedelnde Person, deren Ehegattin, Ehegatte oder Nachkomme beantragen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Änderung des Familiennamens als vertriebene oder spätaussiedelnde Person, deren Ehegattin, Ehegatte oder Nachkomme beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99071011017000",
+   "name": "Zuwendungen für die Implementierung eines Bildungsplanes in Kindertageseinrichtungen als Zuschuss Bewilligung",
+   "buergernah": "Kommunale Förderung zur Umsetzung von Bildungsplänen in Kindertageseinrichtungen beantragen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Kommunale Förderung zur Umsetzung von Bildungsplänen in Kindertageseinrichtungen beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99126004088001",
+   "name": "Auskunfts-, Mitteilungs-, Berichts- und Rechnungslegungspflicht des Vormundes Anordnung der Zeitabschnitte",
+   "buergernah": "Auskunfts-, Mitteilungs-, Berichts- und Rechnungslegungspflicht des Vormundes Anordnung der Zeitabschnitte",
+   "kategorie": "Familie & Kind",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Auskunfts-, Mitteilungs-, Berichts- und Rechnungslegungspflicht des Vormundes Anordnung der Zeitabschnitte",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99013017020000",
+   "name": "Auslandsadoption eines Kindes - Bescheinigung über ein internationales Vermittlungsverfahren Verlängerung",
+   "buergernah": "Verlängerung der Bescheinigung über ein internationales Vermittlungsverfahren bei einer Auslandsadoption beantragen",
+   "kategorie": "Familie & Kind",
+   "ebene": "Land",
+   "kurzbeschreibung": "Verlängerung der Bescheinigung über ein internationales Vermittlungsverfahren bei einer Auslandsadoption beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99005047001000",
+   "name": "Chargenzertifikate (BCPP) für Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten, im Rahmen des Zertifikatssystems der WHO über die Qualität pharmazeutischer Produkte im internationalen Handel Erteilung",
+   "buergernah": "Chargenzertifikate (BCPP) für Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten, im Rahmen des Zertifikatssystems der WHO über die Qualität pharmazeutischer Produkte im internationalen Handel Erteilung",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Chargenzertifikate (BCPP) für Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten, im Rahmen des Zertifi",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005045001004",
+   "name": "Chargenprüfung: Prüfung und Entscheidung über die Freigabe Erteilung Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten, unabhängig davon, ob sie national oder zentralisiert zugelassen sind",
+   "buergernah": "Chargenprüfung: Prüfung und Entscheidung über die Freigabe Erteilung Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten, unabhängig davon, ob sie national oder zentralisiert zugelassen sind",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Chargenprüfung: Prüfung und Entscheidung über die Freigabe Erteilung Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestan",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005045029004",
+   "name": "Chargenprüfung: Prüfung und Entscheidung über die Freigabe Prüfung Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten, unabhängig davon, ob sie national oder zentralisiert zugelassen sind",
+   "buergernah": "Chargenprüfung: Prüfung und Entscheidung über die Freigabe Prüfung Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten, unabhängig davon, ob sie national oder zentralisiert zugelassen sind",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Chargenprüfung: Prüfung und Entscheidung über die Freigabe Prüfung Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandt",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005049261000",
+   "name": "Meldungen über die Gründe für das vorübergehende oder endgültige Einstellen des Inverkehrbringens, den Rückruf, den Verzicht auf die Zulassung oder die Nichtbeantragung der Verlängerung der Zulassung, auch wenn die Maßnahme in einem Drittland getroffen wird Entgegennahme",
+   "buergernah": "Meldungen über die Gründe für das vorübergehende oder endgültige Einstellen des Inverkehrbringens, den Rückruf, den Verzicht auf die Zulassung oder die Nichtbeantragung der Verlängerung der Zulassung, auch wenn die Maßnahme in einem Drittland getroffen wird Entgegennahme",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Meldungen über die Gründe für das vorübergehende oder endgültige Einstellen des Inverkehrbringens, den Rückruf, den Verzicht auf die Zulassung oder die Nichtbeantragung der Verlängerung der Zulassung,",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99148310017001",
+   "name": "Förderung für Wissenschaftseinrichtungen und wirtschaftsnahe Forschungseinrichtungen Bewilligung der Auf- und Ausbau von Innovationszentren durch Investitionen in die forschungsbezogene Geräteinfrastruktur sowie den Einsatz technischen Personals und Verwaltungspersonals",
+   "buergernah": "Bewilligung (Zuwendungsbescheid) für Investitionen in den Auf- und Ausbau von Innovationszentren erhalten",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Bewilligung (Zuwendungsbescheid) für Investitionen in den Auf- und Ausbau von Innovationszentren erhalten",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400143080001",
+   "name": "Bundesförderung für effiziente Wärmenetze (Wärmenetzsysteme 4.0) Gewährung Ergänzende Förderung regionaler wissenschaftlicher Kooperationen zur Kostensenkung, wissenschaftlichen Begleitung und Kommunikation der Erkenntnisse vor Ort in der Region („Capacity Building“)",
+   "buergernah": "Ergänzende Förderung regionaler wissenschaftlicher Kooperationen zur Kostensenkung, wissenschaftlichen Begleitung und Kommunikation der Erkenntnisse vor Ort in der Region („Capacity Building“) beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Ergänzende Förderung regionaler wissenschaftlicher Kooperationen zur Kostensenkung, wissenschaftlichen Begleitung und Kommunikation der Erkenntnisse vor Ort in der Region („Capacity Building“) beantra",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99148255017001",
+   "name": "Zuschuss zur Steigerung der Wettbewerbsfähigkeit von kleinen und mittleren Unternehmen durch Förderung betriebswirtschaftlicher und technischer Beratungen Bewilligung Intensivberatungen und Prozessbegleitungen für KMU durch selbständige Unternehmensberater:innen",
+   "buergernah": "Intensivberatungen und Prozessbegleitungen für KMU durch selbständige Unternehmensberater:innen beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Intensivberatungen und Prozessbegleitungen für KMU durch selbständige Unternehmensberater:innen beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99400489080002",
+   "name": "Verwendung der Förderhilfen für die Herstellung, den Absatz und die Digitalisierung von Filmen für Kurzfilme und nicht programmfüllende Kinderfilme Gewährung für Maßnahmen der Stoffbeschaffung, der Drehbuchbeschaffung oder -entwicklung oder sonstiges",
+   "buergernah": "Verwendung der Förderhilfen Maßnahmen der Stoffbeschaffung, der Drehbuchbeschaffung/-entwicklung oder sonstiges beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Verwendung der Förderhilfen Maßnahmen der Stoffbeschaffung, der Drehbuchbeschaffung/-entwicklung oder sonstiges beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99005046001004",
+   "name": "Chargenzertifikate für Arzneimittel, soweit sie im MR- oder DC-Verfahren zugelassen sind Erteilung für Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten",
+   "buergernah": "Chargenzertifikate für Arzneimittel, soweit sie im MR- oder DC-Verfahren zugelassen sind Erteilung für Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandteile als arzneilich wirksame Bestandteile enthalten",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Chargenzertifikate für Arzneimittel, soweit sie im MR- oder DC-Verfahren zugelassen sind Erteilung für Blutzubereitungen, die aus Mischungen von humanem Blutplasma hergestellt werden und Blutbestandte",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400488080003",
+   "name": "Verwendung der Förderhilfen für die Herstellung, den Absatz und die Digitalisierung von Filmen für programmfüllende Filme Gewährung für besonders aufwendige Maßnahmen der Stoffbeschaffung, der Drehbuchbeschaffung oder -entwicklung oder sonstiges",
+   "buergernah": "Verwendung Förderhilfen für besonders aufwendige Maßnahmen der Stoffbeschaffung, der Drehbuchbeschaffung/-entwicklung oder Sonstiges beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Verwendung Förderhilfen für besonders aufwendige Maßnahmen der Stoffbeschaffung, der Drehbuchbeschaffung/-entwicklung oder Sonstiges beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99148255017003",
+   "name": "Zuschuss zur Steigerung der Wettbewerbsfähigkeit von kleinen und mittleren Unternehmen durch Förderung betriebswirtschaftlicher und technischer Beratungen Bewilligung Einrichtung und Betrieb von Beratungs- und Vernetzungsprojekten für KMU",
+   "buergernah": "Einrichtung und Betrieb von Beratungs- und Vernetzungsprojekten für KMU beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Einrichtung und Betrieb von Beratungs- und Vernetzungsprojekten für KMU beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99400489080001",
+   "name": "Verwendung der Förderhilfen für die Herstellung, den Absatz und die Digitalisierung von Filmen für Kurzfilme und nicht programmfüllende Kinderfilme Gewährung zur Aufstockung des Eigenkapitals zur Strukturverbesserung des Filmunternehmens",
+   "buergernah": "Verwendung Förderhilfen Aufstockung Eigenkapital zur Strukturverbesserung Filmunternehmen für Kurzfilme/nicht programmfüllende Kinderfilme beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Verwendung Förderhilfen Aufstockung Eigenkapital zur Strukturverbesserung Filmunternehmen für Kurzfilme/nicht programmfüllende Kinderfilme beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99148311017003",
+   "name": "Förderung für Forschungsgruppen Bewilligung Förderung für die Weiterbildung von Personal für die Bereiche Forschung, Entwicklung sowie der Wissens- und Technologietransfer im Rahmen der Arbeit von Forschungsgruppen",
+   "buergernah": "Bewilligung für die Weiterbildung von Personal für die Bereiche Forschung, Entwicklung sowie der Wissens- und Technologietransfer erhalten",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Bewilligung für die Weiterbildung von Personal für die Bereiche Forschung, Entwicklung sowie der Wissens- und Technologietransfer erhalten",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400488080001",
+   "name": "Verwendung der Förderhilfen für die Herstellung, den Absatz und die Digitalisierung von Filmen für programmfüllende Filme Gewährung zur Aufstockung des Eigenkapitals zur Strukturverbesserung des Filmunternehmens",
+   "buergernah": "Verwendung Förderhilfen zur Aufstockung Eigenkapital zur Strukturverbesserung Filmunternehmen beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Verwendung Förderhilfen zur Aufstockung Eigenkapital zur Strukturverbesserung Filmunternehmen beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99148255017002",
+   "name": "Zuschuss zur Steigerung der Wettbewerbsfähigkeit von kleinen und mittleren Unternehmen durch Förderung betriebswirtschaftlicher und technischer Beratungen Bewilligung Organisationseigene Beratungen im Handwerk",
+   "buergernah": "Organisationseigene Beratungen im Handwerk beantragen",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Organisationseigene Beratungen im Handwerk beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99005040261000",
+   "name": "Regelmäßige Berichte über den Umfang der Herstellung und über die Erkenntnisse für die umfassende Beurteilung von Arzneimitteln für neuartige Therapien (ATMP), die nach § 4b AMG genehmigt wurden Entgegennahme",
+   "buergernah": "Regelmäßige Berichte über den Umfang der Herstellung und über die Erkenntnisse für die umfassende Beurteilung von Arzneimitteln für neuartige Therapien (ATMP), die nach § 4b AMG genehmigt wurden Entgegennahme",
+   "kategorie": "Forschung & Förderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Regelmäßige Berichte über den Umfang der Herstellung und über die Erkenntnisse für die umfassende Beurteilung von Arzneimitteln für neuartige Therapien (ATMP), die nach § 4b AMG genehmigt wurden Entge",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99107055017003",
+   "name": "Zuschüsse zu Beiträgen für Krankenversicherung und Pflegeversicherung Bewilligung für Personen wohnhaft innerhalb einer besonderen Wohnform nach der in §32 SGB XII dargelegten Definition der Übernahme der Beiträge durch den Sozialhilfeträger",
+   "buergernah": "Zuschüsse zu Beiträgen für Krankenversicherung und Pflegeversicherung nach §32 SGB XII, wenn Sie in einer besonderen Wohnform wohnen, beantragen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Zuschüsse zu Beiträgen für Krankenversicherung und Pflegeversicherung nach §32 SGB XII, wenn Sie in einer besonderen Wohnform wohnen, beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018122020000",
+   "name": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Verlängerung",
+   "buergernah": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Verlängerung",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Verlängerung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018122012000",
+   "name": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Ausstellung",
+   "buergernah": "Elektronischen Heilberufsausweis (eHBA) als Person in einem Gesundheitsfachberuf beantragen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Elektronischen Heilberufsausweis (eHBA) als Person in einem Gesundheitsfachberuf beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018122063000",
+   "name": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Sperrung",
+   "buergernah": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Sperrung",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Sperrung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018122051000",
+   "name": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Umtausch",
+   "buergernah": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Umtausch",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Umtausch",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018122011000",
+   "name": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Änderung",
+   "buergernah": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Änderung",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen Änderung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99107055017001",
+   "name": "Zuschüsse zu Beiträgen für Krankenversicherung und Pflegeversicherung Bewilligung nach der in §32 SGB XII dargelegten Definition der Übernahme der Beiträge durch den Sozialhilfeträger",
+   "buergernah": "Unterstützung zur Finanzierung von Beiträgen für Krankenversicherung und Pflegeversicherung beim Sozialhilfeträger beantragen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Unterstützung zur Finanzierung von Beiträgen für Krankenversicherung und Pflegeversicherung beim Sozialhilfeträger beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99107117017003",
+   "name": "Krankenbehandlung der Sozialen Entschädigung Bewilligung Pauschbetrag für außergewöhnlichen Verschleiß von Kleidung und Wäsche für Geschädigte infolge anerkannter Schädigungsfolgen",
+   "buergernah": "Pauschbetrag der sozialen Entschädigung für außergewöhnlichen Verschleiß von Kleidung und Wäsche für Geschädigte beantragen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Pauschbetrag der sozialen Entschädigung für außergewöhnlichen Verschleiß von Kleidung und Wäsche für Geschädigte beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018122000000",
+   "name": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen",
+   "buergernah": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Elektronischer Heilberufs- und Berufeausweis/Berufsausweis für nicht approbierte Gesundheitsberufe sowie der sonstigen Erbringerinnen und Erbringer ärztlich verordneter Leistungen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99107032017003",
+   "name": "Leistungen für Bildung und Teilhabe bei Kindern, Jugendlichen und jungen Erwachsenen Bewilligung bei laufendem Leistungsbezug von Grundsicherung im Alter und bei Erwerbsminderung",
+   "buergernah": "Bildungs- und Teilhabeleistungen für junge Erwachsene bei Bezug von Grundsicherung im Alter oder bei Erwerbsminderung",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Bildungs- und Teilhabeleistungen für junge Erwachsene bei Bezug von Grundsicherung im Alter oder bei Erwerbsminderung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99107032017004",
+   "name": "Leistungen für Bildung und Teilhabe bei Kindern, Jugendlichen und jungen Erwachsenen Bewilligung bei laufendem Leistungsbezug von Leistungen nach Asylbewerberleistungsgesetz",
+   "buergernah": "Bildungs- und Teilhabeleistungen für Kinder, Jugendliche und junge Erwachsene bei Bezug von Leistungen nach Asylbewerberleistungsgesetz beantragen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Bildungs- und Teilhabeleistungen für Kinder, Jugendliche und junge Erwachsene bei Bezug von Leistungen nach Asylbewerberleistungsgesetz beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018149261003",
+   "name": "Anzeige der Fortsetzung der Erbringung grenzüberschreitender Dienstleistungen in freien reglementierten Berufen Entgegennahme von Psychotherapeutin oder Psychotherapeut",
+   "buergernah": "Als Psychotherapeutin oder Psychotherapeut Fortsetzung der Erbringung grenzüberschreitender Dienstleistungen in einem freien reglementierten Beruf anzeigen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Als Psychotherapeutin oder Psychotherapeut Fortsetzung der Erbringung grenzüberschreitender Dienstleistungen in einem freien reglementierten Beruf anzeigen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99050158055000",
+   "name": "Ausgabe von elektronischen Heilberufs- und Berufsausweisen (eHBA) sowie von Komponenten zur Authentifizierung von Leistungserbringerinstitutionen (SMC-B) Übermittlung",
+   "buergernah": "Ausgabe von elektronischen Heilberufs- und Berufsausweisen (eHBA) sowie von Komponenten zur Authentifizierung von Leistungserbringerinstitutionen (SMC-B) Übermittlung",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Ausgabe von elektronischen Heilberufs- und Berufsausweisen (eHBA) sowie von Komponenten zur Authentifizierung von Leistungserbringerinstitutionen (SMC-B) Übermittlung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018150261003",
+   "name": "Anzeige der Änderung der Erbringung grenzüberschreitender Dienstleistungen in freien reglementierten Berufen Entgegennahme von Psychotherapeutin oder Psychotherapeut",
+   "buergernah": "Als Psychotherapeutin oder Psychotherapeut Änderungen im Rahmen der grenzüberschreitenden Erbringung von Dienstleistungen in einem freien reglementierten Beruf anzeigen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Als Psychotherapeutin oder Psychotherapeut Änderungen im Rahmen der grenzüberschreitenden Erbringung von Dienstleistungen in einem freien reglementierten Beruf anzeigen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99018148261003",
+   "name": "Anzeige der erstmaligen Erbringung grenzüberschreitender Dienstleistungen in freien reglementierten Berufen Entgegennahme von Psychotherapeutin oder Psychotherapeut",
+   "buergernah": "Als Psychotherapeutin oder Psychotherapeut die Erbringung grenzüberschreitender Dienstleistungen erstmalig anzeigen",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Als Psychotherapeutin oder Psychotherapeut die Erbringung grenzüberschreitender Dienstleistungen erstmalig anzeigen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99019038016000",
+   "name": "Gleichwertigkeit von in der DDR erworbenen oder staatlich anerkannten schulischen, beruflichen und akademischen Abschlüsse oder Befähigungsnachweise Anerkennung",
+   "buergernah": "Gleichwertigkeit von in der DDR erworbenen oder staatlich anerkannten schulischen, beruflichen und akademischen Abschlüsse oder Befähigungsnachweise Anerkennung",
+   "kategorie": "Arbeit & Ruhestand",
+   "ebene": "Land",
+   "kurzbeschreibung": "Gleichwertigkeit von in der DDR erworbenen oder staatlich anerkannten schulischen, beruflichen und akademischen Abschlüsse oder Befähigungsnachweise Anerkennung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99007056017000",
+   "name": "Zuschüsse zur Ausbildungsvergütung für Menschen mit Behinderungen, schwerbehinderter und ihnen gleichgestellter Menschen inkl. Eingliederungszuschuss im Anschluss an eine Aus- oder Weiterbildung nach SGB III Bewilligung",
+   "buergernah": "Zuschüsse für Ausbildung/Beschäftigung von Menschen mit Behinderungen, schwerbehinderten/gleichgestellten Menschen bei Agentur für Arbeit beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Zuschüsse für Ausbildung/Beschäftigung von Menschen mit Behinderungen, schwerbehinderten/gleichgestellten Menschen bei Agentur für Arbeit beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99150029001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus EU/EWR/Schweiz Erteilung",
+   "buergernah": "Anerkennung als Medizinisch-technische/-r Assistentin oder Assistent für Funktionsdiagnostik mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinisch-technische/-r Assistentin oder Assistent für Funktionsdiagnostik mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150030001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus Drittstaaten Erteilung",
+   "buergernah": "Anerkennung als Medizinisch-technische/-r Assistentin oder Assistent für Funktionsdiagnostik mit Berufsqualifikation aus Drittstaaten beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinisch-technische/-r Assistentin oder Assistent für Funktionsdiagnostik mit Berufsqualifikation aus Drittstaaten beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99019076029004",
+   "name": "Zuschuss für einen Ausbildungsplatz im Rahmen der praxisintegrierten Ausbildung zur staatlich anerkannten Erzieherin oder zum staatlich anerkannten Erzieher Prüfung Abmeldung zur Sozialversicherung (Abmeldung)",
+   "buergernah": "Meldebescheinigung zur Sozialversicherung (Abmeldung) für die praxisintegrierte Ausbildung (PiA) Erzieher übermitteln",
+   "kategorie": "Bildung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Meldebescheinigung zur Sozialversicherung (Abmeldung) für die praxisintegrierte Ausbildung (PiA) Erzieher übermitteln",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150029000000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus EU/EWR/Schweiz",
+   "buergernah": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus EU/EWR/Schweiz",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus EU/EWR/",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150030000000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus Drittstaaten",
+   "buergernah": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus Drittstaaten",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Assistentin für Funktionsdiagnostik oder Medizinisch-technischer Assistent für Funktionsdiagnostik bei Berufsqualifikation aus Drittst",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99019076029003",
+   "name": "Zuschuss für einen Ausbildungsplatz im Rahmen der praxisintegrierten Ausbildung zur staatlich anerkannten Erzieherin oder zum staatlich anerkannten Erzieher Prüfung Änderungsmeldung zur Sozialversicherung",
+   "buergernah": "Meldebescheinigung zur Sozialversicherung (Änderungsmeldung) für die praxisintegrierte Ausbildung (PiA) Erzieher übermitteln",
+   "kategorie": "Bildung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Meldebescheinigung zur Sozialversicherung (Änderungsmeldung) für die praxisintegrierte Ausbildung (PiA) Erzieher übermitteln",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150113001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Laboratoriumsanalytik oder Medizinischer Technologe für Laboratoriumsanalytik bei Berufsqualifikation aus EU/EWR/Schweiz Erteilung",
+   "buergernah": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Laboratoriumsanalytik mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Laboratoriumsanalytik mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99019076029002",
+   "name": "Zuschuss für einen Ausbildungsplatz im Rahmen der praxisintegrierten Ausbildung zur staatlich anerkannten Erzieherin oder zum staatlich anerkannten Erzieher Prüfung Jahresmeldung zur Sozialversicherung",
+   "buergernah": "Meldebescheinigung zur Sozialversicherung (Jahresmeldung) für die praxisintegrierte Ausbildung (PiA) Erzieher übermitteln",
+   "kategorie": "Bildung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Meldebescheinigung zur Sozialversicherung (Jahresmeldung) für die praxisintegrierte Ausbildung (PiA) Erzieher übermitteln",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150114001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Laboratoriumsanalytik oder Medizinischer Technologe für Laboratoriumsanalytik bei Berufsqualifikation aus Drittstaaten Erteilung",
+   "buergernah": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Laboratoriumsanalytik mit Berufsqualifikation aus Drittstaaten beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Laboratoriumsanalytik mit Berufsqualifikation aus Drittstaaten beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150117001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Funktionsdiagnostik oder Medizinischer Technologe für Funktionsdiagnostik bei Berufsqualifikation aus EU/EWR/Schweiz Erteilung",
+   "buergernah": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Funktionsdiagnostik mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Funktionsdiagnostik mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150118001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Funktionsdiagnostik oder Medizinischer Technologe für Funktionsdiagnostik bei Berufsqualifikation aus Drittstaaten Erteilung",
+   "buergernah": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Funktionsdiagnostik mit Berufsqualifikation aus Drittstaaten beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Funktionsdiagnostik mit Berufsqualifikation aus Drittstaaten beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150025001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Laboratoriumsassistentin oder Medizinisch-technischer Laboratoriumsassistent bei Berufsqualifikation aus EU/EWR/Schweiz Erteilung",
+   "buergernah": "Anerkennung als Medizinisch-technische/-r Laboratoriumsassistentin oder Laboratoriumsassistent mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinisch-technische/-r Laboratoriumsassistentin oder Laboratoriumsassistent mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150026001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinisch-technische Laboratoriumsassistentin oder Medizinisch-technischer Laboratoriumsassistent bei Berufsqualifikation aus Drittstaaten Erteilung",
+   "buergernah": "Anerkennung als Medizinisch-technische/-r Laboratoriumsassistentin oder Laboratoriumsassistent mit Berufsqualifikation aus Drittstaaten beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinisch-technische/-r Laboratoriumsassistentin oder Laboratoriumsassistent mit Berufsqualifikation aus Drittstaaten beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150113000000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Laboratoriumsanalytik oder Medizinischer Technologe für Laboratoriumsanalytik bei Berufsqualifikation aus EU/EWR/Schweiz",
+   "buergernah": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Laboratoriumsanalytik oder Medizinischer Technologe für Laboratoriumsanalytik bei Berufsqualifikation aus EU/EWR/Schweiz",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Laboratoriumsanalytik oder Medizinischer Technologe für Laboratoriumsanalytik bei Berufsqualifikation aus EU/EWR/Schweiz",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99150119001000",
+   "name": "Erlaubnis zum Führen der Berufsbezeichnung Medizinische Technologin für Veterinärmedizin oder Medizinischer Technologe für Veterinärmedizin bei Berufsqualifikation aus EU/EWR/Schweiz Erteilung",
+   "buergernah": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Veterinärmedizin mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "kategorie": "Bildung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anerkennung als Medizinische Technologin oder Medizinischer Technologe für Veterinärmedizin mit Berufsqualifikation aus EU/EWR/Schweiz beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99050201088004",
+   "name": "Befugnisse gegenüber Betreibern überwachungsbedürftiger Anlagen nach dem Gesetz über überwachungsbedürftige Anlagen Anordnung Auskünfte und sonstige Unterstützung zur Erfüllung der Überwachungsaufgaben für überwachungsbedürftige Anlagen",
+   "buergernah": "Gewährleistung der Betriebssicherheit - Zur Erfüllung der Überwachungsaufgaben erforderliche Auskünfte und sonstige Unterstützung für überwachungsbedürftige Anlagen beantragen",
+   "kategorie": "Umwelt",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Gewährleistung der Betriebssicherheit - Zur Erfüllung der Überwachungsaufgaben erforderliche Auskünfte und sonstige Unterstützung für überwachungsbedürftige Anlagen beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045006261001",
+   "name": "Mitteilung über neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt Entgegennahme Mitteilung über neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt bei der Genehmigungsbehörde",
+   "buergernah": "Neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt bei der Genehmigungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt bei der Genehmigungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045006261002",
+   "name": "Mitteilung über neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt Entgegennahme Mitteilung über neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt bei der Überwachungsbehörde",
+   "buergernah": "Neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt bei der Überwachungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Neue Informationen über Risiken für die menschliche Gesundheit oder die Umwelt bei der Überwachungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99050201088001",
+   "name": "Befugnisse gegenüber Betreibern überwachungsbedürftiger Anlagen nach dem Gesetz über überwachungsbedürftige Anlagen Anordnung erforderliche Maßnahmen zur Erfüllung von Pflichten aufgrund der Betriebssicherheitsverordnung",
+   "buergernah": "Gewährleistung der Betriebssicherheit - Erforderliche Maßnahmen zur Betriebssicherheit gegenüber Betreibern von überwachungsbedürftigen Anlagen im Einzelfall beantragen",
+   "kategorie": "Umwelt",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Gewährleistung der Betriebssicherheit - Erforderliche Maßnahmen zur Betriebssicherheit gegenüber Betreibern von überwachungsbedürftigen Anlagen im Einzelfall beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045005261005",
+   "name": "Mitteilung zu gentechnischen Arbeiten Entgegennahme Mitteilung über Abweichungen vom erwarteten Verlauf der gentechnischen Arbeit mit dem Verdacht einer Gefährdung der Schutzgüter gegenüber der Genehmigungsbehörde",
+   "buergernah": "Abweichungen vom erwarteten Verlauf der gentechnischen Arbeit mit dem Verdacht einer Gefährdung der Schutzgüter bei der Genehmigungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Abweichungen vom erwarteten Verlauf der gentechnischen Arbeit mit dem Verdacht einer Gefährdung der Schutzgüter bei der Genehmigungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045005261006",
+   "name": "Mitteilung zu gentechnischen Arbeiten Entgegennahme Mitteilung über Abweichungen vom erwarteten Verlauf der gentechnischen Arbeit mit dem Verdacht einer Gefährdung der Schutzgüter gegenüber der Überwachungsbehörde",
+   "buergernah": "Abweichungen vom erwarteten Verlauf der gentechnischen Arbeit mit dem Verdacht einer Gefährdung der Schutzgüter bei der Überwachungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Abweichungen vom erwarteten Verlauf der gentechnischen Arbeit mit dem Verdacht einer Gefährdung der Schutzgüter bei der Überwachungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089138007000",
+   "name": "Kennzeichen und die Bauartzulassung von Verpackungen, IBC, Großverpackungen, Bergungsverpackungen und Bergungsgroßverpackungen nach den Kapiteln 6.1, 6.3, 6.5 und 6.6 ADR/RID bzw. IMDG-Code Zulassung",
+   "buergernah": "Kennzeichen und die Bauartzulassung von Verpackungen, IBC, Großverpackungen, Bergungsverpackungen und Bergungsgroßverpackungen nach den Kapiteln 6.1, 6.3, 6.5 und 6.6 ADR/RID bzw. IMDG-Code Zulassung",
+   "kategorie": "Umwelt",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Kennzeichen und die Bauartzulassung von Verpackungen, IBC, Großverpackungen, Bergungsverpackungen und Bergungsgroßverpackungen nach den Kapiteln 6.1, 6.3, 6.5 und 6.6 ADR/RID bzw. IMDG-Code Zulassung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99078048011002",
+   "name": "Produktspezifikation im Verzeichnis der geschützten Ursprungsbezeichnungen und geografischen Angaben der EU-Kommission Änderung Unionsänderungen, die ein Einspruchsverfahren auf Unionsebene erfordern",
+   "buergernah": "Unionsänderung zu einer Produktspezifikation im Verzeichnis (der g.U. und g.g.A.) für Wein der EU-Kommission beantragen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Unionsänderung zu einer Produktspezifikation im Verzeichnis (der g.U. und g.g.A.) für Wein der EU-Kommission beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99009024261000",
+   "name": "Anzeige der Anwendung radioaktiver Stoffe oder ionisierender Strahlung am Menschen zum Zweck der medizinischen Forschung oder der wesentlichen Abweichung von der angezeigten Anwendung Entgegennahme",
+   "buergernah": "Anzeige der Anwendung radioaktiver Stoffe oder ionisierender Strahlung am Menschen zum Zweck der medizinischen Forschung oder der wesentlichen Abweichung von der angezeigten Anwendung Entgegennahme",
+   "kategorie": "Umwelt",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Anzeige der Anwendung radioaktiver Stoffe oder ionisierender Strahlung am Menschen zum Zweck der medizinischen Forschung oder der wesentlichen Abweichung von der angezeigten Anwendung Entgegennahme",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99078047221000",
+   "name": "Einspruchsverfahren der Union gegen die Eintragung einer geografischen Angabe in das Verzeichnis der geschützten Ursprungsbezeichnungen und geografischen Angaben der Europäischen Union Entscheidung",
+   "buergernah": "Einspruch gegenüber Eintragungen, Löschungen oder Änderungen im EU-Amtsblatt einer geografischen Angabe oder Ursprungsbezeichnung für Wein erheben",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Einspruch gegenüber Eintragungen, Löschungen oder Änderungen im EU-Amtsblatt einer geografischen Angabe oder Ursprungsbezeichnung für Wein erheben",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045004261002",
+   "name": "Mitteilung zum Betrieb gentechnischer Anlagen Entgegennahme Änderungen bezüglich der Beauftragung der Projektleitung oder der Beauftragten für die Biologische Sicherheit bei der Genehmigungsbehörde",
+   "buergernah": "Änderungen bezüglich der Beauftragung der Projektleitung oder der Beauftragten für die Biologische Sicherheit bei der Genehmigungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Änderungen bezüglich der Beauftragung der Projektleitung oder der Beauftragten für die Biologische Sicherheit bei der Genehmigungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045004261003",
+   "name": "Mitteilung zum Betrieb gentechnischer Anlagen Entgegennahme Änderungen der Beauftragung der  Projektleitung oder der Beauftragung für die Biologische Sicherheit bei der Überwachungsbehörde",
+   "buergernah": "Änderungen bezüglich der Beauftragung der Projektleitung oder der Beauftragten für die Biologische Sicherheit bei der Überwachungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Änderungen bezüglich der Beauftragung der Projektleitung oder der Beauftragten für die Biologische Sicherheit bei der Überwachungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045005261002",
+   "name": "Mitteilung zu gentechnischen Arbeiten Entgegennahme Mitteilung zum Umzug von gentechnischen Arbeiten in eine andere zugelassene Anlage desselben Betreibers bei der Genehmigungsbehörde",
+   "buergernah": "Umzug von gentechnischen Arbeiten in eine andere zugelassene Anlage desselben Betreibers der Genehmigungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Umzug von gentechnischen Arbeiten in eine andere zugelassene Anlage desselben Betreibers der Genehmigungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99045005261003",
+   "name": "Mitteilung zu gentechnischen Arbeiten Entgegennahme Mitteilung zum Umzug von gentechnischen Arbeiten in eine andere zugelassene Anlage desselben Betreibers bei der Überwachungsbehörde",
+   "buergernah": "Umzug von gentechnischen Arbeiten in eine andere zugelassene Anlage desselben Betreibers der Überwachungsbehörde mitteilen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Umzug von gentechnischen Arbeiten in eine andere zugelassene Anlage desselben Betreibers der Überwachungsbehörde mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99129090261000",
+   "name": "Anzeige der Errichtung, der wesentlichen Änderung oder von Maßnahmen mit Änderung der Gefährdungsstufe von AwSV-Anlagen (außer Heizölverbraucheranlagen und JGS-Anlagen) Entgegennahme",
+   "buergernah": "Errichtung, wesentliche Änderung oder Maßnahmen mit Änderung der Gefährdungsstufe von Anlagen zum Umgang mit wassergefährdenden Stoffen  (außer Heizölverbraucheranlagen und JGS-Anlagen) anzeigen",
+   "kategorie": "Umwelt",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Errichtung, wesentliche Änderung oder Maßnahmen mit Änderung der Gefährdungsstufe von Anlagen zum Umgang mit wassergefährdenden Stoffen  (außer Heizölverbraucheranlagen und JGS-Anlagen) anzeigen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99078046140000",
+   "name": "Eintragung einer geografischen Angabe oder Ursprungsbezeichnung in das Verzeichnis der geschützten Ursprungsbezeichnungen und geografischen Angaben der EU-Kommission Veröffentlichung",
+   "buergernah": "Eintragung einer geografischen Angabe oder Ursprungsbezeichnung in das Verzeichnis (der g.U. und g.g.A.) für Wein der EU-Kommission beantragen",
+   "kategorie": "Umwelt",
+   "ebene": "Land",
+   "kurzbeschreibung": "Eintragung einer geografischen Angabe oder Ursprungsbezeichnung in das Verzeichnis (der g.U. und g.g.A.) für Wein der EU-Kommission beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100139111000",
+   "name": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und des Außenhandels vierteljährlich Erhebung",
+   "buergernah": "Daten zur vierteljährlichen Statistik über Preise für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung,",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Daten zur vierteljährlichen Statistik über Preise für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung,",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100140111000",
+   "name": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und des Außenhandels - halbjährlich Erhebung",
+   "buergernah": "Daten zur halbjährlichen Statistik über Preise für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung,",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Daten zur halbjährlichen Statistik über Preise für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung,",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99003102261002",
+   "name": "Meldung der Änderung des Stufenplanbeauftragten Entgegennahme beim Paul-Ehrlich-Institut (PEI) für: - Impfstoffe - Sera - Blutprodukte - Gewebeprodukte - Allergene - Arzneimittel für neuartige Therapien - Immunologische Tierarzneimittel",
+   "buergernah": "Änderung des Stufenplanbeauftragten dem Paul-Ehrlich-Institut (PEI) mitteilen",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Änderung des Stufenplanbeauftragten dem Paul-Ehrlich-Institut (PEI) mitteilen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100139000000",
+   "name": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und des Außenhandels vierteljährlich",
+   "buergernah": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und des Außenhandels vierteljährlich",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und ",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100140000000",
+   "name": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und des Außenhandels - halbjährlich",
+   "buergernah": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und des Außenhandels - halbjährlich",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Preisstatistik - Daten zu Preisen für land- und forstwirtschaftliche und gewerbliche Güter auf der Stufe der Erzeugung oder Gewinnung, der Be- und Verarbeitung, des Großhandels, des Einzelhandels und ",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99003101261002",
+   "name": "Meldung des Stufenplanbeauftragten Entgegennahme beim Paul-Ehrlich-Institut (PEI) für: - Impfstoffe - Sera - Blutprodukte - Gewebeprodukte - Allergene - Arzneimittel für neuartige Therapien - Immunologische Tierarzneimittel",
+   "buergernah": "Stufenplanbeauftragten dem Paul-Ehrlich-Institut (PEI) mitteilen",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Stufenplanbeauftragten dem Paul-Ehrlich-Institut (PEI) mitteilen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100097111000",
+   "name": "Hochschulstatistik - Daten zu Studierenden, Prüfungsteilnehmenden sowie Exmatrikulierten an Hochschulen einschließlich der Hochschulkliniken und sonstige der Ausbildung von Studenten dienenden Krankenanstalten Erhebung",
+   "buergernah": "Hochschulstatistik - Daten zu Studierenden, Prüfungsteilnehmenden sowie Exmatrikulierten an Hochschulen einschließlich der Hochschulkliniken und sonstige der Ausbildung von Studenten dienenden Krankenanstalten Erhebung",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Hochschulstatistik - Daten zu Studierenden, Prüfungsteilnehmenden sowie Exmatrikulierten an Hochschulen einschließlich der Hochschulkliniken und sonstige der Ausbildung von Studenten dienenden Kranken",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100097000000",
+   "name": "Hochschulstatistik - Daten zu Studierenden, Prüfungsteilnehmenden sowie Exmatrikulierten an Hochschulen einschließlich der Hochschulkliniken und sonstige der Ausbildung von Studenten dienenden Krankenanstalten",
+   "buergernah": "Hochschulstatistik - Daten zu Studierenden, Prüfungsteilnehmenden sowie Exmatrikulierten an Hochschulen einschließlich der Hochschulkliniken und sonstige der Ausbildung von Studenten dienenden Krankenanstalten",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Hochschulstatistik - Daten zu Studierenden, Prüfungsteilnehmenden sowie Exmatrikulierten an Hochschulen einschließlich der Hochschulkliniken und sonstige der Ausbildung von Studenten dienenden Kranken",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99093043261001",
+   "name": "Registrierung Unternehmen für die Ausfuhr von Pflanzen, Pflanzenerzeugnissen und sonstigen Gegenständen mit Erfordernis eines Pflanzengesundheitszeugnisses Entgegennahme für Pflanzen und deren Erzeugnisse",
+   "buergernah": "Registrierung für die Ausfuhr von Pflanzen, -erzeugnissen und sonstigen Gegenständen mit Erfordernis eines Pflanzengesundheitszeugnisses beantragen.",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Registrierung für die Ausfuhr von Pflanzen, -erzeugnissen und sonstigen Gegenständen mit Erfordernis eines Pflanzengesundheitszeugnisses beantragen.",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99093042261001",
+   "name": "Registrierung Unternehmen für die Einfuhr von Pflanzen, Pflanzenerzeugnissen und sonstigen Gegenständen mit Erfordernis eines Pflanzengesundheitszeugnisses Entgegennahme für Pflanzen und deren Erzeugnisse",
+   "buergernah": "Registrierung von Unternehmen für die Einfuhr von Pflanzen, -erzeugnissen und sonstigen Gegenständen mit Erfordernis Pflanzengesundheitszeugnis",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Registrierung von Unternehmen für die Einfuhr von Pflanzen, -erzeugnissen und sonstigen Gegenständen mit Erfordernis Pflanzengesundheitszeugnis",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089095261002",
+   "name": "Anzeige der Aufnahme oder Beendigung des Betriebs einer Schießstätte Entgegennahme Schießstätten in geschlossenen Räumen zur Erprobung von Waffen und Munition sowie in wissenschaftlichen Einrichtungen",
+   "buergernah": "Aufnahme/Beendigung des Schießstättenbetriebs im geschlossenen Raum zur Erprobung von Waffen/Munition sowie in wissenschaftlicher Einrichtung anzeigen",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Aufnahme/Beendigung des Schießstättenbetriebs im geschlossenen Raum zur Erprobung von Waffen/Munition sowie in wissenschaftlicher Einrichtung anzeigen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089091261000",
+   "name": "Anzeige der Eröffnung oder Schließung einer Zweigniederlassung oder einer unselbstständigen Zweigstelle zur gewerbsmäßigen Waffenherstellung und/oder des gewerbsmäßigen Waffenhandels Entgegennahme",
+   "buergernah": "Gewerbsmäßige Waffenherstellung und/oder gewerbsmäßiger Waffenhandel - Eröffnung oder Schließung einer Zweigniederlassung oder Zweigstelle anzeigen",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Gewerbsmäßige Waffenherstellung und/oder gewerbsmäßiger Waffenhandel - Eröffnung oder Schließung einer Zweigniederlassung oder Zweigstelle anzeigen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99093043261002",
+   "name": "Registrierung Unternehmen für die Ausfuhr von Pflanzen, Pflanzenerzeugnissen und sonstigen Gegenständen mit Erfordernis eines Pflanzengesundheitszeugnisses Entgegennahme für Forstpflanzen und Holz",
+   "buergernah": "Unternehmen, das Forstpflanzen und Holz in die EU ausführt, für die ein Pflanzengesundheitszeugnis erforderlich ist, registrieren",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Unternehmen, das Forstpflanzen und Holz in die EU ausführt, für die ein Pflanzengesundheitszeugnis erforderlich ist, registrieren",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99093042261002",
+   "name": "Registrierung Unternehmen für die Einfuhr von Pflanzen, Pflanzenerzeugnissen und sonstigen Gegenständen mit Erfordernis eines Pflanzengesundheitszeugnisses Entgegennahme für Forstpflanzen und Holz",
+   "buergernah": "Registrierung Unternehmen für Einfuhr Pflanzen, -erzeugnissen, sonst. Gegenständen mit Erfordernis Pflanzengesundheitszeugnis für Forstpflanzen/Holz",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Registrierung Unternehmen für Einfuhr Pflanzen, -erzeugnissen, sonst. Gegenständen mit Erfordernis Pflanzengesundheitszeugnis für Forstpflanzen/Holz",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100118111000",
+   "name": "Statistik Produzierendes Gewerbe - Daten zu  Betrieben und Unternehmen der Wasserversorgung, der Abwasser- und Abfallentsorgung und der Beseitigung von Umweltverschmutzungen monatlich Erhebung",
+   "buergernah": "Daten zur monatlichen Statistik über Betriebe und Unternehmen der Wasserversorgung, der Abwasser- und Abfallentsorgung und der Beseitigung",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Daten zur monatlichen Statistik über Betriebe und Unternehmen der Wasserversorgung, der Abwasser- und Abfallentsorgung und der Beseitigung",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100119111000",
+   "name": "Statistik Produzierendes Gewerbe - Daten zu Betrieben und Unternehmen der Wasserversorgung, der Abwasser- und Abfallentsorgung und der Beseitigung von Umweltverschmutzungen jährlich Erhebung",
+   "buergernah": "Daten zur jährlichen Statistik über Betriebe und Unternehmen der Wasserversorgung, der Abwasser- und Abfallentsorgung und der Beseitigung",
+   "kategorie": "Unternehmensführung & -entwicklung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Daten zur jährlichen Statistik über Betriebe und Unternehmen der Wasserversorgung, der Abwasser- und Abfallentsorgung und der Beseitigung",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99012106007001",
+   "name": "Abweichungen von baurechtlichen Anforderungen, Festsetzungen eines Bebauungsplans, einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung Zulassung bei nicht verfahrensfreien Bauvorhaben (isoliert)",
+   "buergernah": "Abweichungen von baurechtlichen Anforderungen, von Festsetzungen eines Bebauungsplans bzw. einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung bei nicht verfahrensfreien Bauvorhaben beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Abweichungen von baurechtlichen Anforderungen, von Festsetzungen eines Bebauungsplans bzw. einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung bei nicht verfahrensfreien Bauvor",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99012067012000",
+   "name": "Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Modernisierungs- und Instandsetzungsmaßnahmen zur Erhaltung von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen Ausstellung",
+   "buergernah": "Ausstellung einer Bescheinigung für das Finanzamt zur Beantragung steuerlicher Vergünstigungen für Maßnahmen zum Erhalt von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Ausstellung einer Bescheinigung für das Finanzamt zur Beantragung steuerlicher Vergünstigungen für Maßnahmen zum Erhalt von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen bea",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99012067279000",
+   "name": "Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Modernisierungs- und Instandsetzungsmaßnahmen zur Erhaltung von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen Zusicherung",
+   "buergernah": "Zusicherung über die zu erwartende Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Modernisierungs- und Instandsetzungsmaßnahmen zur Erhaltung von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Zusicherung über die zu erwartende Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Modernisierungs- und Instandsetzungsmaßnahmen zur Erhaltung von Gebäuden in Sanierungsgebieten und stä",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99012106007002",
+   "name": "Abweichungen von baurechtlichen Anforderungen, Festsetzungen eines Bebauungsplans, einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung Zulassung bei verfahrensfreien Bauvorhaben",
+   "buergernah": "Abweichungen von baurechtlichen Anforderungen, von Festsetzungen eines Bebauungsplans bzw. einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung bei  verfahrensfreien Bauvorhaben beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Abweichungen von baurechtlichen Anforderungen, von Festsetzungen eines Bebauungsplans bzw. einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung bei  verfahrensfreien Bauvorhaben",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99012067000000",
+   "name": "Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Modernisierungs- und Instandsetzungsmaßnahmen zur Erhaltung von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen",
+   "buergernah": "Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Modernisierungs- und Instandsetzungsmaßnahmen zur Erhaltung von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Modernisierungs- und Instandsetzungsmaßnahmen zur Erhaltung von Gebäuden in Sanierungsgebieten und städtebaulichen Entwicklungsbereichen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99100059111002",
+   "name": "Daten zum Zeitpunkt der Baugenehmigung, -zustimmung oder -ausführung für die Hochbaustatistik Erhebung Auskunft durch Bauherren oder die mit der Baubetreuung Beauftragten",
+   "buergernah": "Daten zum Zeitpunkt der Baugenehmigung, -zustimmung oder -ausführung für die Hochbaustatistik als Bauherr oder mit der Baubetreuung Beauftragter mitteilen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Daten zum Zeitpunkt der Baugenehmigung, -zustimmung oder -ausführung für die Hochbaustatistik als Bauherr oder mit der Baubetreuung Beauftragter mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99012106007000",
+   "name": "Abweichungen von baurechtlichen Anforderungen, Festsetzungen eines Bebauungsplans, einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung Zulassung",
+   "buergernah": "Abweichungen von baurechtlichen Anforderungen, von Festsetzungen eines Bebauungsplans bzw. einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Abweichungen von baurechtlichen Anforderungen, von Festsetzungen eines Bebauungsplans bzw. einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400444006003",
+   "name": "Soziale Wohnraumförderung - Leerstand, Selbstnutzung von Wohnraum, Wohnzweckentfremdung oder bauliche Änderung Genehmigung Wohnzweckentfremdung oder bauliche Änderung",
+   "buergernah": "Genehmigung zur Wohnzweckentfremdung oder baulichen Änderung von öffentlich gefördertem Wohnraum beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Genehmigung zur Wohnzweckentfremdung oder baulichen Änderung von öffentlich gefördertem Wohnraum beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99012106000000",
+   "name": "Abweichungen von baurechtlichen Anforderungen, Festsetzungen eines Bebauungsplans, einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung",
+   "buergernah": "Abweichungen von baurechtlichen Anforderungen, Festsetzungen eines Bebauungsplans, einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Abweichungen von baurechtlichen Anforderungen, Festsetzungen eines Bebauungsplans, einer städtebaulichen Satzung oder von Regelungen der Baunutzungsverordnung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99090023276000",
+   "name": "Verbot der Beseitigung oder des Abschneidens bestimmter Bäume, Hecken, lebender Zäune, Gebüsche innerhalb eines bestimmten Zeitraums Ausnahmegenehmigung",
+   "buergernah": "Beseitigung oder Abschneiden bestimmter Bäume, Hecken, lebender Zäune, Gebüsche innerhalb eines bestimmten Zeitraums beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Beseitigung oder Abschneiden bestimmter Bäume, Hecken, lebender Zäune, Gebüsche innerhalb eines bestimmten Zeitraums beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400427261001",
+   "name": "Soziale Wohnraumförderung -  Anzeige des Wechsels des Verfügungsberechtigten von Wohnraum Entgegennahme durch den bisherigen Verfügungsberechtigten",
+   "buergernah": "Veräußerung von öffentlich gefördertem Wohnraum sowie die Begründung von Wohnungseigentum mitteilen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Veräußerung von öffentlich gefördertem Wohnraum sowie die Begründung von Wohnungseigentum mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99063085261003",
+   "name": "Daten für die Wärmeplanung Entgegennahme von Betreibern von Energieversorgungsnetzen, Messstellen, Energieversorgungsunternehmen und Wärmenetzen",
+   "buergernah": "Daten für die Wärmeplanung übermitteln",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Daten für die Wärmeplanung übermitteln",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99033010012000",
+   "name": "Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Herstellungs- und Erhaltungsmaßnahmen an schutzwürdigen Kulturgütern Ausstellung",
+   "buergernah": "Ausstellung einer Bescheinigung für das Finanzamt zur Beantragung steuerlicher Vergünstigungen für Herstellungs- und Erhaltungsmaßnahmen an schutzwürdigen Kulturgütern beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Ausstellung einer Bescheinigung für das Finanzamt zur Beantragung steuerlicher Vergünstigungen für Herstellungs- und Erhaltungsmaßnahmen an schutzwürdigen Kulturgütern beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99033010279000",
+   "name": "Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Herstellungs- und Erhaltungsmaßnahmen an schutzwürdigen Kulturgütern Zusicherung",
+   "buergernah": "Zusicherung über die zu erwartende Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Herstellungs- und Erhaltungsmaßnahmen an schutzwürdigen Kulturgütern beantragen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Zusicherung über die zu erwartende Bescheinigung zur Beantragung steuerlicher Vergünstigungen für Herstellungs- und Erhaltungsmaßnahmen an schutzwürdigen Kulturgütern beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400427261002",
+   "name": "Soziale Wohnraumförderung -  Anzeige des Wechsels des Verfügungsberechtigten von Wohnraum Entgegennahme durch den neuen Verfügungsberechtigten",
+   "buergernah": "Erwerb von öffentlich gefördertem Wohnraum mitteilen",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Erwerb von öffentlich gefördertem Wohnraum mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99001069261000",
+   "name": "Anzeige der Verbrennung von pflanzlichen Abfällen, die auf landwirtschaftlich oder gärtnerisch genutzten Grundstücken anfallen Entgegennahme",
+   "buergernah": "Verbrennung pflanzlicher Abfälle anmelden",
+   "kategorie": "Bauen & Wohnen",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Verbrennung pflanzlicher Abfälle anmelden",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089103261000",
+   "name": "Anzeige des Überlassens von Waffen oder Munition an Personen aus einem Mitgliedstaat des Übereinkommens vom 28. Juni 1978 über die Kontrolle des Erwerbs und Besitzes von Schusswaffen durch Einzelpersonen Entgegennahme",
+   "buergernah": "Anzeige des Überlassens von Waffen oder Munition an Personen aus einem Mitgliedstaat des Übereinkommens vom 28. Juni 1978 über die Kontrolle des Erwerbs und Besitzes von Schusswaffen durch Einzelpersonen Entgegennahme",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Anzeige des Überlassens von Waffen oder Munition an Personen aus einem Mitgliedstaat des Übereinkommens vom 28. Juni 1978 über die Kontrolle des Erwerbs und Besitzes von Schusswaffen durch Einzelperso",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089192001000",
+   "name": "Allgemeine Erlaubnis zum Verbringen von Waffen oder  Munition aus der Bundesrepublik Deutschland in andere Mitgliedstaaten durch gewerbsmäßige Waffenhersteller oder Waffenhändler Erteilung",
+   "buergernah": "Allgemeine Erlaubnis zum Verbringen von Waffen und Munition durch gewerbsmäßige Waffenhersteller oder Waffenhändler für die Dauer von bis zu 3 Jahren",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Allgemeine Erlaubnis zum Verbringen von Waffen und Munition durch gewerbsmäßige Waffenhersteller oder Waffenhändler für die Dauer von bis zu 3 Jahren",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089192000000",
+   "name": "Allgemeine Erlaubnis zum Verbringen von Waffen oder  Munition aus der Bundesrepublik Deutschland in andere Mitgliedstaaten durch gewerbsmäßige Waffenhersteller oder Waffenhändler",
+   "buergernah": "Allgemeine Erlaubnis zum Verbringen von Waffen oder  Munition aus der Bundesrepublik Deutschland in andere Mitgliedstaaten durch gewerbsmäßige Waffenhersteller oder Waffenhändler",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Allgemeine Erlaubnis zum Verbringen von Waffen oder  Munition aus der Bundesrepublik Deutschland in andere Mitgliedstaaten durch gewerbsmäßige Waffenhersteller oder Waffenhändler",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089132261000",
+   "name": "Anzeige über den Erwerb von Schusswaffen oder Munition in der Bundesrepublik Deutschland durch Personen aus einem anderen Mitgliedstaat oder Vertragsstaat Entgegennahme",
+   "buergernah": "Anzeige über den Erwerb von Schusswaffen oder Munition in der Bundesrepublik Deutschland durch Personen aus einem anderen Mitgliedstaat oder Vertragsstaat Entgegennahme",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Anzeige über den Erwerb von Schusswaffen oder Munition in der Bundesrepublik Deutschland durch Personen aus einem anderen Mitgliedstaat oder Vertragsstaat Entgegennahme",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089188001001",
+   "name": "Erlaubnis zum Verbringen von Schusswaffen oder Munition in die, durch die oder aus der Bundesrepublik Deutschland Erteilung durch das BVA (waffenrechtl. Erlaubnisse)",
+   "buergernah": "Erlaubnis zum dauerhaften Verbringen von Schusswaffen oder Munition in die, durch die oder aus der Bundesrepublik Deutschland  beim Bundesverwaltungsamt (BVA) beantragen",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Erlaubnis zum dauerhaften Verbringen von Schusswaffen oder Munition in die, durch die oder aus der Bundesrepublik Deutschland  beim Bundesverwaltungsamt (BVA) beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089132000000",
+   "name": "Anzeige über den Erwerb von Schusswaffen oder Munition in der Bundesrepublik Deutschland durch Personen aus einem anderen Mitgliedstaat oder Vertragsstaat",
+   "buergernah": "Anzeige über den Erwerb von Schusswaffen oder Munition in der Bundesrepublik Deutschland durch Personen aus einem anderen Mitgliedstaat oder Vertragsstaat",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Anzeige über den Erwerb von Schusswaffen oder Munition in der Bundesrepublik Deutschland durch Personen aus einem anderen Mitgliedstaat oder Vertragsstaat",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99093021001000",
+   "name": "Bescheinigung über die rechtmäßige Entnahme eines nach Anhang A EU-Artenschutzverordnung geschützten Exemplars aus seinem natürlichen Lebensraum Erteilung",
+   "buergernah": "Vorlagebescheinigung zur Beantragung einer Ausfuhrgenehmigung geschützter Tier- und Pflanzenarten Erteilung",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Vorlagebescheinigung zur Beantragung einer Ausfuhrgenehmigung geschützter Tier- und Pflanzenarten Erteilung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089131001000",
+   "name": "Erlaubnis für den Erwerb von Schusswaffen in einem anderen Mitgliedstaat oder Vertragsstaat durch Personen aus der Bundesrepublik Deutschland Erteilung",
+   "buergernah": "Erlaubnis für den Erwerb von Schusswaffen in einem anderen Mitgliedstaat oder Vertragsstaat durch Personen aus der Bundesrepublik Deutschland Erteilung",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Erlaubnis für den Erwerb von Schusswaffen in einem anderen Mitgliedstaat oder Vertragsstaat durch Personen aus der Bundesrepublik Deutschland Erteilung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089197261000",
+   "name": "Anzeige eines gewerblichen Waffenherstellers oder Waffenhändlers zur Überlassung von Waffen oder Munition an Personen in Deutschland Entgegennahme",
+   "buergernah": "Überlassen von Waffen oder Munition an Personen in Deutschland als gewerblicher Waffenhersteller oder Waffenhändler anzeigen",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Überlassen von Waffen oder Munition an Personen in Deutschland als gewerblicher Waffenhersteller oder Waffenhändler anzeigen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99093021000000",
+   "name": "Bescheinigung über die rechtmäßige Entnahme eines nach Anhang A EU-Artenschutzverordnung geschützten Exemplars aus seinem natürlichen Lebensraum",
+   "buergernah": "Vorlagebescheinigung zur Beantragung einer Ausfuhrgenehmigung geschützter Tier- und Pflanzenarten",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Vorlagebescheinigung zur Beantragung einer Ausfuhrgenehmigung geschützter Tier- und Pflanzenarten",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089131000000",
+   "name": "Erlaubnis für den Erwerb von Schusswaffen in einem anderen Mitgliedstaat oder Vertragsstaat durch Personen aus der Bundesrepublik Deutschland",
+   "buergernah": "Erlaubnis für den Erwerb von Schusswaffen in einem anderen Mitgliedstaat oder Vertragsstaat durch Personen aus der Bundesrepublik Deutschland",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Erlaubnis für den Erwerb von Schusswaffen in einem anderen Mitgliedstaat oder Vertragsstaat durch Personen aus der Bundesrepublik Deutschland",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089197000000",
+   "name": "Anzeige eines gewerblichen Waffenherstellers oder Waffenhändlers zur Überlassung von Waffen oder Munition an Personen in Deutschland",
+   "buergernah": "Anzeige eines gewerblichen Waffenherstellers oder Waffenhändlers zur Überlassung von Waffen oder Munition an Personen in Deutschland",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Anzeige eines gewerblichen Waffenherstellers oder Waffenhändlers zur Überlassung von Waffen oder Munition an Personen in Deutschland",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089124001000",
+   "name": "Erlaubnis zum Führen von Schreckschuss-, Reizstoff- und Signalwaffen mit Zulassungszeichen der PTB -  Kleiner Waffenschein Erteilung",
+   "buergernah": "Kleinen Waffenschein beantragen",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Kleinen Waffenschein beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400429017002",
+   "name": "Förderung von Sportveranstaltungen Bewilligung für Meisterschaften und sonstige Sportveranstaltungen von überregionaler Bedeutung",
+   "buergernah": "Förderung für Meisterschaften und sonstige Sportveranstaltung von überregionaler Bedeutung beantragen",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Land",
+   "kurzbeschreibung": "Förderung für Meisterschaften und sonstige Sportveranstaltung von überregionaler Bedeutung beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400428017005",
+   "name": "Sportförderung Bewilligung für Maßnahmen für Sport und Bewegung im öffentlichen Raum auf Grundlage einer Sportentwicklungsplanung",
+   "buergernah": "Sportförderung für Maßnahmen für Sport und Bewegung im öffentlichen Raum auf Grundlage einer Sportentwicklungsplanung beantragen",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Land",
+   "kurzbeschreibung": "Sportförderung für Maßnahmen für Sport und Bewegung im öffentlichen Raum auf Grundlage einer Sportentwicklungsplanung beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99089177000000",
+   "name": "Erlaubnis zur gewerbsmäßig oder selbstständig betriebenen Herstellung/Bearbeitung/Instandsetzung von Schusswaffen oder Munition",
+   "buergernah": "Erlaubnis zur gewerbsmäßig oder selbstständig betriebenen Herstellung/Bearbeitung/Instandsetzung von Schusswaffen oder Munition",
+   "kategorie": "Engagement & Hobby",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Erlaubnis zur gewerbsmäßig oder selbstständig betriebenen Herstellung/Bearbeitung/Instandsetzung von Schusswaffen oder Munition",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99046076261000",
+   "name": "Jährliche Mitteilung der erhaltenen Zuweisung von Geldauflagen in Ermittlungs-, Straf- und Gnadenverfahren Entgegennahme",
+   "buergernah": "Jährliche erhaltende Zuweisungen von Geldauflagen in Ermittlungs-, Straf- und Gnadenverfahren mitteilen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Jährliche erhaltende Zuweisungen von Geldauflagen in Ermittlungs-, Straf- und Gnadenverfahren mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99400476274000",
+   "name": "Zuwendungen für den Täter-Opfer-Ausgleich (TOA) in Strafverfahren gegen erwachsene Täter Verwendungsnachweisprüfung",
+   "buergernah": "Verwendungsnachweise der Zuwendungen für den Täter-Opfer-Ausgleich in Strafverfahren gegen erwachsene Täter einreichen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Verwendungsnachweise der Zuwendungen für den Täter-Opfer-Ausgleich in Strafverfahren gegen erwachsene Täter einreichen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99400230017000",
+   "name": "Mittelabruf von Teilzahlungen gemäß Bau- und Beschaffungsfortschritt bei der Förderung Rettungsdienst Bewilligung",
+   "buergernah": "Auszahlung von Födermitteln gemäß Bau- oder Beschaffungsfortschritt beantragen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Auszahlung von Födermitteln gemäß Bau- oder Beschaffungsfortschritt beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400230000000",
+   "name": "Mittelabruf von Teilzahlungen gemäß Bau- und Beschaffungsfortschritt bei der Förderung Rettungsdienst",
+   "buergernah": "Mittelabruf von Teilzahlungen gemäß Bau- und Beschaffungsfortschritt bei der Förderung Rettungsdienst",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Mittelabruf von Teilzahlungen gemäß Bau- und Beschaffungsfortschritt bei der Förderung Rettungsdienst",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400476017000",
+   "name": "Zuwendungen für den Täter-Opfer-Ausgleich (TOA) in Strafverfahren gegen erwachsene Täter Bewilligung",
+   "buergernah": "Zuwendungen für den Täter-Opfer-Ausgleich (TOA) in Strafverfahren gegen erwachsene Täter beantragen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Zuwendungen für den Täter-Opfer-Ausgleich (TOA) in Strafverfahren gegen erwachsene Täter beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99602009101002",
+   "name": "Berufliche Betreuer Mitteilung Änderungen des zeitlichen Gesamtumfangs und der Organisationsstruktur",
+   "buergernah": "Zeitlichen Gesamtumfang und Organisationsstruktur der beruflichen Betreuungstätigkeit mitteilen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Zeitlichen Gesamtumfang und Organisationsstruktur der beruflichen Betreuungstätigkeit mitteilen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400476079000",
+   "name": "Zuwendungen für den Täter-Opfer-Ausgleich (TOA) in Strafverfahren gegen erwachsene Täter Auszahlung",
+   "buergernah": "Zuwendungen für den Täter-Opfer-Ausgleich in Strafverfahren gegen erwachsene Täter auszahlen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Zuwendungen für den Täter-Opfer-Ausgleich in Strafverfahren gegen erwachsene Täter auszahlen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99602009101004",
+   "name": "Berufliche Betreuer Mitteilung aktuelles Führungszeugnis und Auszug aus dem Schuldnerverzeichnis",
+   "buergernah": "Aktuelles Führungszeugenis und aktuellen Auszug aus dem Schuldnerverzeichnis als Beruflicher Betreuer vorlegen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Aktuelles Führungszeugenis und aktuellen Auszug aus dem Schuldnerverzeichnis als Beruflicher Betreuer vorlegen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99136002013000",
+   "name": "Hochwassergefahren, geeignete Vorsorgemaßnahmen und Verhaltensregeln Informationserteilung",
+   "buergernah": "Hochwassergefahren, geeignete Vorsorgemaßnahmen und Verhaltensregeln Informationserteilung",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Hochwassergefahren, geeignete Vorsorgemaßnahmen und Verhaltensregeln Informationserteilung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400229017000",
+   "name": "Investitionsförderung im Rettungsdienst - Zuschuss zu den Ausbildungskosten Bewilligung",
+   "buergernah": "Zuschuss nach dem Allgemeinen Staatsbeitrag zu den Ausbildungskosten beantragen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Zuschuss nach dem Allgemeinen Staatsbeitrag zu den Ausbildungskosten beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99400228017000",
+   "name": "Investitionsförderung im Rettungsdienst - Zuschuss zu den Verwaltungskosten Bewilligung",
+   "buergernah": "Zuschuss nach dem Allgemeinen Staatsbeitrag zu den Verwaltungskosten beantragen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Zuschuss nach dem Allgemeinen Staatsbeitrag zu den Verwaltungskosten beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99046023080000",
+   "name": "Internationaler Rechtshilfeverkehr in Zivil-, Handels- und Arbeitssachen Gewährung",
+   "buergernah": "Internationaler Rechtshilfeverkehr in Zivil-, Handels- und Arbeitssachen Gewährung",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Internationaler Rechtshilfeverkehr in Zivil-, Handels- und Arbeitssachen Gewährung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99046048080002",
+   "name": "Entschädigung von ehrenamtlichen Richtern Gewährung in strafrechtlichen Verfahren",
+   "buergernah": "Entschädigung von ehrenamtlichen Richtern Gewährung in strafrechtlichen Verfahren",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Entschädigung von ehrenamtlichen Richtern Gewährung in strafrechtlichen Verfahren",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99046048080001",
+   "name": "Entschädigung von ehrenamtlichen Richtern Gewährung in zivilrechtlichen Verfahren",
+   "buergernah": "Entschädigung von ehrenamtlichen Richtern Gewährung in zivilrechtlichen Verfahren",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Entschädigung von ehrenamtlichen Richtern Gewährung in zivilrechtlichen Verfahren",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99137012223000",
+   "name": "Anbindung des Warnmultiplikators an das Modulare Warnsystem (MoWaS) Vereinbarung",
+   "buergernah": "Anbindung des Warnmultiplikators an das Modulare Warnsystem (MoWaS) Vereinbarung",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Anbindung des Warnmultiplikators an das Modulare Warnsystem (MoWaS) Vereinbarung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99602009101005",
+   "name": "Berufliche Betreuer Mitteilung Ergebnis des Vergütungsfeststellungsverfahrens",
+   "buergernah": "Ergebnis des Vergütungsfeststellungsverfahrens als beruflicher Betreuer vorlegen",
+   "kategorie": "Recht & Ordnung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Ergebnis des Vergütungsfeststellungsverfahrens als beruflicher Betreuer vorlegen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102192261001",
+   "name": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme Änderung der Voraussetzungen",
+   "buergernah": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme Änderung der Voraussetzungen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme Änderung der Voraussetzungen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102168002000",
+   "name": "Steuervergütung für Leistungsbezüge von gemeinnützige, mildtätige oder kirchliche Zwecke verfolgenden Körperschaften sowie juristischen Personen des öffentlichen Rechts Festsetzung",
+   "buergernah": "Steuervergütung für Leistungsbezüge erhalten, die im Drittlandsgebiet zu humanitären, karitativen oder erzieherischen Zwecken verwendet werden",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Steuervergütung für Leistungsbezüge erhalten, die im Drittlandsgebiet zu humanitären, karitativen oder erzieherischen Zwecken verwendet werden",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102196012006",
+   "name": "Bescheinigung für Zwecke der Umsatzsteuerbefreiung Ausstellung für Leistungen allgemein- und berufsbildender Einrichtungen im Bereich der Gesundheits-, Heil- und sozialen Berufe",
+   "buergernah": "Bescheinigung für Zwecke der Umsatzsteuerbefreiung für Aus-, Fort- und Weiterbildungsmaßnahmen von Gesundheitsfachberufen beantragen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Bescheinigung für Zwecke der Umsatzsteuerbefreiung für Aus-, Fort- und Weiterbildungsmaßnahmen von Gesundheitsfachberufen beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99102168000000",
+   "name": "Steuervergütung für Leistungsbezüge von gemeinnützige, mildtätige oder kirchliche Zwecke verfolgenden Körperschaften sowie juristischen Personen des öffentlichen Rechts",
+   "buergernah": "Steuervergütung für Leistungsbezüge von gemeinnützige, mildtätige oder kirchliche Zwecke verfolgenden Körperschaften sowie juristischen Personen des öffentlichen Rechts",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Steuervergütung für Leistungsbezüge von gemeinnützige, mildtätige oder kirchliche Zwecke verfolgenden Körperschaften sowie juristischen Personen des öffentlichen Rechts",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102192261002",
+   "name": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme Erklärung",
+   "buergernah": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme Erklärung",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme Erklärung",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005113012004",
+   "name": "WHO-Zertifikat (CPP) für die Ausfuhr von Arzneimitteln zur Anwendung bei Tieren Ausstellung bei Antragstellenden mit Sitz im Ausland für Impfstoffe durch PEI",
+   "buergernah": "WHO-Zertifikat für die Ausfuhr von Arzneimitteln in Zuständigkeit des PEI beantragen, wenn der Zulassungsinhaber seinen Sitz nicht in Deutschland hat",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Bund",
+   "kurzbeschreibung": "WHO-Zertifikat für die Ausfuhr von Arzneimitteln in Zuständigkeit des PEI beantragen, wenn der Zulassungsinhaber seinen Sitz nicht in Deutschland hat",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102192261000",
+   "name": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme",
+   "buergernah": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Mitteilungen Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Entgegennahme",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99077035001001",
+   "name": "Spezifisch offene Genehmigung für die Ausfuhr von Kulturgut in Mitgliedstaaten der EU Erteilung für Eigentümer oder rechtmäßige unmittelbare Besitzer",
+   "buergernah": "Genehmigung für die regelmäßige vorübergehende Ausfuhr von Kulturgut in Mitgliedstaaten der EU beantragen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Genehmigung für die regelmäßige vorübergehende Ausfuhr von Kulturgut in Mitgliedstaaten der EU beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102196012005",
+   "name": "Bescheinigung für Zwecke der Umsatzsteuerbefreiung Ausstellung für Leistungen allgemein- und berufsbildender Einrichtungen für Wirtschaftsberufe",
+   "buergernah": "Bescheinigung für Zwecke der Umsatzsteuerbefreiung für Aus-, Fort- und Weiterbildungsmaßnahmen von Wirtschaftsberufen beantragen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Bescheinigung für Zwecke der Umsatzsteuerbefreiung für Aus-, Fort- und Weiterbildungsmaßnahmen von Wirtschaftsberufen beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99005113012003",
+   "name": "WHO-Zertifikat (CPP) für die Ausfuhr von Arzneimitteln zur Anwendung bei Tieren Ausstellung bei Antragstellenden mit Sitz im Ausland durch BVL",
+   "buergernah": "WHO-Zertifikat für die Ausfuhr von Arzneimitteln in Zuständigkeit des BVL beantragen, wenn der Zulassungsinhaber seinen Sitz nicht in Deutschland hat",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Bund",
+   "kurzbeschreibung": "WHO-Zertifikat für die Ausfuhr von Arzneimitteln in Zuständigkeit des BVL beantragen, wenn der Zulassungsinhaber seinen Sitz nicht in Deutschland hat",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102160008001",
+   "name": "Anzeige der Fortsetzung der Erbringung grenzüberschreitender Dienstleistungen in reglementierten Berufen Bestätigung im Pflanzenschutzrecht",
+   "buergernah": "Grenzüberschreitende Erbringung von Dienstleistungen in reglementierten Berufen im Pflanzenschutzrecht fortsetzen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Grenzüberschreitende Erbringung von Dienstleistungen in reglementierten Berufen im Pflanzenschutzrecht fortsetzen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99077034001001",
+   "name": "Spezifisch offene Genehmigung für die Ausfuhr von Kulturgut in Drittstaaten Erteilung für Eigentümer oder rechtmäßige unmittelbare Besitzer",
+   "buergernah": "Genehmigung für die regelmäßige vorübergehende Ausfuhr von Kulturgut in Drittstaaten beantragen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Genehmigung für die regelmäßige vorübergehende Ausfuhr von Kulturgut in Drittstaaten beantragen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102191001000",
+   "name": "Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Erteilung",
+   "buergernah": "Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Erteilung",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Teilnahme am besonderen Meldeverfahren für die Anwendung der Steuerbefreiung als Kleinunternehmer in einem anderen Mitgliedstaat Erteilung",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102160008004",
+   "name": "Anzeige der Fortsetzung der Erbringung grenzüberschreitender Dienstleistungen in reglementierten Berufen Bestätigung im Sprengstoffrecht",
+   "buergernah": "Fortsetzung der Erbringung grenzüberschreitender Dienstleistungen in reglementierten Berufen im Sprengstoffrecht anzeigen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Fortsetzung der Erbringung grenzüberschreitender Dienstleistungen in reglementierten Berufen im Sprengstoffrecht anzeigen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102159008001",
+   "name": "Anzeige der erstmaligen Erbringung grenzüberschreitender  Dienstleistungen in reglementierten Berufen Bestätigung im Pflanzenschutzrecht",
+   "buergernah": "Grenzüberschreitende Erbringung von Dienstleistungen in reglementierten Berufen im Pflanzenschutzrecht anzeigen",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Grenzüberschreitende Erbringung von Dienstleistungen in reglementierten Berufen im Pflanzenschutzrecht anzeigen",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99102161008001",
+   "name": "Anzeige der Änderung der Erbringung grenzüberschreitender Dienstleistungen in reglementierten Berufen Bestätigung im Pflanzenschutzrecht",
+   "buergernah": "Grenzüberschreitende Erbringung von Dienstleistungen in reglementierten Berufen im Pflanzenschutzrecht ändern",
+   "kategorie": "Steuern & Zoll",
+   "ebene": "Land",
+   "kurzbeschreibung": "Grenzüberschreitende Erbringung von Dienstleistungen in reglementierten Berufen im Pflanzenschutzrecht ändern",
+   "zielgruppe": "Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080142001001",
+   "name": "Erweiterung der Pilotenlizenz  PPL(A), LAPL(A), LAPL(H), PPL(H), SPL, BPL Erteilung Erweiterung einer Lizenz BFCL, SFCL und LAPL um weitere Rechte und Berechtigungen  (Rechte  zum Führen von Segelflugzeuge (SFZ) , Reisemotorsegler (TMG),  Leichtluftfahrzeugen (SEP) und Erweiterung der Rechte auf andere Hubschraubermuster bzw. Baureihen, Erweiterung der Rechte auf eine andere Ballonklasse oder -gruppe",
+   "buergernah": "Erweiterung einer Pilotenlizenz für Leichtluftfahrzeuge (LAPL), Segelflugzeuge (SFCL) und Freiballone (BFCL) auf weiterführende Rechte und Berechtigungen (Rechte  zum Führen von Segelflugzeugen (SFZ) , Reisemotorseglern (TMG), Leichtluftfahrzeugen (SEP) und Erweiterung der Rechte auf andere Hubschraubermuster beziehungsweise Baureihen, Erweiterung der Rechte auf eine andere Ballonklasse oder -gruppe) beantragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Erweiterung einer Pilotenlizenz für Leichtluftfahrzeuge (LAPL), Segelflugzeuge (SFCL) und Freiballone (BFCL) auf weiterführende Rechte und Berechtigungen (Rechte  zum Führen von Segelflugzeugen (SFZ) ",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080152001000",
+   "name": "Rezertifizierung von Ausbildern für Luftsicherheitskontrollpersonal, Aufsichtspersonal, Sicherheitspersonal, anderes Personal und Sprengstoffspürhunde-Teams für Sicherheitsmaßnahmen von Luftfahrtunternehmen und Beteiligten an der sicheren Lieferkette Erteilung",
+   "buergernah": "Rezertifizierung von Ausbildern für Luftsicherheitskontrollpersonal, Aufsichtspersonal, Sicherheitspersonal, anderes Personal und Sprengstoffspürhunde-Teams für Sicherheitsmaßnahmen von Luftfahrtunternehmen und Beteiligten an der sicheren Lieferkette Erteilung",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Rezertifizierung von Ausbildern für Luftsicherheitskontrollpersonal, Aufsichtspersonal, Sicherheitspersonal, anderes Personal und Sprengstoffspürhunde-Teams für Sicherheitsmaßnahmen von Luftfahrtunter",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080151001000",
+   "name": "Zertifizierung von Ausbildern für Luftsicherheitskontrollpersonal, Aufsichtspersonal, Sicherheitspersonal, anderes Personal und Sprengstoffspürhunde-Teams für Sicherheitsmaßnahmen von Luftfahrtunternehmen und Beteiligten an der sicheren Lieferkette Erteilung",
+   "buergernah": "Zertifizierung von Ausbildern für Luftsicherheitskontrollpersonal, Aufsichtspersonal, Sicherheitspersonal, anderes Personal und Sprengstoffspürhunde-Teams für Sicherheitsmaßnahmen von Luftfahrtunternehmen und Beteiligten an der sicheren Lieferkette Erteilung",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Zertifizierung von Ausbildern für Luftsicherheitskontrollpersonal, Aufsichtspersonal, Sicherheitspersonal, anderes Personal und Sprengstoffspürhunde-Teams für Sicherheitsmaßnahmen von Luftfahrtunterne",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080142001003",
+   "name": "Erweiterung der Pilotenlizenz  PPL(A), LAPL(A), LAPL(H), PPL(H), SPL, BPL Erteilung Erweiterung der LAPL, PPL, SPL oder BPL auf eine Wolkenflug- Kunstflug-, Bergflug-, Nachtflug- oder  Schleppberechtigung und der Berechtigung zum gewerblichen Flugbetrieb",
+   "buergernah": "Weitere Berechtigungen in Lizenz für Leichtluftfahrzeuge (LAPL), in Lizenz für Segelflugzeuge (SPL) und in Lizenz für Ballone (BPL) eintragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Weitere Berechtigungen in Lizenz für Leichtluftfahrzeuge (LAPL), in Lizenz für Segelflugzeuge (SPL) und in Lizenz für Ballone (BPL) eintragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080142001002",
+   "name": "Erweiterung der Pilotenlizenz  PPL(A), LAPL(A), LAPL(H), PPL(H), SPL, BPL Erteilung Erweiterung der PPL(A) oder PPL(H) um Klassen- und Musterberechtigungen sowie deren Erneuerung",
+   "buergernah": "Eintrag weiterer Klassen- und Musterberechtigungen in die Lizenz für Flugzeuge und Hubschrauber nach Sichtflugregeln (PPL(A) und PPL(H)) beantragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Eintrag weiterer Klassen- und Musterberechtigungen in die Lizenz für Flugzeuge und Hubschrauber nach Sichtflugregeln (PPL(A) und PPL(H)) beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080084001000",
+   "name": "Auskunft aus der nationalen Datenbank / dem Europäischen Zentralspeicher zu sicherheitsbezogenen Ereignissen in der Zivilluftfahrt an \"Interessierte Kreise\" Erteilung",
+   "buergernah": "Auskünfte zu sicherheitsbezogenen Ereignissen in der Zivilluftfahrt anfordern",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Auskünfte zu sicherheitsbezogenen Ereignissen in der Zivilluftfahrt anfordern",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080140001000",
+   "name": "Pilotenlizenz - Erneuerung einer nach bundesdeutschem Recht ausgestellten Lizenz (Lizenz mit Beiblatt, PPL-N, PPL nach Richtlinien der ICAO und JAR-FCL) Erteilung",
+   "buergernah": "Umwandlung einer veralteten Privatpilotenlizenz oder eines veralteten Beiblatts für Flugzeuge und Hubschrauber nach aktueller Rechtslage beantragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Umwandlung einer veralteten Privatpilotenlizenz oder eines veralteten Beiblatts für Flugzeuge und Hubschrauber nach aktueller Rechtslage beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080159001000",
+   "name": "Zertifizierung eines Flugsimulationsübungsgeräts (FSTD) für die Ausbildung, Prüfung und Befähigungsüberprüfungen von Piloten bzw. Kompetenzbeurteilungen Erteilung",
+   "buergernah": "Zertifizierung eines Flugsimulationsübungsgeräts (FSTD) beantragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Zertifizierung eines Flugsimulationsübungsgeräts (FSTD) beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080163012002",
+   "name": "Erteilung, Verlängerung, Erneuerung oder Änderung von Zeugnissen von Flugmedizinischen Sachverständigen (AME) Ausstellung für Tauglichkeitszeugnisse der Klasse 1",
+   "buergernah": "Erteilung, Verlängerung, Erneuerung oder Änderung von Zeugnissen von Flugmedizinischen Sachverständigen (AME) für Tauglichkeitszeugnisse der Klasse 1",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Erteilung, Verlängerung, Erneuerung oder Änderung von Zeugnissen von Flugmedizinischen Sachverständigen (AME) für Tauglichkeitszeugnisse der Klasse 1",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080163012001",
+   "name": "Erteilung, Verlängerung, Erneuerung oder Änderung von Zeugnissen von Flugmedizinischen Sachverständigen (AME) Ausstellung für Tauglichkeitszeugnisse der Klasse 2",
+   "buergernah": "Erteilung, Verlängerung, Erneuerung oder Änderung von Zeugnissen von Flugmedizinischen Sachverständigen (AME) für Tauglichkeitszeugnisse der  Klasse 2",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Erteilung, Verlängerung, Erneuerung oder Änderung von Zeugnissen von Flugmedizinischen Sachverständigen (AME) für Tauglichkeitszeugnisse der  Klasse 2",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080140000000",
+   "name": "Pilotenlizenz - Erneuerung einer nach bundesdeutschem Recht ausgestellten Lizenz (Lizenz mit Beiblatt, PPL-N, PPL nach Richtlinien der ICAO und JAR-FCL)",
+   "buergernah": "Pilotenlizenz - Erneuerung einer nach bundesdeutschem Recht ausgestellten Lizenz (Lizenz mit Beiblatt, PPL-N, PPL nach Richtlinien der ICAO und JAR-FCL)",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Pilotenlizenz - Erneuerung einer nach bundesdeutschem Recht ausgestellten Lizenz (Lizenz mit Beiblatt, PPL-N, PPL nach Richtlinien der ICAO und JAR-FCL)",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080143001000",
+   "name": "Berechtigung zur praktischen Ausbildung von Luftfahrern nach BFCL, SFCL und FCL (Klasseneinweisungsberechtigter (CRI) und Fluglehrer (FI)) Erteilung",
+   "buergernah": "Klasseneinweisungsberechtigung (CRI) oder Fluglehrerberechtigungen (FI) für die Lizenz für Flugzeuge PPL(A) und Hubschrauber PPL(H) sowie die Fluglehrerberechtigungen für die Lizenz für Segelflugzeuge (SPL) und Ballone (BPL) beantragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Klasseneinweisungsberechtigung (CRI) oder Fluglehrerberechtigungen (FI) für die Lizenz für Flugzeuge PPL(A) und Hubschrauber PPL(H) sowie die Fluglehrerberechtigungen für die Lizenz für Segelflugzeuge",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99080048016000",
+   "name": "Betrieb von unbemannten Luftfahrtsystemen und Flugmodellen Anerkennung von Stellen für die Erteilung von Bescheinigungen zum Nachweis der Kenntnisse",
+   "buergernah": "Stellen für die Erteilung von Bescheinigungen und Zeugnissen zum Betrieb von unbemannten Fluggeräten (Drohnen) anerkennen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Stellen für die Erteilung von Bescheinigungen und Zeugnissen zum Betrieb von unbemannten Fluggeräten (Drohnen) anerkennen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99058014012000",
+   "name": "Ursprungszeugnisse über in Handwerksbetrieben gefertigte Erzeugnisse und andere dem Wirtschaftsverkehr dienende Bescheinigungen der HWK Ausstellung",
+   "buergernah": "Elektronisches Ursprungszeugnis (EUZ)",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Elektronisches Ursprungszeugnis (EUZ)",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99108053001003",
+   "name": "Fahrerlaubnis zur Fahrgastbeförderung mit befristeter Geltungsdauer Erteilung für Pkw im Linienverkehr oder für den gebündelten Bedarfsverkehr",
+   "buergernah": "Fahrerlaubnis zur Fahrgastbeförderung im PKW im Linienverkehr, bei gewerbsmäßigen Ausflugarten oder Ferienziel-Reisen beantragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Land",
+   "kurzbeschreibung": "Fahrerlaubnis zur Fahrgastbeförderung im PKW im Linienverkehr, bei gewerbsmäßigen Ausflugarten oder Ferienziel-Reisen beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99096054001001",
+   "name": "Schifffahrtspolizeiliche Genehmigungen für die außergewöhnliche Nutzung von Seeschifffahrtsstraßen Erteilung mit außergewöhnlichen Fahrzeugen",
+   "buergernah": "Schifffahrtspolizeiliche Genehmigung für die Nutzung von Seeschifffahrtsstraßen mit außergewöhnlichen Fahrzeugen beantragen",
+   "kategorie": "Mobilität & Reisen",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Schifffahrtspolizeiliche Genehmigung für die Nutzung von Seeschifffahrtsstraßen mit außergewöhnlichen Fahrzeugen beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005064261001",
+   "name": "Meldung von Verdachtsfällen zu Nebenwirkungen durch Transfusionen Entgegennahme Verdachtsfälle von schwerwiegenden Zwischenfällen und unerwünschten Reaktionen bei Blutzubereitungen i.S.v. Art. 3 Nr. 6 der Richtlinie 2001/83/EG und Gewebezubereitungen i.S.v. § 21a AMG",
+   "buergernah": "Meldung von Verdachtsfällen zu Nebenwirkungen durch Transfusionen Entgegennahme Verdachtsfälle von schwerwiegenden Zwischenfällen und unerwünschten Reaktionen bei Blutzubereitungen i.S.v. Art. 3 Nr. 6 der Richtlinie 2001/83/EG und Gewebezubereitungen i.S.v. § 21a AMG",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Meldung von Verdachtsfällen zu Nebenwirkungen durch Transfusionen Entgegennahme Verdachtsfälle von schwerwiegenden Zwischenfällen und unerwünschten Reaktionen bei Blutzubereitungen i.S.v. Art. 3 Nr. 6",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99003001058014",
+   "name": "Amtsärztliche Untersuchung Durchführung nach dem Sozialrecht: z. B. Erwerbs- oder Arbeitsfähigkeit, Eingliederungshilfe, Pflegebeurteilung, Krankenhilfeleistungen (Umzugsfähigkeit, Krankenkostzulage…)",
+   "buergernah": "Amtsärztliche Begutachtung nach dem Sozialrecht in Anspruch nehmen",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Amtsärztliche Begutachtung nach dem Sozialrecht in Anspruch nehmen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99003001058019",
+   "name": "Amtsärztliche Untersuchung Durchführung nach dem Einkommensteuerrecht, z. B. Überprüfung der medizinischen Notwendigkeit geltend gemachter Krankheitskosten, Kuren etc.",
+   "buergernah": "Amtsärztliche Begutachtung der medizinischen Notwendigkeit von Maßnahmen nach dem Einkommensteuerrecht in Anspruch nehmen",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Amtsärztliche Begutachtung der medizinischen Notwendigkeit von Maßnahmen nach dem Einkommensteuerrecht in Anspruch nehmen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005107261000",
+   "name": "Amtliches Formblatt für die Verschreibung von Arzneimitteln, die die Wirkstoffe Lenalidomid, Pomalidomid oder Thalidomid enthalten (T-Rezepte) Entgegennahme",
+   "buergernah": "Als Apotheken Durchschrift oder bereinigte Kopie der Verschreibungen von Arzneimitteln mit den Wirkstoffen Lenalidomid, Pomalidomid oder Thalidomid (T-Rezept) übermitteln",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Als Apotheken Durchschrift oder bereinigte Kopie der Verschreibungen von Arzneimitteln mit den Wirkstoffen Lenalidomid, Pomalidomid oder Thalidomid (T-Rezept) übermitteln",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99003001058013",
+   "name": "Amtsärztliche Untersuchung Durchführung für Fahrerlaubnisse, Fahreignung, z. B. Eignung zum Führen von Kraftfahrzeugen, Sportbooten; Fahrgastbeförderung",
+   "buergernah": "Amtsärztliche Begutachtung bei Fahrerlaubnissen und Fahreignung in Anspruch nehmen",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Amtsärztliche Begutachtung bei Fahrerlaubnissen und Fahreignung in Anspruch nehmen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005107040000",
+   "name": "Amtliches Formblatt für die Verschreibung von Arzneimitteln, die die Wirkstoffe Lenalidomid, Pomalidomid oder Thalidomid enthalten (T-Rezepte) Ausgabe",
+   "buergernah": "Als ärztliche Person Formblatt zur Verschreibung von Arzneimitteln mit den Wirkstoffen Lenalidomid, Pomalidomid oder Thalidomid (T-Rezept) anfordern",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Als ärztliche Person Formblatt zur Verschreibung von Arzneimitteln mit den Wirkstoffen Lenalidomid, Pomalidomid oder Thalidomid (T-Rezept) anfordern",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99157018017000",
+   "name": "Abfindung einer Rente von der Landwirtschaftlichen Unfallversicherung bei Minderung der Erwerbsfähigkeit unter 40 vom Hundert Bewilligung",
+   "buergernah": "Abfindung einer Rente von der Landwirtschaftlichen Unfallversicherung bei Minderung der Erwerbsfähigkeit unter 40 vom Hundert Bewilligung",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Abfindung einer Rente von der Landwirtschaftlichen Unfallversicherung bei Minderung der Erwerbsfähigkeit unter 40 vom Hundert Bewilligung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99157014080000",
+   "name": "Hilfe zur Weiterführung des Haushalts zur Sicherung des Rehabilitationserfolges von der Landwirtschaftlichen Unfallversicherung Gewährung",
+   "buergernah": "Hilfe zur Weiterführung des Haushalts zur Sicherung des Rehabilitationserfolges von der Landwirtschaftlichen Unfallversicherung Gewährung",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Hilfe zur Weiterführung des Haushalts zur Sicherung des Rehabilitationserfolges von der Landwirtschaftlichen Unfallversicherung Gewährung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99101022276002",
+   "name": "Öffentliche Ausstellung einer Leiche Ausnahmegenehmigung innerhalb einer Trauerfeier bei meldepflichtiger Krankheit oder sonstiger Gefahr",
+   "buergernah": "Ausnahme für die öffentliche Ausstellung einer Leiche beantragen",
+   "kategorie": "Gesundheit",
+   "ebene": "Land",
+   "kurzbeschreibung": "Ausnahme für die öffentliche Ausstellung einer Leiche beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99157019017000",
+   "name": "Abfindung einer Rente von der Landwirtschaftlichen Unfallversicherung bei Minderung der Erwerbsfähigkeit ab 40 vom Hundert Bewilligung",
+   "buergernah": "Abfindung einer Rente von der Landwirtschaftlichen Unfallversicherung bei Minderung der Erwerbsfähigkeit ab 40 vom Hundert Bewilligung",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Abfindung einer Rente von der Landwirtschaftlichen Unfallversicherung bei Minderung der Erwerbsfähigkeit ab 40 vom Hundert Bewilligung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99003104261000",
+   "name": "Meldepflicht wegen eines fehlenden oder bezüglich Inhalt oder Echtheit zweifelhaften Immunitätsnachweises gegen Masern Entgegennahme",
+   "buergernah": "Nicht vorgelegter bzw. zweifelhafter Nachweis einer Immunität im Rahmen der einrichtungsbezogenen Masern-Impfpflicht an das Gesundheitsamt melden",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Nicht vorgelegter bzw. zweifelhafter Nachweis einer Immunität im Rahmen der einrichtungsbezogenen Masern-Impfpflicht an das Gesundheitsamt melden",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99015037017000",
+   "name": "Leistungen für die Früherkennung und Frühförderung von Kindern mit Behinderung und für von Behinderung bedrohter Kinder Bewilligung",
+   "buergernah": "Leistungen für die Früherkennung und Frühförderung von Kindern mit Behinderung und für von Behinderung bedrohter Kinder beantragen",
+   "kategorie": "Gesundheit",
+   "ebene": "Land",
+   "kurzbeschreibung": "Leistungen für die Früherkennung und Frühförderung von Kindern mit Behinderung und für von Behinderung bedrohter Kinder beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lov"
+  },
+  {
+   "leika": "99015034017000",
+   "name": "Eingliederungshilfe für Kinder mit Behinderung und von Behinderung bedrohte Kinder von der Geburt bis zum Schuleintritt Bewilligung",
+   "buergernah": "Eingliederungshilfe für behinderte Kinder bis zum Schuleintritt beantragen",
+   "kategorie": "Gesundheit",
+   "ebene": "Land",
+   "kurzbeschreibung": "Eingliederungshilfe für behinderte Kinder bis zum Schuleintritt beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99005085011000",
+   "name": "Antragstellung zur Änderung der Verkaufsabgrenzung im Sachverständigenausschüsse (Apotheken- und Verschreibungspflicht) Änderung",
+   "buergernah": "Verkaufaufsabgenzung ändern",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Verkaufaufsabgenzung ändern",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99111043017000",
+   "name": "Abfindung einer Rente für gesetzlich Unfallversicherte bei Minderung der Erwerbsfähigkeit unter 40 vom Hundert Bewilligung",
+   "buergernah": "Abfindung einer Unfallversichertenrente bei Minderung der Erwerbsfähigkeit unter 40 Prozent beantragen",
+   "kategorie": "Gesundheit",
+   "ebene": "Kommune",
+   "kurzbeschreibung": "Abfindung einer Unfallversichertenrente bei Minderung der Erwerbsfähigkeit unter 40 Prozent beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99003051018000",
+   "name": "Gesundheitshilfen für psychisch erkrankte, sowie geistig, seelisch und mehrfach behinderte Kinder und Jugendliche Beratung",
+   "buergernah": "Gesundheitshilfen für psychisch erkrankte, sowie geistig, seelisch und mehrfach behinderte Kinder und Jugendliche Beratung",
+   "kategorie": "Gesundheit",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Gesundheitshilfen für psychisch erkrankte, sowie geistig, seelisch und mehrfach behinderte Kinder und Jugendliche Beratung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99010028020000",
+   "name": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger Verlängerung",
+   "buergernah": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger Verlängerung",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger Verlängerung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99010028001000",
+   "name": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger Erteilung",
+   "buergernah": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger Erteilung",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger Erteilung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99014015035001",
+   "name": "Unterschriften, Handzeichen, Abschriften sowie einfache Zeugnisse für Deutsche im Ausland Beglaubigung bei Ausstellung von Lebensbescheinigungen zur Vorlage bei der Rentenversicherung",
+   "buergernah": "Unterschriften, Handzeichen, Abschriften sowie einfache Zeugnisse für Deutsche im Ausland Beglaubigung bei Ausstellung von Lebensbescheinigungen zur Vorlage bei der Rentenversicherung",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Unterschriften, Handzeichen, Abschriften sowie einfache Zeugnisse für Deutsche im Ausland Beglaubigung bei Ausstellung von Lebensbescheinigungen zur Vorlage bei der Rentenversicherung",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99010028000000",
+   "name": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger",
+   "buergernah": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Unionsrechtliche Aufenthaltserlaubnis für Drittstaatsangehörige im Ausnahmefall bei  Vorliegen eines ganz besonderen Abhängigkeitsverhältnisses zu einem minderjährigen Unionsbürger",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99099012067002",
+   "name": "Einbürgerung nach Nichterwerb oder Verlust der Staatsangehörigkeit aufgrund von Verfolgungsmaßnahmen Verleihung an Personen mit gewöhnlichem Aufenthalt im Ausland",
+   "buergernah": "Wiedergutmachungseinbürgerung aufgrund nationalsozialistischer Verfolgung für Personen mit gewöhnlichem Aufenthalt im Ausland beantragen",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Wiedergutmachungseinbürgerung aufgrund nationalsozialistischer Verfolgung für Personen mit gewöhnlichem Aufenthalt im Ausland beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99099012067001",
+   "name": "Einbürgerung nach Nichterwerb oder Verlust der Staatsangehörigkeit aufgrund von Verfolgungsmaßnahmen Verleihung an Personen mit gewöhnlichem Aufenthalt im Inland",
+   "buergernah": "Wiedergutmachungseinbürgerung aufgrund von Verfolgung in der Nazizeit für Personen im Inland beantragen",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Bund",
+   "kurzbeschreibung": "Wiedergutmachungseinbürgerung aufgrund von Verfolgung in der Nazizeit für Personen im Inland beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": "lovd"
+  },
+  {
+   "leika": "99014015035006",
+   "name": "Unterschriften, Handzeichen, Abschriften sowie einfache Zeugnisse für Deutsche im Ausland Beglaubigung bei Nachbeurkundung von Eheschließungen im Ausland",
+   "buergernah": "Unterschriften, Handzeichen, Abschriften sowie einfache Zeugnisse für Deutsche im Ausland Beglaubigung bei Nachbeurkundung von Eheschließungen im Ausland",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Unterschriften, Handzeichen, Abschriften sowie einfache Zeugnisse für Deutsche im Ausland Beglaubigung bei Nachbeurkundung von Eheschließungen im Ausland",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  },
+  {
+   "leika": "99010019020009",
+   "name": "Aufenthaltserlaubnis zum Zweck der Ausbildung Verlängerung zur Anerkennung der Berufsqualifikation aufgrund einer Absprache der Bundesagentur für Arbeit",
+   "buergernah": "Verlängerung der Aufenthaltserlaubnis zur Anerkennung der Berufsqualifikation aufgrund einer Absprache der Bundesagentur für Arbeit  beantragen",
+   "kategorie": "Ein- & Auswanderung",
+   "ebene": "Land",
+   "kurzbeschreibung": "Verlängerung der Aufenthaltserlaubnis zur Anerkennung der Berufsqualifikation aufgrund einer Absprache der Bundesagentur für Arbeit  beantragen",
+   "zielgruppe": "Bürger/Unternehmen",
+   "leistungstyp": ""
+  }
+ ]
+}

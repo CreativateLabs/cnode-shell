@@ -1,0 +1,27 @@
+# Cloud-Profil — legt sich ÜBER Basis + Tenant-Overlay und schaltet den sauberen
+# cNode-Tenant auf den Cloud-Betrieb um:
+#   • LLM: Cloud-API (Anthropic) statt lokalem Ollama  → DEFAULT_PROVIDER=api
+#   • Auth: zusätzlich langlebige API-Keys (Service-Tokens) für den Client-SDK
+#   • Öffentliche Basis-URL für korrekte Magic-Link-/Redirect-URLs hinter dem Proxy
+#
+# Secrets kommen NUR als Umgebungs-Referenz (.env / SSM / Vault) — NIE inline:
+#   ANTHROPIC_API_KEY=sk-ant-…            (Cloud-LLM)
+#   CNODE_API_KEYS="sdk:$(openssl rand -hex 24):member"   (Service-Token für die API)
+#
+#   TENANT=cnode docker compose \
+#     -f infra/docker-compose.yml -f infra/docker-compose.tenant.yml -f infra/docker-compose.cloud.yml \
+#     --env-file .env up -d            (== make cloud-up)
+services:
+  bff:
+    environment:
+      # cNode-Engine spricht die Anthropic-API über provider="claude" an → BFF reicht das durch.
+      - DEFAULT_PROVIDER=${DEFAULT_PROVIDER:-claude}
+      - DEFAULT_MODEL=${CLOUD_MODEL:-claude-sonnet-5}
+      # Cloud-API-Schlüssel für programmatischen Zugriff (Client-SDK). Leer → nur Cookie/JWT.
+      - CNODE_API_KEYS=${CNODE_API_KEYS:-}
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-https://api.cnode.example}
+
+  engine:
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ANTHROPIC_MODEL=${CLOUD_MODEL:-claude-sonnet-5}

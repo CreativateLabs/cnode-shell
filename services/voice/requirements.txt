@@ -1,0 +1,10 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+# Lokales OSS-STT (CTranslate2) — Inferenz 100 % offline, kein Cloud-STT.
+faster-whisper==1.1.1
+# PyAV: Audio-Dekodierung (webm/wav/m4a/ogg/...) für faster-whisper.
+av==13.1.0
+# huggingface_hub 1.x zieht requests nicht mehr automatisch mit — für den
+# einmaligen Modell-Download (snapshot_download) aber nötig.
+requests==2.32.5
