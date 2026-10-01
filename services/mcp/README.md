@@ -57,7 +57,15 @@ claude mcp add cnode-agents \
 ```
 
 ## Hosten (streamable-http)
-Das Dockerfile startet den Server per Default als `streamable-http` auf `:8090`
-(`MCP_TRANSPORT=streamable-http`). Für einen Remote-MCP hinter Caddy z.B.
-`mcp.example.com → 127.0.0.1:8090` verdrahten und Clients
-per URL statt per Kommando einbinden.
+Das Dockerfile startet den Server als `streamable-http` auf `:8090`. **Wichtig:** Im HTTP-Modus
+nutzt der Server *seinen* `CNODE_API_KEY` für jeden Aufrufer. Damit er kein offener Proxy auf euren
+BFF wird, gilt:
+
+- Außerhalb von localhost startet er nur mit **`MCP_HTTP_TOKEN`**. Clients senden dann
+  `Authorization: Bearer <MCP_HTTP_TOKEN>`; ohne/mit falschem Token antwortet er mit `401`.
+- Ohne Token läuft der HTTP-Modus nur auf `MCP_HOST=127.0.0.1`.
+- Schutz gegen DNS-Rebinding ist an: Erlaubte Hosts/Origins per `MCP_ALLOWED_HOSTS` /
+  `MCP_ALLOWED_ORIGINS` setzen (Default: localhost), z. B. `mcp.example.com` hinter Caddy
+  (`mcp.example.com → 127.0.0.1:8090`).
+- `agent_id` wird geprüft (nur `a-z`, `0-9`, `-`, `_`), damit Aufrufe nicht auf andere
+  BFF-Endpunkte umgelenkt werden können.

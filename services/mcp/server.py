@@ -17,7 +17,10 @@ Config (env):
 """
 from __future__ import annotations
 
+import hmac
 import os
+import re
+import sys
 from typing import Any
 
 import httpx
@@ -30,16 +33,18 @@ TIMEOUT = float(os.getenv("CNODE_MCP_TIMEOUT", "150"))
 
 # DNS-Rebinding-Schutz bleibt AN, erlaubt aber den öffentlichen Host/Origin (hinter Caddy).
 _hosts = [h.strip() for h in os.getenv(
-    "MCP_ALLOWED_HOSTS", "mcp.try.c-node.ai,localhost,127.0.0.1").split(",") if h.strip()]
+    "MCP_ALLOWED_HOSTS", "localhost:*,127.0.0.1:*,localhost,127.0.0.1").split(",") if h.strip()]
 _origins = [o.strip() for o in os.getenv(
-    "MCP_ALLOWED_ORIGINS", "https://mcp.try.c-node.ai").split(",") if o.strip()]
+    "MCP_ALLOWED_ORIGINS", "http://localhost:*,http://127.0.0.1:*").split(",") if o.strip()]
+# Agent-IDs landen im URL-Pfad des BFF → nur einfache IDs zulassen (kein "../", "?", "%2F" …).
+_AGENT_ID = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
 mcp = FastMCP("cnode-agents", transport_security=TransportSecuritySettings(
     allowed_hosts=_hosts, allowed_origins=_origins))
 
 
 def _headers() -> dict[str, str]:
     if not API_KEY:
-        raise RuntimeError(
+        raise ConfigError(
             "CNODE_API_KEY ist nicht gesetzt. Lege serverseitig einen Service-Key in "
             "CNODE_API_KEYS an und exportiere ihn hier als CNODE_API_KEY.")
     return {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
@@ -59,7 +64,19 @@ async def _post(path: str, body: dict) -> Any:
         return r.json()
 
 
+class ConfigError(RuntimeError):
+    """Lokale Fehlkonfiguration (z. B. fehlender Schlüssel) — kein Verbindungsfehler."""
+
+
+def _check_agent_id(agent_id: str) -> str | None:
+    if not _AGENT_ID.match(agent_id or ""):
+        return "Ungültige agent_id — nutze eine ID aus cnode_list_agents (z. B. 'agent-einkauf')."
+    return None
+
+
 def _friendly(exc: Exception) -> str:
+    if isinstance(exc, ConfigError):
+        return str(exc)
     if isinstance(exc, httpx.HTTPStatusError):
         code = exc.response.status_code
         if code in (401, 403):
@@ -103,6 +120,8 @@ async def cnode_ask_agent(agent_id: str, question: str) -> dict:
     agent_id: Agenten-ID aus cnode_list_agents (z. B. 'agent-einkauf').
     question: die fachliche Frage in natürlicher Sprache.
     """
+    if bad := _check_agent_id(agent_id):
+        return {"error": bad}
     try:
         d = await _post(f"/agents/domain/{agent_id}/ask", {"text": question})
     except Exception as exc:  # noqa: BLE001
@@ -123,6 +142,8 @@ async def cnode_consult_agent(agent_id: str, question: str) -> dict:
     agent_id: Primär-Agent (z. B. 'agent-einkauf').
     question: die (Leit-)Frage; die Delegation richtet sich nach den gefundenen Fakten.
     """
+    if bad := _check_agent_id(agent_id):
+        return {"error": bad}
     try:
         d = await _post(f"/agents/domain/{agent_id}/consult", {"text": question})
     except Exception as exc:  # noqa: BLE001
@@ -134,12 +155,40 @@ async def cnode_consult_agent(agent_id: str, question: str) -> dict:
             "write_allowed": d.get("write_allowed", False), "status": d.get("status")}
 
 
+def _run_http() -> None:
+    """HTTP-Modus: der Server nutzt SEINEN CNODE_API_KEY für jeden Aufrufer. Ohne eigene
+    Zugangsprüfung wäre er ein offener Proxy auf euren BFF. Darum: außerhalb von localhost
+    nur mit MCP_HTTP_TOKEN (Clients senden `Authorization: Bearer <token>`)."""
+    import uvicorn
+
+    host = os.getenv("MCP_HOST", "127.0.0.1")
+    port = int(os.getenv("MCP_PORT", "8090"))
+    token = os.getenv("MCP_HTTP_TOKEN", "").strip()
+    if not token and host not in ("127.0.0.1", "localhost", "::1"):
+        sys.exit("MCP_HTTP_TOKEN fehlt: Ohne Token läuft der HTTP-Modus nur auf localhost "
+                 "(MCP_HOST=127.0.0.1). Setze MCP_HTTP_TOKEN, um ihn im Netz anzubieten.")
+    app = mcp.streamable_http_app()
+
+    async def guarded(scope, receive, send):
+        if token and scope["type"] == "http":
+            auth = dict(scope.get("headers") or []).get(b"authorization", b"").decode()
+            given = auth[7:].strip() if auth[:7].lower() == "bearer " else ""
+            if not hmac.compare_digest(given, token):
+                await send({"type": "http.response.start", "status": 401,
+                            "headers": [(b"content-type", b"application/json"),
+                                        (b"www-authenticate", b"Bearer")]})
+                await send({"type": "http.response.body",
+                            "body": b'{"error":"unauthorized"}'})
+                return
+        await app(scope, receive, send)
+
+    uvicorn.run(guarded, host=host, port=port)
+
+
 def main() -> None:
     transport = os.getenv("MCP_TRANSPORT", "stdio").strip()
     if transport == "streamable-http":
-        mcp.settings.host = os.getenv("MCP_HOST", "0.0.0.0")
-        mcp.settings.port = int(os.getenv("MCP_PORT", "8090"))
-        mcp.run(transport="streamable-http")
+        _run_http()
     else:
         mcp.run(transport="stdio")
 
