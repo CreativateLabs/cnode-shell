@@ -1,8 +1,8 @@
-"""Ontology-Studio — Auto-Ontologie-Pipeline (cNode Kern-Differenzierer, Ebene 4).
+"""Ontology-Studio — ontology suggestion service.
 
-Quelle (Tabellen-Spalten / Text) → getypte Ontologie-Vorschlag, gebenchmarkt gegen
-schema.org / FIBO / ISO — deterministisch-first (läuft ohne LLM). `apply` schreibt die
-bestätigte Ontologie mit Provenienz in den TENANT-Graph (über die Engine).
+Proposes typed entities from table columns (or text), benchmarked against
+schema.org / FIBO / ISO; deterministic, no LLM required. `apply` writes the confirmed
+ontology with provenance into the tenant graph (via the engine).
 
 Endpoints:
   GET  /health
@@ -183,7 +183,7 @@ async def apply(req: ApplyReq):
 
     return {"ok": True, "entity_type": req.entity_type, "nodes_written": written,
             "relations": edges, "client_id": req.client_id,
-            "note": "asynchrone NEN-Extraktion — Materialisierung folgt beim Draining"}
+            "note": "in den Graph geschrieben (bei asynchronem Graph-Backend folgt die Materialisierung verzögert)"}
 
 
 if __name__ == "__main__":

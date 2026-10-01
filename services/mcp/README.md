@@ -50,5 +50,5 @@ claude mcp add cnode-agents \
 ## Hosten (streamable-http)
 Das Dockerfile startet den Server per Default als `streamable-http` auf `:8090`
 (`MCP_TRANSPORT=streamable-http`). Für einen Remote-MCP hinter Caddy z.B.
-`mcp.try.c-node.ai → 127.0.0.1:189xx` verdrahten (eigener Deploy-Schritt) und Clients
+`mcp.example.com → 127.0.0.1:8090` verdrahten und Clients
 per URL statt per Kommando einbinden.

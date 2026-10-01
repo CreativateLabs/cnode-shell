@@ -1,6 +1,6 @@
 """Artefakt-Generierung (§2.3) — kind-spezifische Prompts + deterministische Templates.
 
-Kinds: dialog_protocol | memo | proposal | one_pager. Grounding kommt aus der NEN AI
+Kinds: dialog_protocol | memo | proposal | one_pager. Grounding kommt aus dem Graph-Backend
 (belegte Fakten); die Formung übernimmt das LLM. Ist beides offline, greift ein
 deterministisches Markdown-Template (Demo bleibt stabil).
 """
@@ -43,7 +43,7 @@ def build_prompt(kind: str, context: str, facts: str) -> tuple[str, str]:
     """Returns (system, prompt) für die kind-spezifische LLM-Generierung."""
     instruction = KIND_INSTRUCTIONS.get(kind, KIND_INSTRUCTIONS["memo"])
     system = (
-        "Du bist ein präziser Business-Assistent von c:node (geerdet auf NENA). Du erstellst belegbare "
+        "Du bist ein präziser Business-Assistent von c:node (geerdet auf dem c:node Graph). Du erstellst belegbare "
         "Artefakte auf Deutsch in sauberem Markdown. Nutze AUSSCHLIESSLICH die gelieferten "
         "Fakten aus dem Wissensgraphen und den Gesprächskontext. Erfinde keine Zahlen. "
         "Beginne direkt mit einer Markdown-Überschrift (##)."
@@ -60,14 +60,14 @@ def build_prompt(kind: str, context: str, facts: str) -> tuple[str, str]:
 def deterministic_markdown(kind: str, context: str, facts: str, client_id: str) -> str:
     """Deterministisches Fallback-Template ohne LLM."""
     title = kind_title(kind)
-    facts_block = facts or "- (Keine belegten Fakten verfügbar — NEN-AI/LLM offline)"
+    facts_block = facts or "- (Keine belegten Fakten verfügbar — Graph/LLM offline)"
     ctx = context or "(kein Kontext übergeben)"
     return (
         f"## {title}\n\n"
-        f"_Mandant: **{client_id}** · deterministisch erzeugt (LLM/NEN-AI offline)_\n\n"
+        f"_Mandant: **{client_id}** · deterministisch erzeugt (LLM/Graph offline)_\n\n"
         f"### Kontext\n{ctx}\n\n"
         f"### Belegte Fakten\n{facts_block}\n\n"
-        f"### Hinweis\nDieses Artefakt wurde als stabiler Fallback erzeugt. Sobald NEN AI "
+        f"### Hinweis\nDieses Artefakt wurde als stabiler Fallback erzeugt. Sobald der Graph "
         f"und das lokale LLM verfügbar sind, wird ein vollständig ausformuliertes "
         f"{title} mit Quellnachweis generiert."
     )

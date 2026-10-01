@@ -1,9 +1,10 @@
-"""engine — Engine-Adapter (§2.4) für die c:node / Creativate Dev-Shell.
+"""engine — Engine-Adapter (§2.4) für die c:node Shell.
 
-Frontet die echte NEN AI (CIG, :8001) und das lokale Ollama (:11434). Liefert das in
+Frontet das Graph-Backend (Default: graph-core im Repo; optional ein externer c:node Graph)
+und das lokale Ollama (:11434). Liefert das in
 SCOPE.md §2.4 eingefrorene interne API, das die BFF konsumiert:
 
-  GET  /health                          → eigener Status + NEN-AI-Erreichbarkeit + LLM/Modell
+  GET  /health                          → eigener Status + Graph-Erreichbarkeit + LLM/Modell
   POST /classify {text}                 → {intent}  (LLM-first + Keyword-Fallback)
   POST /answer   {text, client_id, …}   → {result, sources, trace, provider, model}
   GET  /graph?client_id=                → {nodes, edges}  (§2.2 normalisiert)
@@ -11,8 +12,9 @@ SCOPE.md §2.4 eingefrorene interne API, das die BFF konsumiert:
   POST /artifact {kind, thread_id, …}   → Artifact (§2.3)
   GET  /models                          → verfügbare Ollama-Modelle + Claude-Status
 
-De-Risking: ist die NEN AI nicht erreichbar, liefert jeder Endpunkt plausible
-deterministische Antworten in derselben Contract-Form — kein Crash, kein 500.
+Graph offline: ist das Graph-Backend nicht erreichbar, antwortet jeder Endpunkt in derselben
+Contract-Form (kein Crash, kein 500), erfindet aber nichts — /answer sagt offen, dass gerade
+keine belegte Quelle verfügbar ist (grounded=False, keine Quellen), /graph liefert einen leeren Graphen.
 """
 from __future__ import annotations
 
@@ -137,8 +139,8 @@ def _split_suggestions(text: str) -> tuple[str, list[str]]:
 
 # Beratende, begleitende Persona für /answer — natürlich, zielführend, proaktiv.
 CONSULT_SYSTEM = (
-    "Du bist der c:node-Assistent, geerdet auf NENA — der mitdenkenden Intelligenz "
-    "(Wissensgraph + Gedächtnis). Grundsatz: c:node steuert, NENA denkt, die Agenten machen. "
+    "Du bist der c:node-Assistent, geerdet auf dem c:node Graph — Wissensgraph + Gedächtnis. "
+    "Grundsatz: c:node steuert, der Graph belegt, die Agenten machen. "
     "Du bist ein beratender, begleitender Decision-Intelligence-Partner "
     "für Unternehmen. Sprich natürlich und direkt auf Deutsch, in einem klaren beratenden Ton — "
     "keine Floskeln, keine Roboter-Sprache. Gehe unmittelbar auf die Frage des Gegenübers ein.\n"
@@ -162,7 +164,7 @@ CONSULT_SYSTEM = (
 
 # Reiner Gesprächs-Modus (kein Graph, keine Fakten nötig) — wie ein Berater reden.
 CHAT_SYSTEM = (
-    "Du bist der c:node-Assistent, geerdet auf NENA (die mitdenkende Intelligenz) — ein "
+    "Du bist der c:node-Assistent, geerdet auf dem c:node Graph (Wissensgraph + Gedächtnis) — ein "
     "freundlicher, kompetenter Berater. Antworte natürlich "
     "und direkt auf Deutsch, wie im Gespräch mit einem Kollegen: knapp, hilfreich, zugewandt. "
     "Erfinde KEINE konkreten Fakten/Zahlen; wenn es um belegbares Wissen geht, biete an, im "
@@ -243,10 +245,10 @@ SHARED_LAYERS = (not PUBLIC_DEMO) and any(
 
 
 def _use_shared(intel: bool | None) -> bool:
-    """Ob geteilte NENA-Ebenen (market/mesh) für DIESE Anfrage aktiv sind.
+    """Ob geteilte c:node-Graph-Ebenen (market/mesh) für DIESE Anfrage aktiv sind.
 
     Der bff löst das Entitlement je Tenant auf und reicht `intel` durch: bezahlt → True
-    schaltet NENA auch in der Public-Sandbox frei; None → strukturelle Default-Regel
+    schaltet den c:node Graph auch in der Public-Sandbox frei; None → strukturelle Default-Regel
     (SHARED_LAYERS: eigene Fach-Domäne vorhanden und nicht Public-Demo).
     """
     return bool(intel) if intel is not None else SHARED_LAYERS
@@ -293,22 +295,22 @@ def _learn_from_sources(group: str, sources: list[dict], cap: float = 12.0) -> N
         _save_learned()
 
 
-# Produkt-Identitäts-Ebene: kuratierte, quellenbelegte Fakten über c:node & NENA selbst.
+# Produkt-Identitäts-Ebene: kuratierte, quellenbelegte Fakten über c:node & den c:node Graph selbst.
 # IMMER mitgeliefert (auch in PUBLIC_DEMO und über alle per-User-Workspaces hinweg), damit
 # „Was ist c:node?" belegt (grounding: gedaechtnis) statt generisch (allgemein) beantwortet
 # wird. Read-only Produktwissen — KEINE Nutzerdaten → kein Cross-Tenant-Leak.
 BASE_GROUP = os.getenv("BASE_GROUP", "cnode-base")
 BASE_SEED: list[dict] = [
     {"label": "c:node", "type": "Produkt", "props": {"summary": "c:node ist die souveräne, EU-first KI-Plattform von Creativate Labs für Decision Intelligence: eine nicht-halluzinierende, Knowledge-Graph-gestützte KI, die jede Aussage mit Herkunft belegt (Provenienz, Audit-Trail für den EU AI Act). Architektur: Shell (Chat-UI) + Microservices + Plugin-Framework + Mandanten-Layer. Läuft lokal (Ollama) oder in der EU-Cloud.", "quelle": "c-node.ai", "region": "EU"}},
-    {"label": "NENA", "type": "Produkt", "props": {"summary": "NENA ist die mitdenkende Intelligenz-Ebene von c:node: sie verbindet Gesprächskontext, ein wachsendes Gedächtnis (pgvector-Graph-Runtime, pro Nutzer isoliert) und Web-Retrieval zu einer belegten Antwort und zeigt pro Antwort ein Grounding-Badge (chat/allgemein/gedächtnis/web) — statt zu halluzinieren.", "quelle": "c-node.ai", "region": "EU"}},
+    {"label": "c:node Graph", "type": "Produkt", "props": {"summary": "Der c:node Graph ist die Wissens-Ebene von c:node: sie verbindet Gesprächskontext, ein wachsendes Gedächtnis (pgvector-Graph-Runtime, pro Nutzer isoliert) und Web-Retrieval zu einer belegten Antwort und zeigt pro Antwort ein Grounding-Badge (chat/allgemein/gedächtnis/web) — statt zu halluzinieren.", "quelle": "c-node.ai", "region": "EU"}},
     {"label": "c:node Grounding-Badge", "type": "Feature", "props": {"summary": "Jede c:node-Antwort deklariert offen ihre Beleg-Basis: chat (Gesprächs-Turn), allgemein (allgemeine Einschätzung, nicht belegt), gedächtnis (aus belegten Knoten synthetisiert), web (frische Quellen). Ehrlichkeits-Signal statt Blackbox.", "quelle": "c-node.ai"}},
     {"label": "c:node Souveränität", "type": "Prinzip", "props": {"summary": "Daten bleiben in der EU (eu-central-1), kein Training auf Kundendaten, Provenienz je Datenpunkt, on-prem/air-gapped via Ollama möglich. Ausgelegt auf EU-AI-Act-Konformität.", "quelle": "c-node.ai", "region": "EU"}},
     {"label": "try.c-node.ai", "type": "Angebot", "props": {"summary": "Die öffentliche c:node-Sandbox zum Ausprobieren — frictionless Login per E-Mail-Code, Cloud-LLM, keine lokale Installation nötig.", "quelle": "try.c-node.ai"}},
-    {"label": "Creativate Labs", "type": "Organisation", "props": {"summary": "Hersteller von c:node und NENA; EU-Tech-Studio mit Fokus auf souveräne, belegbare KI für den Mittelstand.", "quelle": "creativate.tech"}},
+    {"label": "Creativate Labs", "type": "Organisation", "props": {"summary": "Hersteller von c:node und dem c:node Graph; EU-Tech-Studio mit Fokus auf souveräne, belegbare KI für den Mittelstand.", "quelle": "creativate.tech"}},
 ]
 _BASE_LINKS: list[tuple[str, str, str]] = [
-    ("NENA", "c:node", "ist Teil von"),
-    ("c:node Grounding-Badge", "NENA", "gehört zu"),
+    ("c:node Graph", "c:node", "ist Teil von"),
+    ("c:node Grounding-Badge", "c:node Graph", "gehört zu"),
     ("c:node Souveränität", "c:node", "beschreibt"),
     ("try.c-node.ai", "c:node", "ist Sandbox von"),
     ("c:node", "Creativate Labs", "entwickelt von"),
@@ -365,7 +367,7 @@ MESH_SEED: list[dict] = [
 ]
 
 
-# NENA-Markt-Ebene (bezahlt): kuratiertes, quellenbelegtes Cross-Tenant-Marktwissen.
+# c:node-Graph-Markt-Ebene (bezahlt): kuratiertes, quellenbelegtes Cross-Tenant-Marktwissen.
 # Free-Sandbox (nur Client-Ebene) sieht das NIE; erst `intel=true` schaltet market/mesh frei.
 # Bewusst gepflegt (Provenienz je Knoten), nicht auto-generiert — das ist der Kaufwert.
 MARKET_SEED: list[dict] = [
@@ -373,23 +375,23 @@ MARKET_SEED: list[dict] = [
     {"label": "High-Tech Gründerfonds (HTGF)", "type": "Investor", "props": {"summary": "Aktivster deutscher Seed-Investor; Tickets typ. 0,5–1 Mio € in Tech/Life-Science-Frühphase.", "region": "DE", "stage": "seed", "quelle": "htgf.de"}},
     {"label": "EIC Accelerator", "type": "FundingProgram", "props": {"summary": "EU-Förderung für Deep-Tech-Scaleups: Zuschuss bis 2,5 Mio € + optionale Eigenkapital-Komponente.", "region": "EU", "stage": "growth", "quelle": "eic.ec.europa.eu"}},
     {"label": "INVEST – Zuschuss für Wagniskapital", "type": "FundingProgram", "props": {"summary": "20 % Erwerbszuschuss für Business Angels auf Anteile an jungen innovativen Unternehmen.", "region": "DE", "stage": "seed", "quelle": "bafa.de"}},
-    {"label": "DACH HealthTech-Cluster", "type": "Thema", "props": {"summary": "Dichte an Digital-Health/MedTech-Gründungen in Berlin, München, Zürich; getrieben von Uni-Kliniken + regulatorischer Expertise (MDR).", "region": "DACH", "quelle": "nena-market"}},
-    {"label": "Climate-Tech Finanzierungswelle", "type": "TrendSignal", "props": {"summary": "Überdurchschnittlicher Kapitalzufluss in europäische Climate/Energy-Startups trotz allgemeiner VC-Zurückhaltung.", "region": "EU", "quelle": "nena-market"}},
+    {"label": "DACH HealthTech-Cluster", "type": "Thema", "props": {"summary": "Dichte an Digital-Health/MedTech-Gründungen in Berlin, München, Zürich; getrieben von Uni-Kliniken + regulatorischer Expertise (MDR).", "region": "DACH", "quelle": "cnode-graph-market"}},
+    {"label": "Climate-Tech Finanzierungswelle", "type": "TrendSignal", "props": {"summary": "Überdurchschnittlicher Kapitalzufluss in europäische Climate/Energy-Startups trotz allgemeiner VC-Zurückhaltung.", "region": "EU", "quelle": "cnode-graph-market"}},
     {"label": "Accelerator: UnternehmerTUM / XPRENEURS", "type": "Accelerator", "props": {"summary": "Führender Münchner Inkubator/Accelerator; batch-basiert, starkes Deep-Tech- und Industrienetzwerk.", "region": "DE", "quelle": "unternehmertum.de"}},
     {"label": "Accelerator: Station F (Paris)", "type": "Accelerator", "props": {"summary": "Größter Startup-Campus Europas; relevanter Signal-Pool für früh-Phase EU-Gründungen.", "region": "EU", "quelle": "stationf.co"}},
-    {"label": "GmbH-Gründung (Standard-Rechtsform)", "type": "Konzept", "props": {"summary": "Häufigste deutsche Kapitalgesellschaft für Startups; 25.000 € Stammkapital, Haftungsbeschränkung, notarielle Gründung.", "region": "DE", "quelle": "nena-market"}},
-    {"label": "SAFE / Wandeldarlehen", "type": "Konzept", "props": {"summary": "Frühphasen-Finanzierungsinstrumente: Wandeldarlehen (DE-üblich) bzw. SAFE (US) verschieben die Bewertung in die nächste Runde.", "quelle": "nena-market"}},
-    {"label": "Marktsignal: KI-Ausgründungen aus Forschung", "type": "TrendSignal", "props": {"summary": "Steigende Zahl an KI-Spinoffs aus Fraunhofer/Max-Planck/Unis; oft technisch stark, GTM-schwach — Beratungsbedarf hoch.", "region": "DE", "quelle": "nena-market"}},
-    {"label": "MDR – Medical Device Regulation", "type": "Konzept", "props": {"summary": "EU-Verordnung für Medizinprodukte; hohe Konformitäts-/Zertifizierungshürde, prägt Zeit-/Kapitalbedarf von HealthTech-Startups.", "region": "EU", "quelle": "nena-market"}},
+    {"label": "GmbH-Gründung (Standard-Rechtsform)", "type": "Konzept", "props": {"summary": "Häufigste deutsche Kapitalgesellschaft für Startups; 25.000 € Stammkapital, Haftungsbeschränkung, notarielle Gründung.", "region": "DE", "quelle": "cnode-graph-market"}},
+    {"label": "SAFE / Wandeldarlehen", "type": "Konzept", "props": {"summary": "Frühphasen-Finanzierungsinstrumente: Wandeldarlehen (DE-üblich) bzw. SAFE (US) verschieben die Bewertung in die nächste Runde.", "quelle": "cnode-graph-market"}},
+    {"label": "Marktsignal: KI-Ausgründungen aus Forschung", "type": "TrendSignal", "props": {"summary": "Steigende Zahl an KI-Spinoffs aus Fraunhofer/Max-Planck/Unis; oft technisch stark, GTM-schwach — Beratungsbedarf hoch.", "region": "DE", "quelle": "cnode-graph-market"}},
+    {"label": "MDR – Medical Device Regulation", "type": "Konzept", "props": {"summary": "EU-Verordnung für Medizinprodukte; hohe Konformitäts-/Zertifizierungshürde, prägt Zeit-/Kapitalbedarf von HealthTech-Startups.", "region": "EU", "quelle": "cnode-graph-market"}},
 ]
 
 
-# ── NENA-Vorschau-Scheibe (PUBLIC_DEMO) ────────────────────────────────────────
-# Ziel: der Free-Sandbox *etwas* NENA-Markttiefe geben, ohne die bezahlte Ebene zu
+# ── c:node-Graph-Vorschau-Scheibe (PUBLIC_DEMO) ────────────────────────────────────────
+# Ziel: der Free-Sandbox *etwas* c:node-Graph-Markttiefe geben, ohne die bezahlte Ebene zu
 # verschenken. Eine bewusst KURATIERTE, breite-aber-flache Scheibe aus rein
 # öffentlichem, lizenzsauberem Wissen (Förderung/Regulierung/Ökosystem/Markt) — je
 # Knoten mit Quelle belegt und als `preview` markiert. KEINE Nutzer-/Mandantendaten,
-# KEIN Korpus/keine Gewichte. Wird als eigener Layer "NENA-Marktwissen · Vorschau"
+# KEIN Korpus/keine Gewichte. Wird als eigener Layer "c:node-Graph-Marktwissen · Vorschau"
 # eingeblendet und immer von einem Upgrade-CTA begleitet. Die volle Tiefe (market/mesh,
 # cross-tenant gelernt, deutlich mehr Knoten + 1-Hop-Expansion) bleibt `intel=true`.
 PREVIEW_GROUP = os.getenv("PREVIEW_GROUP", "cnode-nena-preview")
@@ -415,28 +417,28 @@ PREVIEW_SEED: list[dict] = [
     {"label": "GoBD", "type": "Konzept", "props": {"summary": "Grundsätze ordnungsmäßiger Buchführung + Datenzugriff: Unveränderbarkeit, Nachvollziehbarkeit, Verfahrensdokumentation.", "region": "DE", "domain": "regulierung", "quelle": "bmf.de"}},
     {"label": "MDR – Medical Device Regulation", "type": "Konzept", "props": {"summary": "EU-Verordnung für Medizinprodukte; hohe Konformitäts-/Zertifizierungshürde, prägt Zeit-/Kapitalbedarf von HealthTech.", "region": "EU", "domain": "regulierung", "quelle": "eur-lex.europa.eu"}},
     # — Ökosystem / Markt (DACH) —
-    {"label": "Mittelstand-Digitalisierung", "type": "Thema", "props": {"summary": "KMU-Digitalisierung: Prozessautomatisierung, Datenplattformen, KI-Assistenz — hoher Förder- + Beratungsbedarf.", "region": "DE", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "Souveräne KI – Nachfrage Mittelstand", "type": "TrendSignal", "props": {"summary": "Wachsende Nachfrage nach EU-gehosteter, belegbarer KI (Datenhoheit, EU-AI-Act-Konformität) statt US-Blackbox-Modellen.", "region": "DACH", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "GenAI-Adoption im Mittelstand", "type": "TrendSignal", "props": {"summary": "Von Pilot zu Produktion: Fokus verschiebt sich auf belegbare, integrierte Use-Cases (Wissen, Vertrieb, Verwaltung) mit ROI-Nachweis.", "region": "DACH", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "Fachkräftemangel", "type": "Thema", "props": {"summary": "Struktureller Personalengpass in DACH; Treiber für Automatisierung, Assistenzsysteme + Prozessverschlankung.", "region": "DACH", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "Kommunale Stadtwerke", "type": "Thema", "props": {"summary": "Kommunale Versorger: Energie-/Beteiligungscontrolling, PPA-Pooling, Digitalisierung, öffentliche Beschaffung.", "region": "DE", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "GovTech / öffentliche Verwaltung", "type": "Thema", "props": {"summary": "Digitalisierung der Verwaltung (OZG): Antragsstrecken, Fachverfahren, KI-gestützte Sachbearbeitung mit Nachweispflicht.", "region": "DE", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "Climate-Tech Finanzierungswelle", "type": "TrendSignal", "props": {"summary": "Überdurchschnittlicher Kapitalzufluss in europäische Climate/Energy-Startups trotz allgemeiner VC-Zurückhaltung.", "region": "EU", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "DACH HealthTech-Cluster", "type": "Thema", "props": {"summary": "Dichte an Digital-Health/MedTech-Gründungen in Berlin, München, Zürich; getrieben von Uni-Kliniken + MDR-Expertise.", "region": "DACH", "domain": "markt", "quelle": "nena-vorschau"}},
-    {"label": "KI-Ausgründungen aus Forschung", "type": "TrendSignal", "props": {"summary": "Steigende Zahl an KI-Spinoffs aus Fraunhofer/Max-Planck/Unis — technisch stark, GTM-schwach; hoher Beratungsbedarf.", "region": "DE", "domain": "markt", "quelle": "nena-vorschau"}},
+    {"label": "Mittelstand-Digitalisierung", "type": "Thema", "props": {"summary": "KMU-Digitalisierung: Prozessautomatisierung, Datenplattformen, KI-Assistenz — hoher Förder- + Beratungsbedarf.", "region": "DE", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Souveräne KI – Nachfrage Mittelstand", "type": "TrendSignal", "props": {"summary": "Wachsende Nachfrage nach EU-gehosteter, belegbarer KI (Datenhoheit, EU-AI-Act-Konformität) statt US-Blackbox-Modellen.", "region": "DACH", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "GenAI-Adoption im Mittelstand", "type": "TrendSignal", "props": {"summary": "Von Pilot zu Produktion: Fokus verschiebt sich auf belegbare, integrierte Use-Cases (Wissen, Vertrieb, Verwaltung) mit ROI-Nachweis.", "region": "DACH", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Fachkräftemangel", "type": "Thema", "props": {"summary": "Struktureller Personalengpass in DACH; Treiber für Automatisierung, Assistenzsysteme + Prozessverschlankung.", "region": "DACH", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Kommunale Stadtwerke", "type": "Thema", "props": {"summary": "Kommunale Versorger: Energie-/Beteiligungscontrolling, PPA-Pooling, Digitalisierung, öffentliche Beschaffung.", "region": "DE", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "GovTech / öffentliche Verwaltung", "type": "Thema", "props": {"summary": "Digitalisierung der Verwaltung (OZG): Antragsstrecken, Fachverfahren, KI-gestützte Sachbearbeitung mit Nachweispflicht.", "region": "DE", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Climate-Tech Finanzierungswelle", "type": "TrendSignal", "props": {"summary": "Überdurchschnittlicher Kapitalzufluss in europäische Climate/Energy-Startups trotz allgemeiner VC-Zurückhaltung.", "region": "EU", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "DACH HealthTech-Cluster", "type": "Thema", "props": {"summary": "Dichte an Digital-Health/MedTech-Gründungen in Berlin, München, Zürich; getrieben von Uni-Kliniken + MDR-Expertise.", "region": "DACH", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
+    {"label": "KI-Ausgründungen aus Forschung", "type": "TrendSignal", "props": {"summary": "Steigende Zahl an KI-Spinoffs aus Fraunhofer/Max-Planck/Unis — technisch stark, GTM-schwach; hoher Beratungsbedarf.", "region": "DE", "domain": "markt", "quelle": "cnode-graph-vorschau"}},
     # — Recht / Kapital / Struktur —
-    {"label": "GmbH (Standard-Rechtsform)", "type": "Konzept", "props": {"summary": "Häufigste deutsche Kapitalgesellschaft; 25.000 € Stammkapital, Haftungsbeschränkung, notarielle Gründung.", "region": "DE", "domain": "recht", "quelle": "nena-vorschau"}},
-    {"label": "UG (haftungsbeschränkt)", "type": "Konzept", "props": {"summary": "Mini-GmbH ab 1 € Stammkapital mit Thesaurierungspflicht; niedrigschwelliger Einstieg in die Haftungsbeschränkung.", "region": "DE", "domain": "recht", "quelle": "nena-vorschau"}},
-    {"label": "SAFE / Wandeldarlehen", "type": "Konzept", "props": {"summary": "Frühphasen-Instrumente: Wandeldarlehen (DE-üblich) bzw. SAFE (US) verschieben die Bewertung in die nächste Runde.", "domain": "recht", "quelle": "nena-vorschau"}},
-    {"label": "ESOP / VSOP (Mitarbeiterbeteiligung)", "type": "Konzept", "props": {"summary": "Anteils- bzw. virtuelle Beteiligungsprogramme zur Mitarbeiterbindung; in DE steuerlich zunehmend erleichtert.", "region": "DE", "domain": "recht", "quelle": "nena-vorschau"}},
-    {"label": "Reverse-Charge (EU-B2B)", "type": "Konzept", "props": {"summary": "Innergemeinschaftliche B2B-Leistungen: Steuerschuld wechselt auf den Empfänger bei gültiger USt-IdNr.", "region": "EU", "domain": "recht", "quelle": "nena-vorschau"}},
+    {"label": "GmbH (Standard-Rechtsform)", "type": "Konzept", "props": {"summary": "Häufigste deutsche Kapitalgesellschaft; 25.000 € Stammkapital, Haftungsbeschränkung, notarielle Gründung.", "region": "DE", "domain": "recht", "quelle": "cnode-graph-vorschau"}},
+    {"label": "UG (haftungsbeschränkt)", "type": "Konzept", "props": {"summary": "Mini-GmbH ab 1 € Stammkapital mit Thesaurierungspflicht; niedrigschwelliger Einstieg in die Haftungsbeschränkung.", "region": "DE", "domain": "recht", "quelle": "cnode-graph-vorschau"}},
+    {"label": "SAFE / Wandeldarlehen", "type": "Konzept", "props": {"summary": "Frühphasen-Instrumente: Wandeldarlehen (DE-üblich) bzw. SAFE (US) verschieben die Bewertung in die nächste Runde.", "domain": "recht", "quelle": "cnode-graph-vorschau"}},
+    {"label": "ESOP / VSOP (Mitarbeiterbeteiligung)", "type": "Konzept", "props": {"summary": "Anteils- bzw. virtuelle Beteiligungsprogramme zur Mitarbeiterbindung; in DE steuerlich zunehmend erleichtert.", "region": "DE", "domain": "recht", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Reverse-Charge (EU-B2B)", "type": "Konzept", "props": {"summary": "Innergemeinschaftliche B2B-Leistungen: Steuerschuld wechselt auf den Empfänger bei gültiger USt-IdNr.", "region": "EU", "domain": "recht", "quelle": "cnode-graph-vorschau"}},
     # — GTM / Vertrieb / Methodik —
-    {"label": "Ideal Customer Profile (ICP)", "type": "Konzept", "props": {"summary": "Präzises Zielkundenprofil als Grundlage für fokussierten Vertrieb + Lead-Priorisierung.", "domain": "vertrieb", "quelle": "nena-vorschau"}},
-    {"label": "Lead-Scoring", "type": "Konzept", "props": {"summary": "Bewertung von Vertriebskontakten nach ICP-Fit; priorisiert Outreach; DSGVO-relevant bei Profiling.", "domain": "vertrieb", "quelle": "nena-vorschau"}},
-    {"label": "PPA-Pooling (KMU)", "type": "Konzept", "props": {"summary": "Bündelung kleiner Abnehmer zu verhandlungsfähigen Power-Purchase-Agreements — Marktzugang für erneuerbare Erzeuger.", "region": "DACH", "domain": "energie", "quelle": "nena-vorschau"}},
-    {"label": "Decision Intelligence", "type": "Konzept", "props": {"summary": "Entscheidungsunterstützung mit belegbarem, auditierbarem Gedächtnis statt Blackbox-Prognose.", "domain": "methodik", "quelle": "nena-vorschau"}},
-    {"label": "Agentic AI", "type": "Konzept", "props": {"summary": "KI-Agenten, die mehrstufige Aufgaben planen + über Tools ausführen; Nutzen v.a. bei wiederkehrenden, strukturierten Routinen.", "domain": "methodik", "quelle": "nena-vorschau"}},
-    {"label": "Provenienz / Audit-Trail", "type": "Konzept", "props": {"summary": "Quelle je Aussage + nachvollziehbarer Rechenweg — Grundlage für EU-AI-Act-Konformität + Vertrauen in KI-Antworten.", "domain": "methodik", "quelle": "nena-vorschau"}},
+    {"label": "Ideal Customer Profile (ICP)", "type": "Konzept", "props": {"summary": "Präzises Zielkundenprofil als Grundlage für fokussierten Vertrieb + Lead-Priorisierung.", "domain": "vertrieb", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Lead-Scoring", "type": "Konzept", "props": {"summary": "Bewertung von Vertriebskontakten nach ICP-Fit; priorisiert Outreach; DSGVO-relevant bei Profiling.", "domain": "vertrieb", "quelle": "cnode-graph-vorschau"}},
+    {"label": "PPA-Pooling (KMU)", "type": "Konzept", "props": {"summary": "Bündelung kleiner Abnehmer zu verhandlungsfähigen Power-Purchase-Agreements — Marktzugang für erneuerbare Erzeuger.", "region": "DACH", "domain": "energie", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Decision Intelligence", "type": "Konzept", "props": {"summary": "Entscheidungsunterstützung mit belegbarem, auditierbarem Gedächtnis statt Blackbox-Prognose.", "domain": "methodik", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Agentic AI", "type": "Konzept", "props": {"summary": "KI-Agenten, die mehrstufige Aufgaben planen + über Tools ausführen; Nutzen v.a. bei wiederkehrenden, strukturierten Routinen.", "domain": "methodik", "quelle": "cnode-graph-vorschau"}},
+    {"label": "Provenienz / Audit-Trail", "type": "Konzept", "props": {"summary": "Quelle je Aussage + nachvollziehbarer Rechenweg — Grundlage für EU-AI-Act-Konformität + Vertrauen in KI-Antworten.", "domain": "methodik", "quelle": "cnode-graph-vorschau"}},
 ]
 
 # Ein paar Kanten, damit die Vorschau im Graph als kohärentes Feld statt loser Punkte erscheint.
@@ -456,7 +458,7 @@ _PREVIEW_LINKS: list[tuple[str, str, str]] = [
 
 
 def _include_preview(intel: bool | None) -> bool:
-    """Ob die kuratierte NENA-Vorschau-Scheibe für DIESE Anfrage eingeblendet wird.
+    """Ob die kuratierte c:node-Graph-Vorschau-Scheibe für DIESE Anfrage eingeblendet wird.
 
     Nur in der öffentlichen Free-Sandbox (PUBLIC_DEMO) UND wenn die volle geteilte Ebene
     NICHT freigeschaltet ist. Bezahlte Tenants (intel=true) bekommen market/mesh direkt —
@@ -496,7 +498,7 @@ class AnswerReq(BaseModel):
     history: list = Field(default_factory=list)
     provider: str = "ollama"
     teams: list[str] = Field(default_factory=list)  # O2b — Team-IDs des Users (team-private Ebene)
-    intel: bool | None = None  # Entitlement (NENA): überschreibt SHARED_LAYERS; bff setzt es je Tenant
+    intel: bool | None = None  # Entitlement (c:node Graph): überschreibt SHARED_LAYERS; bff setzt es je Tenant
     system_override: str | None = None  # Persona-System (Fach-Agent) statt CHAT/CONSULT_SYSTEM
 
 
@@ -511,7 +513,7 @@ class RetrieveReq(BaseModel):
     client_id: str = "creativate"
     limit: int = 8
     teams: list[str] = Field(default_factory=list)  # O2b — Team-IDs des Users
-    intel: bool | None = None  # Entitlement (NENA): überschreibt SHARED_LAYERS
+    intel: bool | None = None  # Entitlement (c:node Graph): überschreibt SHARED_LAYERS
 
 
 class ExtractReq(BaseModel):
@@ -554,7 +556,7 @@ class IngestReq(BaseModel):
     type: str = "Document"
     props: dict = Field(default_factory=dict)
     links: list = Field(default_factory=list)
-    # Echter Dokument-/Quelltext. Wird an NEN als primärer `content` durchgereicht,
+    # Echter Dokument-/Quelltext. Wird an das Graph-Backend als primärer `content` durchgereicht,
     # damit dessen Extraktor einen VERBUNDENEN Subgraphen (Quelle + Entitäten + Kanten)
     # ableitet — statt eines isolierten, textlosen Stub-Knotens.
     content: str = ""
@@ -837,6 +839,32 @@ async def _expand_neighbors(groups: list[str], relevant: list[dict],
     return lines
 
 
+_EN_HINTS = {"the", "what", "which", "who", "how", "is", "are", "do", "does", "our", "my", "your",
+             "about", "with", "for", "of", "and", "can", "you", "please", "show", "tell", "me"}
+_FR_HINTS = {"le", "la", "les", "est", "quel", "quelle", "quels", "qui", "comment", "notre", "nos",
+             "mon", "ma", "mes", "avec", "pour", "et", "des", "du", "une", "vous", "sur"}
+_DE_HINTS = {"der", "die", "das", "ist", "sind", "was", "wer", "wie", "welche", "unser", "unsere",
+             "mein", "meine", "mit", "für", "und", "ich", "du", "bitte", "zu", "über", "ein", "eine"}
+
+
+def _no_evidence_text(question: str) -> str:
+    """Ehrliche Absage, wenn das Graph-Backend nicht erreichbar ist — in der Sprache der Frage
+    (wie die LLM-Antworten, Standard: Deutsch). Erfindet nichts und nennt keine Quellen."""
+    toks = set(re.findall(r"[a-zà-ÿß]+", (question or "").lower()))
+    scores = {"de": len(toks & _DE_HINTS), "en": len(toks & _EN_HINTS), "fr": len(toks & _FR_HINTS)}
+    lang = max(scores, key=lambda k: scores[k]) if max(scores.values()) > scores["de"] else "de"
+    if lang == "en":
+        return ("I don't have an evidenced source for that right now. The knowledge graph is "
+                "currently unreachable, so I won't answer from guesswork — please try again shortly.")
+    if lang == "fr":
+        return ("Je n'ai pas de source vérifiée pour cela pour le moment. Le graphe de connaissances "
+                "est actuellement injoignable — je préfère ne pas répondre au hasard. "
+                "Réessayez dans un instant.")
+    return ("Dazu habe ich gerade keine belegte Quelle. Der Wissensgraph ist im Moment nicht "
+            "erreichbar — statt zu raten, beantworte ich die Frage deshalb nicht. "
+            "Bitte versuche es gleich noch einmal.")
+
+
 async def _plan_answer(req: AnswerReq) -> dict:
     """Entscheidet Pfad + Prompt/Quellen VOR der Generierung (geteilt von /answer & /answer/stream).
 
@@ -865,7 +893,7 @@ async def _plan_answer(req: AnswerReq) -> dict:
     #    team-private → client (org) → market → mesh.
     client_group = map_client_to_group(req.client_id)
     use_shared = _use_shared(req.intel)
-    # Produkt-Identitäts-Ebene (c:node/NENA) IMMER mitziehen — auch in PUBLIC_DEMO und über
+    # Produkt-Identitäts-Ebene (c:node / c:node Graph) IMMER mitziehen — auch in PUBLIC_DEMO und über
     # alle per-User-Workspaces hinweg. Read-only Produktwissen, keine Nutzerdaten → belegt
     # („Was ist c:node?" → grounding: gedaechtnis statt allgemein).
     base_task = nen.retrieve(req.text, BASE_GROUP, limit=4)
@@ -873,14 +901,16 @@ async def _plan_answer(req: AnswerReq) -> dict:
     src_p: list[dict] = []
     if not use_shared:
         # Ohne Fach-Domäne/Entitlement (oder Public-Demo): eigene Client-Ebene + Basis-Wissen.
-        # In der Free-Sandbox zusätzlich die kuratierte NENA-Vorschau-Scheibe (Teaser-Tiefe).
+        # In der Free-Sandbox zusätzlich die kuratierte c:node-Graph-Vorschau-Scheibe (Teaser-Tiefe).
         if show_preview:
             (src_c, _rc), (src_b, _rb), (src_p, _rp) = await asyncio.gather(
                 nen.retrieve(req.text, client_group, limit=8), base_task,
                 nen.retrieve(req.text, PREVIEW_GROUP, limit=4))
+            reach = [_rc, _rb, _rp]
         else:
             (src_c, _rc), (src_b, _rb) = await asyncio.gather(
                 nen.retrieve(req.text, client_group, limit=8), base_task)
+            reach = [_rc, _rb]
         src_m, src_x, src_t = [], [], []
     else:
         (src_c, _rc), (src_m, _rm), (src_x, _rx), (src_b, _rb) = await asyncio.gather(
@@ -889,7 +919,18 @@ async def _plan_answer(req: AnswerReq) -> dict:
             nen.retrieve(req.text, MESH_GROUP, limit=6),
             base_task,
         )
+        reach = [_rc, _rm, _rx, _rb]
         src_t = await _retrieve_teams(req.text, client_group, req.teams, limit=6)
+
+    # 2b) Graph-Backend nicht erreichbar → KEINE freie LLM-Antwort auf eine Frage, die Belege
+    #     bräuchte (sähe wie eine belegte Antwort aus). Stattdessen offen sagen, dass gerade
+    #     keine belegte Quelle verfügbar ist — keine Quellen, grounded=False, kein LLM-Aufruf.
+    if not any(reach):
+        return {**base, "system": CHAT_SYSTEM, "prompt": "", "max_tokens": 0,
+                "grounding": "allgemein", "graph_offline": True,
+                "fixed_text": _no_evidence_text(req.text),
+                "trace": [{"step": "retrieve", "method": "nen.query",
+                           "result": "graph backend unreachable", "service": "engine"}]}
     src_c = src_b + src_c            # Produktwissen zählt als belegte Client-Ebene
     for s in src_c:
         s["layer"] = "client"
@@ -931,7 +972,7 @@ async def _plan_answer(req: AnswerReq) -> dict:
     # 4) Belegte, beratende Synthese über relevante Fakten → MIT Quellen + Rechenweg.
     facts = artifacts.facts_from_sources(relevant)
     # Wurde die kuratierte Vorschau-Scheibe tatsächlich für die Antwort genutzt? Dann rahmen wir
-    # sie offen als Teaser und laden zum Upgrade auf die volle NENA-Tiefe ein.
+    # sie offen als Teaser und laden zum Upgrade auf die volle c:node-Graph-Tiefe ein.
     preview_used = any(s.get("layer") == "preview" for s in relevant)
     # 1-Hop-Nachbarn mitliefern → belegte Antworten, deren Kern in verbundenen Knoten steht
     # (z.B. Angebote/Programme eines Hubs). Kommt aus DEMSELBEN Graphen, bleibt also belegt.
@@ -958,9 +999,9 @@ async def _plan_answer(req: AnswerReq) -> dict:
         + f"Fakten aus dem Gedächtnis (Mandant + geteilte Market- + Mesh-Ebene):\n{facts}\n\n"
         + f"Frage des Nutzers: {req.text}\n\nBeratende, belegte Antwort:"
     )
-    # Vorschau-Treffer → offener Upgrade-CTA (die volle NENA-Tiefe ist bezahlt).
-    ctas = ([{"type": "upgrade", "label": "🔓 Volle NENA-Tiefe freischalten",
-              "note": "Diese Antwort nutzt eine kuratierte Vorschau des NENA-Marktwissens."}]
+    # Vorschau-Treffer → offener Upgrade-CTA (die volle c:node-Graph-Tiefe ist bezahlt).
+    ctas = ([{"type": "upgrade", "label": "🔓 Volle c:node-Graph-Tiefe freischalten",
+              "note": "Diese Antwort nutzt eine kuratierte Vorschau des c:node-Graph-Marktwissens."}]
             if preview_used else None)
     return {"system": CONSULT_SYSTEM, "prompt": prompt, "max_tokens": 1600,
             "sources": relevant, "trace": [retrieve_step], "ctas": ctas, "layers": layers,
@@ -988,7 +1029,9 @@ def _finalize_answer(plan: dict, full: str, prov: str, mdl: str) -> dict:
     out = {"result": text, "sources": plan["sources"], "trace": trace, "suggestions": sugs,
            "provider": prov or "ollama", "model": mdl or "", "layers": plan["layers"],
            "grounded": plan["grounded"], "grounding": grounding,
-           "tokens": llm.last_tokens()}  # echte Provider-Token-Nutzung (usageMetadata/usage)
+           "tokens": llm.last_tokens() if prov != "none" else 0}  # echte Provider-Token-Nutzung
+    if plan.get("graph_offline"):
+        out["graph_offline"] = True
     if plan["ctas"]:
         out["ctas"] = plan["ctas"]
     return out
@@ -1014,6 +1057,8 @@ async def agent_synthesize(req: AgentSynthReq):
 async def answer(req: AnswerReq):
     """Drei-Ebenen-Retrieval + adaptive Pfad-Wahl; nicht-gestreamte Vollantwort."""
     plan = await _plan_answer(req)
+    if plan.get("fixed_text"):         # Graph offline → ehrliche Absage, kein LLM
+        return _finalize_answer(plan, plan["fixed_text"], "none", "")
     if req.system_override:            # Fach-Agent-Persona statt Standard-System
         plan["system"] = req.system_override
     gen, prov, mdl = await llm.generate(plan["prompt"], plan["system"],
@@ -1029,6 +1074,12 @@ async def answer_stream(req: AnswerReq):
         plan["system"] = req.system_override
 
     async def gen():
+        if plan.get("fixed_text"):     # Graph offline → ehrliche Absage, kein LLM
+            yield "data: " + json.dumps({"type": "token", "text": plan["fixed_text"]}) + "\n\n"
+            final = _finalize_answer(plan, plan["fixed_text"], "none", "")
+            final["type"] = "done"
+            yield "data: " + json.dumps(final) + "\n\n"
+            return
         acc: list[str] = []
         stream_ok = False
         try:
@@ -1084,13 +1135,16 @@ async def retrieve(req: RetrieveReq):
                 nen.retrieve(req.text, PREVIEW_GROUP, limit=max(3, req.limit - 3)))
         else:
             (src_c, _rc) = await nen.retrieve(req.text, client_group, limit=req.limit)
+            _rp = False
         src_m, src_x, src_t = [], [], []
+        reachable = bool(_rc or _rp)
     else:
         (src_c, _rc), (src_m, _rm), (src_x, _rx) = await asyncio.gather(
             nen.retrieve(req.text, client_group, limit=req.limit),
             nen.retrieve(req.text, MARKET_GROUP, limit=max(4, req.limit - 2)),
             nen.retrieve(req.text, MESH_GROUP, limit=max(4, req.limit - 2)),
         )
+        reachable = bool(_rc or _rm or _rx)
         src_t = await _retrieve_teams(req.text, client_group, req.teams, limit=max(4, req.limit - 2))
     for s in src_c:
         s["layer"] = "client"
@@ -1105,7 +1159,7 @@ async def retrieve(req: RetrieveReq):
     merged = nen.rank_sources(req.text, src_t + src_c + src_m + src_x + src_p)
     relevant = nen.relevant_sources(req.text, merged)
     return {"sources": relevant, "facts": artifacts.facts_from_sources(relevant),
-            "layers": layers, "count": len(relevant)}
+            "layers": layers, "count": len(relevant), "reachable": reachable}
 
 
 EXTRACT_SYSTEM = (
@@ -1775,9 +1829,7 @@ async def graph(client_id: str = "creativate", limit: int = 80,
     Mesh-Ebene ist anfangs leer → 0 zusätzliche Knoten, kein Fehler.
     """
     group_id = map_client_to_group(client_id)
-    g, reachable = await nen.graph(group_id, limit=limit)
-    if not reachable:
-        g = nen.fallback_graph(group_id)
+    g, reachable = await nen.graph(group_id, limit=limit)  # offline → leerer Graph, nichts erfunden
     for n in g["nodes"]:
         n["layer"] = "client"
     for e in g["edges"]:
@@ -1816,7 +1868,7 @@ async def graph(client_id: str = "creativate", limit: int = 80,
         nodes += gb["nodes"]
         edges += gb["edges"]
 
-    # NENA-Vorschau-Scheibe (Free-Sandbox-Teaser) — als eigener Layer "preview" einblendbar,
+    # c:node-Graph-Vorschau-Scheibe (Free-Sandbox-Teaser) — als eigener Layer "preview" einblendbar,
     # damit die Graph-Ansicht deckungsgleich mit den zitierten Vorschau-Quellen ist.
     preview_reachable = None
     if include_preview:
@@ -1847,7 +1899,8 @@ async def graph(client_id: str = "creativate", limit: int = 80,
             "market_reachable": market_reachable, "mesh_reachable": mesh_reachable,
             "preview_reachable": preview_reachable,
             "merge": merge_stats, "stitch": stitch_stats,
-            "source": "nen-ai" if reachable else "engine-fallback"}
+            "reachable": reachable,
+            "source": "nen-ai" if reachable else "unreachable"}
 
 
 @app.post("/ingest")
@@ -1909,7 +1962,7 @@ async def ingest(req: IngestReq):
 
 @app.post("/market/seed")
 async def market_seed():
-    """Befüllt die NENA-Markt-Ebene mit kuratiertem, quellenbelegtem Marktwissen (bezahlt).
+    """Befüllt die c:node-Graph-Markt-Ebene mit kuratiertem, quellenbelegtem Marktwissen (bezahlt).
     Idempotent-ish via Dedup. Nur über intel=true / SHARED_LAYERS im Chat sichtbar."""
     labels: list[str] = []
     persisted = False
@@ -1928,9 +1981,9 @@ async def market_seed():
 
 @app.post("/preview/seed")
 async def preview_seed():
-    """Befüllt die NENA-Vorschau-Scheibe (Free-Sandbox-Teaser) mit kuratiertem, rein
+    """Befüllt die c:node-Graph-Vorschau-Scheibe (Free-Sandbox-Teaser) mit kuratiertem, rein
     öffentlichem, quellenbelegtem Wissen. Wird NUR in PUBLIC_DEMO als Layer
-    „NENA-Marktwissen · Vorschau" eingeblendet — die volle Tiefe bleibt intel=true.
+    „c:node-Graph-Marktwissen · Vorschau" eingeblendet — die volle Tiefe bleibt intel=true.
     content=summary → semantische Treffer statt nur Label. Idempotent-ish via Dedup."""
     by_src: dict[str, list[dict]] = {}
     for s, t, rel in _PREVIEW_LINKS:
@@ -1942,7 +1995,7 @@ async def preview_seed():
         _raw, reachable = await nen.ingest(
             {"label": e["label"], "type": e["type"],
              "props": {**e.get("props", {}), "preview": True,
-                       "quelle": e.get("props", {}).get("quelle", "nena-vorschau")},
+                       "quelle": e.get("props", {}).get("quelle", "cnode-graph-vorschau")},
              "content": summary,
              "links": by_src.get(e["label"], [])},
             PREVIEW_GROUP,
@@ -1972,7 +2025,7 @@ async def mesh_seed():
 
 @app.post("/base/seed")
 async def base_seed():
-    """Befüllt die Produkt-Identitäts-Ebene (c:node/NENA) — IMMER mitgeliefert, read-only.
+    """Befüllt die Produkt-Identitäts-Ebene (c:node / c:node Graph) — IMMER mitgeliefert, read-only.
     Macht „Was ist c:node?" belegt (grounding: gedaechtnis) statt generisch. Idempotent-ish."""
     by_src: dict[str, list[dict]] = {}
     for s, t, rel in _BASE_LINKS:
@@ -2027,8 +2080,8 @@ async def _mesh_contribute_group(group: str) -> dict:
     Inhalte oder PII. Geteilt von manuellem /mesh/contribute und dem Auto-Trigger.
     """
     g, reachable = await nen.graph(group, limit=300)
-    if not reachable and not g["nodes"]:
-        g = nen.fallback_graph(group)
+    if not reachable:  # nichts erfinden: ohne erreichbaren Graphen keine Mesh-Beiträge
+        return {"contributed": 0, "aggregate": [], "total_nodes": 0, "reachable": False}
     hist = Counter((n.get("type") or "Unbekannt") for n in g["nodes"])
     total = sum(hist.values())
     written: list[dict] = []
@@ -2063,7 +2116,7 @@ async def mesh_status():
 
 @app.get("/queue")
 async def queue():
-    """NEN-Verarbeitungs-Queue-Snapshot (aus den letzten Ingest-Antworten). NEN hat kein
+    """Graph-Verarbeitungs-Queue-Snapshot (aus den letzten Ingest-Antworten). Der externe Graph hat kein
     eigenes Queue-GET → wir zeigen den zuletzt gesehenen Stand + aktuelle Mesh-Größe."""
     return {"nen": nen.LAST_QUEUE}
 
@@ -2083,7 +2136,7 @@ async def artifact(req: ArtifactReq):
     group_id = map_client_to_group(req.client_id)
     instruction = artifacts.KIND_INSTRUCTIONS.get(req.kind, artifacts.KIND_INSTRUCTIONS["memo"])
 
-    # Grounding: belegte Fakten aus der NEN AI holen (Kontext als Query).
+    # Grounding: belegte Fakten aus dem Graph-Backend holen (Kontext als Query).
     query = req.context or f"Erstelle ein {artifacts.kind_title(req.kind)} für {req.client_id}"
     _atext, sources, reachable = await nen.answer(query, group_id, limit=8)
     facts = artifacts.facts_from_sources(sources)

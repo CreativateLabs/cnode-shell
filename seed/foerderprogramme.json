@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "note": "Förderprogramm-Pool für /foerder/match (Self-Check-Match). Wird gegen das client_profile geranked. Ergänzt den Verwaltungsleistungs-Katalog (data-foerder/leistung), da die foerderprogramm-Tabelle im data-foerder-Datensatz aktuell leer ist. Kann später durch einen echten Förder-Import (z.B. foerderdatenbank.de) ersetzt werden.",
+    "note": "Förderprogramm-Pool für /foerder/match (Self-Check-Match). Wird gegen das client_profile geranked. Ergänzt den Verwaltungsleistungs-Katalog (seed/verwaltungsleistungen.json). Kurzbeschreibungen öffentlicher Programme ohne Gewähr — vor Nutzung an der offiziellen Quelle prüfen (z.B. foerderdatenbank.de). Kann durch einen eigenen Förder-Import ersetzt werden.",
     "version": "0.1.0"
   },
   "programs": [

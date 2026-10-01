@@ -1,4 +1,4 @@
-"""client_id → NEN-AI group_id Auflösung (TenantContext-aware).
+"""client_id → Graph-group_id Auflösung (TenantContext-aware).
 
 Drei-Ebenen-Wissensgraph:
   • client — der TENANT-eigene, ontologie-basierte Graph. Primär durch die tenant.yaml
@@ -15,7 +15,7 @@ from __future__ import annotations
 MARKET_GROUP = "market"
 MESH_GROUP = "mesh"
 
-# Basis-Aliase/Groups (verifizierte NEN-AI-Groups). Der eigene Tenant-Group wird
+# Basis-Aliase/Groups (bekannte Graph-Groups). Der eigene Tenant-Group wird
 # unten aus dem TenantContext ergänzt.
 _BASE_KNOWN = {"cnode", "creativate"}
 ALIASES = {}
@@ -70,7 +70,7 @@ import re as _re
 
 
 def map_client_to_group(client_id: str | None) -> str:
-    """client_id → gültige NEN-AI group_id (offline-sicher, tenant-aware).
+    """client_id → gültige Graph-group_id (offline-sicher, tenant-aware).
 
     `ws:<name>` ist ein EXPLIZIT isolierter Workspace-Namespace (Sandbox: pro-User-
     Gedächtnis). Der Rest von `<name>` wird zu einem eigenen, stabilen group_id sanitisiert

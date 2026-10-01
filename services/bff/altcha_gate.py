@@ -1,6 +1,6 @@
 """Altcha — selbst-gehosteter Proof-of-Work-Bot-Schutz (kein Dritt-Dienst sieht den Besucher).
 
-Portiert das Schema von altcha-lib (wie forms.creativate.tech): der Server stellt eine
+Portiert das Schema von altcha-lib: der Server stellt eine
 Challenge (SHA-256 über salt+number, mit HMAC signiert), das Widget löst den PoW, der Server
 verifiziert die Lösung + verhindert Wiederverwendung (Replay-Guard). Gleicher HMAC-Key wie das
 Deployment (ALTCHA_HMAC_KEY, sonst AUTH_SECRET) — kein zusätzliches Secret nötig.

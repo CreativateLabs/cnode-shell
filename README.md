@@ -105,6 +105,9 @@ TENANT=cnode docker compose \
 The `oss` overlay builds everything from source and adds a small CPU embedder for semantic memory —
 no GPU needed. `make help` lists further shortcuts (`make health`, `make logs`, `make down`).
 
+If the graph backend is unreachable, the assistant does not improvise: questions that need evidence
+get an explicit "no evidenced source right now" reply, marked as not grounded and without sources.
+
 **Desktop app:** `make shell` runs the Tauri app in dev mode (needs the
 [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/)). Tagged releases build installers
 (`.dmg`, `.msi`, `.AppImage`) via [`.github/workflows/release.yml`](.github/workflows/release.yml).
@@ -161,6 +164,7 @@ flowchart LR
 | `services/embed` | Small CPU embedder (fastembed / ONNX, 768-dim) |
 | `services/assets` | Library, upload, text extraction into the graph |
 | `services/voice` | Local speech-to-text |
+| `services/ontology-studio` | Ontology suggestions from table columns (schema.org / FIBO / ISO), deterministic |
 | `services/mcp` | MCP server exposing the agents |
 | `services/domain-*` | Reference domain services built on `packages/cnode-sdk` |
 | `platform/` | Plugin framework (connectors, formats, agents, systems) |
@@ -171,6 +175,7 @@ flowchart LR
 | Variable | Default | Purpose |
 |---|---|---|
 | `TENANT` | `cnode` | Which `tenants/<slug>/tenant.yaml` to mount |
+| `GRAPH_BACKEND` | `graph-core` | Graph runtime: in-repo `graph-core`; `nen-cig` = optional external c:node Graph (`NEN_AI_URL`) |
 | `DEFAULT_PROVIDER` | `ollama` | LLM provider for new chats |
 | `OLLAMA_BASE_URL` | `http://host.docker.internal:11434` | Where Ollama runs |
 | `OLLAMA_MODEL` / `DEFAULT_MODEL` | `qwen2.5:7b` | Local model |

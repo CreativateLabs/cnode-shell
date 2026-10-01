@@ -1,6 +1,10 @@
-"""NEN-AI-Adapter — frontet die echte NEN AI (CIG) unter NEN_AI_URL.
+"""Graph-Adapter der Engine.
 
-Verifizierte NEN-AI-Endpunkte:
+Default-Backend ist `graph-core` (die pgvector-Runtime in diesem Repo). Optional kann ein
+externer, gehosteter c:node Graph über seine CIG-API angebunden werden
+(GRAPH_BACKEND=nen-cig, Basis-URL NEN_AI_URL — Namen historisch).
+
+CIG-Endpunkte des optionalen externen c:node Graph:
   GET  /api/v1/cig/health
   POST /api/v1/cig/answer            {query, group_id, limit} → {answer, sources:[{fact,source,uuid,...}]}
   GET  /api/v1/cig/graph?group_id=&limit=  → {nodes:[{id,label,type,summary}], edges:[...]}
@@ -9,9 +13,9 @@ Verifizierte NEN-AI-Endpunkte:
   POST /api/v1/cig/ingest
   GET  /api/v1/tenants
 
-Alle Antworten werden auf die eingefrorenen Contracts (§2.2) normalisiert. Ist NEN
-nicht erreichbar, liefern die Funktionen plausible deterministische Fallbacks in
-derselben Contract-Form (De-Risking — Demo bleibt stabil, kein Crash/500).
+Alle Antworten werden auf die eingefrorenen Contracts (§2.2) normalisiert. Ist das Backend
+nicht erreichbar, liefern die Funktionen leere Ergebnisse + `reachable=False` (kein Crash/500)
+— niemals erfundene Inhalte; die Engine sagt dem Nutzer dann offen, dass kein Beleg vorliegt.
 """
 from __future__ import annotations
 
@@ -24,17 +28,17 @@ import httpx
 NEN_AI_URL = os.getenv("NEN_AI_URL", "http://host.docker.internal:8001").rstrip("/")
 
 # Graph-Backend-Adapter: welche Runtime der Graph nutzt.
-#   graph-core  → souveräne, synchrone Neo4j-Runtime im Repo (Default, air-gapped)
-#   nen-cig   → externe NEN AI (CIG), async LLM-Extraktion (optional/advanced)
-GRAPH_BACKEND = os.getenv("GRAPH_BACKEND", "nen-cig").lower()
+#   graph-core → souveräne, synchrone pgvector-Runtime im Repo (Default, air-gapped)
+#   nen-cig    → optionaler externer c:node Graph (CIG-API), async LLM-Extraktion
+GRAPH_BACKEND = os.getenv("GRAPH_BACKEND", "graph-core").lower()
 GRAPH_CORE_URL = os.getenv("GRAPH_CORE_URL", "http://graph-core:8010").rstrip("/")
 
-# NEN verarbeitet Ingests über eine asynchrone LLM-Extraktions-Queue. Es gibt kein
+# Der externe c:node Graph verarbeitet Ingests über eine asynchrone LLM-Extraktions-Queue. Es gibt kein
 # Queue-GET — daher merken wir uns den letzten Snapshot aus den Ingest-Antworten
 # ({status, pending, processing, processed, failed}), damit das UI ihn zeigen kann.
 LAST_QUEUE: dict = {"pending": 0, "processed": 0, "failed": 0, "processing": None, "ts": None}
 
-# NEN-Typen → §2.2 Node-Typ-Enum (Company|Product|Decision|Document|Person|FundingProgram|Lead|Thought)
+# Externe Graph-Typen → §2.2 Node-Typ-Enum (Company|Product|Decision|Document|Person|FundingProgram|Lead|Thought)
 TYPE_MAP = {
     "organisation": "Company",
     "organization": "Company",
@@ -67,7 +71,7 @@ def map_node_type(raw: str | None) -> str:
 # ---------------------------------------------------------------- normalisierung
 
 def normalize_source(s: dict) -> dict:
-    """NEN-Source → §2.1/§2.2-Source {id,label,type,props,provenance}."""
+    """Externe Graph-Source → §2.1/§2.2-Source {id,label,type,props,provenance}."""
     if not isinstance(s, dict):
         return {"id": "", "label": str(s), "type": "Fact", "props": {}, "provenance": "nen-ai"}
     sid = s.get("uuid") or s.get("id") or ""
@@ -80,7 +84,7 @@ def normalize_source(s: dict) -> dict:
 
 
 def normalize_node(n: dict) -> dict:
-    """NEN-Node → §2.2 Node {id,label,type,props}."""
+    """Externe Graph-Node → §2.2 Node {id,label,type,props}."""
     props = {k: v for k, v in n.items() if k not in ("id", "label", "type")}
     props["type_raw"] = n.get("type")
     return {
@@ -92,7 +96,7 @@ def normalize_node(n: dict) -> dict:
 
 
 def normalize_edge(e: dict) -> dict:
-    """NEN-Edge → §2.2 Edge {source,target,rel,provenance}."""
+    """Externe Graph-Edge → §2.2 Edge {source,target,rel,provenance}."""
     source = e.get("source") or e.get("from") or e.get("start") or e.get("source_id") or ""
     target = e.get("target") or e.get("to") or e.get("end") or e.get("target_id") or ""
     rel = e.get("rel") or e.get("relation") or e.get("type") or e.get("label") or "RELATED_TO"
@@ -130,7 +134,7 @@ def stitch_orphans(nodes: list[dict], edges: list[dict]) -> tuple[list[dict], di
     """Read-time Kanten-Projektion: verbindet lose Knoten (Grad 0) mit den Entitäten,
     die in ihrem Text/Summary erwähnt werden (`MENTIONS`, provenance `engine:stitch`).
 
-    Nicht-mutierend gegenüber NEN — reine Projektion beim Lesen, damit der angezeigte
+    Nicht-mutierend gegenüber dem Graph-Backend — reine Projektion beim Lesen, damit der angezeigte
     Graph zusammenhängt statt in Dutzenden losen Dokument-/Quellknoten zu zerfallen.
     Es werden NUR Kanten ergänzt, bei denen mindestens ein Endpunkt sonst lose wäre;
     der bereits verbundene Kern wird nicht zusätzlich verrauscht.
@@ -406,7 +410,7 @@ def rank_sources(query: str, sources: list[dict],
     Der Client-Boost sorgt dafür, dass eigene Mandanten-Quellen bei Gleichstand vor
     geteilten Market-Quellen ranken. `weights` (E2.3) hebt Terme, die in belegten
     Antworten wiederholt genutzt wurden — der Graph „lernt", welche Entitäten für den
-    Mandanten zählen. `sorted` ist stabil → Ties behalten die NEN-Reihenfolge.
+    Mandanten zählen. `sorted` ist stabil → Ties behalten die Backend-Reihenfolge.
     """
     terms = _content_terms(query)
     w = weights or {}
@@ -471,10 +475,10 @@ def relevant_sources(query: str, sources: list[dict]) -> list[dict]:
 
 def compose_two_level_answer(text_c: str, src_c: list[dict],
                              text_m: str, src_m: list[dict]) -> str:
-    """Kombiniert die belegten NEN-Antworten beider Ebenen zu einem Antworttext.
+    """Kombiniert die belegten Graph-Antworten beider Ebenen zu einem Antworttext.
 
     Market-Text wird NUR angehängt, wenn die Market-Ebene tatsächlich Quellen
-    lieferte (sonst gibt NEN einen "keine Infos"-Platzhalter zurück, der nicht in
+    lieferte (sonst gibt das Backend einen "keine Infos"-Platzhalter zurück, der nicht in
     die Antwort gehört). Ist die Market-Ebene leer → reine Client-Antwort.
     """
     has_c, has_m = bool(src_c), bool(src_m)
@@ -631,9 +635,9 @@ async def graph(group_id: str, limit: int = 80) -> tuple[dict, bool]:
 async def ingest(payload: dict, group_id: str) -> tuple[dict, bool]:
     """POST /api/v1/cig/ingest. Returns (raw_response, reachable).
 
-    Mappt das Shell-Ingest-Contract {label,type,props,links} auf NENs
+    Mappt das Shell-Ingest-Contract {label,type,props,links} auf den
     IngestRequest {name, content, source, group_id}. `content` wird als natürlicher
-    Text aufbereitet, damit die NEN-Extraction Entitäten/Kanten ableiten kann.
+    Text aufbereitet, damit die Graph-Extraktion Entitäten/Kanten ableiten kann.
     """
     if GRAPH_BACKEND == "graph-core":
         return await _core_ingest(payload, group_id)
@@ -643,8 +647,8 @@ async def ingest(payload: dict, group_id: str) -> tuple[dict, bool]:
     links = payload.get("links") or []
     doc_text = (payload.get("content") or "").strip()
 
-    # Meta-Sätze aus Label/Props/Links — geben NEN den Kontext, wer die Quelle ist.
-    # Der eigentliche Dokumenttext (falls vorhanden) steht VORAN, damit der NEN-Extraktor
+    # Meta-Sätze aus Label/Props/Links — geben dem Graph-Backend den Kontext, wer die Quelle ist.
+    # Der eigentliche Dokumenttext (falls vorhanden) steht VORAN, damit der Extraktor
     # daraus Entitäten + Kanten zieht und die Quelle mit ihnen verbindet (kein Stub).
     lines = [f"{label} ist vom Typ {ntype}."]
     for k, v in props.items():
@@ -662,7 +666,7 @@ async def ingest(payload: dict, group_id: str) -> tuple[dict, bool]:
     meta = "\n".join(lines)
     content = f"Quelle „{label}\":\n{doc_text}\n\n{meta}" if doc_text else meta
 
-    # Provenienz NEN-seitig als `source` mitgeben (statt pauschal „engine-shell"),
+    # Provenienz backend-seitig als `source` mitgeben (statt pauschal „engine-shell"),
     # damit belegte Antworten die echte Quelle nennen (Gmail/Drive/Artefakt/Chat …).
     source = str(props.get("quelle") or props.get("provenance") or "engine-shell")
     body = {"name": label, "content": content, "source": source, "group_id": group_id}
@@ -728,40 +732,3 @@ async def list_tenants() -> list[dict]:
             return r.json().get("tenants", [])
     except Exception:
         return []
-
-
-# ---------------------------------------------------------------- fallbacks (De-Risking)
-
-def fallback_answer(query: str, group_id: str) -> tuple[str, list[dict]]:
-    """Deterministische, plausible Antwort wenn NEN-AI offline ist."""
-    text = (
-        f"**Hinweis:** Der NEN-Gedächtnis ist derzeit nicht erreichbar — dies ist eine "
-        f"deterministische Fallback-Antwort (Demo bleibt stabil).\n\n"
-        f"Zur Anfrage *\"{query}\"* im Mandanten-Kontext `{group_id}` liegen offline keine "
-        f"belegten Fakten vor. Sobald die NEN AI (Port 8001) verfügbar ist, wird diese Antwort "
-        f"mit Quellen aus dem Gedächtnis beantwortet."
-    )
-    sources = [{
-        "id": "fallback", "label": "NEN-AI offline — kein Quellnachweis verfügbar",
-        "type": "Note", "props": {"group_id": group_id}, "provenance": "engine:fallback",
-    }]
-    return text, sources
-
-
-def fallback_graph(group_id: str) -> dict:
-    """Deterministischer Mini-Graph als Fallback."""
-    nodes = [
-        {"id": f"{group_id}-org", "label": group_id.capitalize(), "type": "Company",
-         "props": {"note": "Fallback-Knoten (NEN-AI offline)"}},
-        {"id": f"{group_id}-decision", "label": "Offene Entscheidung", "type": "Decision",
-         "props": {"note": "Fallback-Knoten"}},
-        {"id": f"{group_id}-doc", "label": "Gedächtnis", "type": "Document",
-         "props": {"note": "Fallback-Knoten"}},
-    ]
-    edges = [
-        {"source": f"{group_id}-org", "target": f"{group_id}-decision",
-         "rel": "TRIFFT", "provenance": "engine:fallback"},
-        {"source": f"{group_id}-decision", "target": f"{group_id}-doc",
-         "rel": "GESTÜTZT_AUF", "provenance": "engine:fallback"},
-    ]
-    return {"nodes": nodes, "edges": edges}

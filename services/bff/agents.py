@@ -398,7 +398,7 @@ async def run_stream(
         if not md.strip():
             md = (f"## Entscheidungs-Memo: {goal[:70]}\n\n### Ausgangslage\n{goal}\n\n"
                   f"### Belegte Fakten\n{facts or '- (keine belegten Fakten verfügbar)'}\n\n"
-                  f"### Hinweis\nUnvollständig — LLM/NEN offline oder unzureichende Faktenlage. "
+                  f"### Hinweis\nUnvollständig — LLM/Graph offline oder unzureichende Faktenlage. "
                   f"Es wurde nichts erfunden.")
         title = f"Entscheidungs-Memo: {goal[:60]}"
         artifact = {

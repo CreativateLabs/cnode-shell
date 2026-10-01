@@ -1,4 +1,4 @@
-# Creativate Dev-Shell
+# c:node Shell
 COMPOSE = docker compose -f infra/docker-compose.yml
 
 .PHONY: help up down logs ps health seed-reset ui ui-install shell clean
@@ -27,7 +27,7 @@ ps:
 	$(COMPOSE) ps
 
 health:
-	@for p in 8080:gateway 8010:graph-core 8020:cnode-core 8030:asset-scout 8040:asset-foerder 8050:model-router; do \
+	@for p in 8080:bff 8010:graph-core 8020:engine 8030:assets 8060:voice 8070:ontology-studio; do \
 		port=$${p%%:*}; name=$${p##*:}; \
 		printf "  %-14s " $$name; curl -s -m 5 http://localhost:$$port/health || echo "DOWN"; echo; \
 	done
@@ -68,16 +68,6 @@ cloud-up:              ## make cloud-up  — cNode Cloud-Profil (Cloud-LLM + API
 cloud-down:
 	TENANT=cnode $(CLOUDCOMPOSE) down
 
-PUBLICCOMPOSE = docker compose -f infra/docker-compose.yml -f infra/docker-compose.tenant.yml -f infra/docker-compose.public.yml --env-file .env
-# Öffentliche c:node-Demo: Gemini-Cloud-LLM + IP-Abriegelung (nur eigene Ebene). Startet
-# BEWUSST nur die abgesicherte Service-Teilmenge — KEIN ontology-studio, KEINE domain-*.
-public-up:             ## make public-up  — öffentliche c:node-Demo (Gemini, IP-abgeriegelt). Braucht GOOGLE_API_KEY in .env
-	TENANT=cnode $(PUBLICCOMPOSE) up -d --build graph-db graph-core postgres engine assets bff
-	@echo "→ c:node-Demo up (Gemini · PUBLIC_DEMO=1 · nur eigene Ebene). API: http://localhost:8080"
-
-public-down:
-	TENANT=cnode $(PUBLICCOMPOSE) down
-
 tenant-new:            ## make tenant-new NAME=<slug>  — neuen lokalen Tenant scaffolden
 	@test -n "$(NAME)" || (echo "NAME=<slug> erforderlich" && exit 1)
 	./scripts/tenant-new.sh $(NAME)
@@ -104,8 +94,3 @@ tenant-import:         ## TENANT=<slug> URL=<url> make tenant-import  — URL sc
 	@test -n "$(URL)" || (echo "URL=<url> erforderlich" && exit 1)
 	curl -s -X POST localhost:8020/enrich/url -H 'content-type: application/json' \
 	  -d '{"url":"$(URL)","client_id":"$(TENANT)"}' | python3 -m json.tool
-
-datafoerder-load:       ## LIMIT=<n> make datafoerder-load  — data-foerder-LeiKa → geteilte market-Ebene (alle Tenants erben)
-	@docker cp scripts/load_datafoerder.py cnode-assets:/tmp/load_datafoerder.py
-	@docker exec -e LIMIT=$(or $(LIMIT),500) -e BATCH=$(or $(BATCH),100) \
-	  cnode-assets python /tmp/load_datafoerder.py

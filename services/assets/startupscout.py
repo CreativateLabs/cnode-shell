@@ -1,6 +1,6 @@
 """StartupScout-Adapter — findet Früh-Phase-Startups über öffentliche, rechtssichere Quellen.
 
-Basierend auf dem PoC (startupscout.creativate.tech): Multi-Source-Discovery, ICP-Scoring
+Basierend auf einem früheren StartupScout-PoC: Multi-Source-Discovery, ICP-Scoring
 0–100 + Begründung, quellenbelegte Kontaktdaten. Primäre LIVE-Quelle hier: die **GitHub-
 Such-API** (frei, ohne Vertrag; optional GITHUB_TOKEN für höhere Limits) — technische
 Startups/Orgs über Code-Aktivität, oft Jahre vor der ersten Funding-Runde sichtbar.

@@ -382,7 +382,7 @@ async def _ingest(title: str, text: str, url: str, client_id: str,
     node = {
         "label": (title or url)[:160],
         "type": "Document",
-        # Volltext (gekappt) als content → NEN extrahiert daraus einen verbundenen
+        # Volltext (gekappt) als content → das Graph-Backend extrahiert daraus einen verbundenen
         # Subgraphen statt eines isolierten Stub-Knotens.
         "content": re.sub(r"\s+", " ", text)[:8000].strip(),
         "props": {

@@ -180,10 +180,10 @@ export default function App() {
   const [showOwnerSetup, setShowOwnerSetup] = useState(false)
   // Sandbox: Login ist die Default-Seite — keine öffentliche Landing davor.
   const [showLanding, setShowLanding] = useState(false)
-  // Monetarisierung: Entitlement (Tier/NENA) + Cap-Hit (429) → Upsell-Surface.
+  // Monetarisierung: Entitlement (Tier/c:node Graph) + Cap-Hit (429) → Upsell-Surface.
   const [entitlement, setEntitlement] = useState<EntitlementDTO | null>(null)
   const [capHit, setCapHit] = useState(false)
-  // Zähler, dessen Erhöhung den Upgrade-Modal öffnet (Chat-CTA „Volle NENA-Tiefe freischalten").
+  // Zähler, dessen Erhöhung den Upgrade-Modal öffnet (Chat-CTA „Volle c:node-Graph-Tiefe freischalten").
   const [upgradeSignal, setUpgradeSignal] = useState(0)
 
   // v3: notifications, library, tenant member emails, onboarding

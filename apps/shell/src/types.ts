@@ -273,12 +273,12 @@ export type User = {
 
 export type Tenant = { id: string; name?: string; label?: string; settings?: Record<string, unknown>; created_at?: string }
 
-// GET /tenant/entitlement → Monetarisierung: Tier + NENA-Flag + Upsell-Ziele.
+// GET /tenant/entitlement → Monetarisierung: Tier + c:node-Graph-Flag + Upsell-Ziele.
 export type EntitlementTier = 'free' | 'pro' | 'team' | 'enterprise' | string
 export type EntitlementDTO = {
   tenant_id: string
   tier: EntitlementTier
-  intel: boolean               // NENA (market/mesh) freigeschaltet?
+  intel: boolean               // c:node Graph (market/mesh) freigeschaltet?
   public_demo: boolean         // läuft diese Instanz als öffentliche Sandbox?
   caps: { per_min?: number; per_day?: number; tokens_per_day?: number }
   upgrade: { pro?: string; team?: string; enterprise?: string; whitelabel?: string }
