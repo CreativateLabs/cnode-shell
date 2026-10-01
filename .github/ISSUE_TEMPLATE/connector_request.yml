@@ -1,0 +1,45 @@
+name: 🔌 Connector request
+description: Ask for (or propose to build) a connector to a tool or data source
+labels: ["enhancement", "🚦 status: awaiting triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Connectors are plugins under `platform/cnode_platform/plugins/connectors/` — see
+        [platform/README.md](https://github.com/CreativateLabs/cnode-shell/blob/main/platform/README.md).
+        Community-built connectors are very welcome.
+  - type: input
+    id: system
+    attributes:
+      label: Tool / data source
+      placeholder: "e.g. Nextcloud, SharePoint, Confluence, IMAP, a local folder"
+    validations:
+      required: true
+  - type: dropdown
+    id: direction
+    attributes:
+      label: Direction
+      multiple: true
+      options:
+        - Input — read sources into the knowledge graph
+        - Output — push results / drafts (behind the approval gate)
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What would you ask c:node once this source is connected?
+    validations:
+      required: true
+  - type: input
+    id: api
+    attributes:
+      label: API / auth method
+      placeholder: "REST + OAuth2, WebDAV + app password, …"
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd be willing to build this connector.

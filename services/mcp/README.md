@@ -1,7 +1,7 @@
 # c:node Agents — MCP Server
 
 Macht die benannten Fach-Agenten (Mara/Jonas/Lena/Viktor/Nora/Ben) als **MCP-Skills**
-verfügbar — gleiches Verhalten wie in-App: geerdet auf NENA, belegt (Provenienz),
+verfügbar — gleiches Verhalten wie in-App: geerdet auf dem Wissensgraph-Gedächtnis, belegt (Provenienz),
 mandanten-isoliert, **READ-only** (WRITE bleibt hinter menschlicher Freigabe).
 
 Dünner, authentifizierter Proxy auf das c:node-BFF. Die Fach-/Beleg-/Isolations-Logik
@@ -26,7 +26,7 @@ Der Tenant ist immer die Deployment-Org (cnode) — ein Key greift nie darüber 
   "mcpServers": {
     "cnode-agents": {
       "command": "/ABS/PFAD/venv/bin/python",
-      "args": ["/ABS/PFAD/cnode-platform/services/mcp/server.py"],
+      "args": ["/ABS/PFAD/cnode-shell/services/mcp/server.py"],
       "env": {
         "MCP_TRANSPORT": "stdio",
         "CNODE_BFF_URL": "https://api.try.c-node.ai",
@@ -44,7 +44,7 @@ claude mcp add cnode-agents \
   -e MCP_TRANSPORT=stdio \
   -e CNODE_BFF_URL=https://api.try.c-node.ai \
   -e CNODE_API_KEY=<dein-service-key> \
-  -- /ABS/PFAD/venv/bin/python /ABS/PFAD/cnode-platform/services/mcp/server.py
+  -- /ABS/PFAD/venv/bin/python /ABS/PFAD/cnode-shell/services/mcp/server.py
 ```
 
 ## Hosten (streamable-http)

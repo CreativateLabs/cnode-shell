@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/CreativateLabs/cnode-shell/blob/main/SECURITY.md
+    about: Please report security issues privately — not as a public issue.
+  - name: Try the live demo
+    url: https://try.c-node.ai
+    about: See c:node in action before you self-host.
+  - name: Commercial license / c:node Cloud
+    url: https://github.com/CreativateLabs/cnode-shell/blob/main/COMMERCIAL.md
+    about: Closed-source, OEM or white-label use, hosted c:node Graph.
