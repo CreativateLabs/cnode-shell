@@ -2,7 +2,7 @@
 
 Einziger Auth-Boundary der Shell (Port 8080). Nimmt Natural-Language via
 POST /ask, klassifiziert die Absicht über die engine, routet an engine
-(cNode+NEN) oder assets (LeadScout/Förder) und antwortet IMMER im selben
+(Retrieval + Graph) oder assets (LeadScout/Förder) und antwortet IMMER im selben
 Envelope (SCOPE §2.1).
 
 Governance (SCOPE v2): Multi-Tenant-Auth über Magic-Link + JWT. Tenant-Kontext
@@ -61,7 +61,7 @@ EMAIL_FROM = os.getenv("EMAIL_FROM", "cNode <noreply@localhost>")
 # Dediziertes Deployment (Sandbox/Cloud): diese Instanz bedient GENAU eine Org.
 DEPLOYMENT_TENANT = os.getenv("TENANT_ID", "").strip() or "cnode"
 
-# --- Entitlement (Monetarisierung): NENA-Intel + Token-Tier je Tenant --------
+# --- Entitlement (Monetarisierung): c:node-Graph-Intel + Token-Tier je Tenant --------
 # Kurzer TTL-Cache, damit nicht jede LLM-Anfrage die App-DB trifft.
 _ENT_TTL = 30.0
 _ent_cache: dict[str, tuple[dict, float]] = {}
@@ -92,7 +92,7 @@ def _entitlement(tenant_id: str) -> dict:
 
 
 def _intel_flag(tenant_id: str) -> bool | None:
-    """NENA-Flag, das die Engine als `intel` erhält. Nur in der Public-Sandbox relevant —
+    """c:node-Graph-Flag, das die Engine als `intel` erhält. Nur in der Public-Sandbox relevant —
     echte Tenants entscheiden strukturell über SHARED_LAYERS (None = Default-Regel)."""
     if not PUBLIC_DEMO:
         return None
@@ -1280,7 +1280,7 @@ async def save_artifact_to_library(
 # --------------------------------------------------------------------------
 @app.get("/queue")
 async def queue(identity: Identity = Depends(current_identity)):
-    """NEN-Verarbeitungs-Queue-Snapshot (für die UI-Sichtbarkeit der Ingest-Latenz)."""
+    """Graph-Verarbeitungs-Queue-Snapshot (für die UI-Sichtbarkeit der Ingest-Latenz)."""
     try:
         async with httpx.AsyncClient(timeout=T_SHORT) as c:
             r = await c.get(f"{ENGINE_URL}/queue")
@@ -1292,7 +1292,7 @@ async def queue(identity: Identity = Depends(current_identity)):
 @app.get("/graph")
 async def graph(identity: Identity = Depends(require_permission("graph:read"))):
     try:
-        # In der Free-Sandbox (PUBLIC_DEMO, kein Intel) auch die kuratierte NENA-Vorschau-Scheibe
+        # In der Free-Sandbox (PUBLIC_DEMO, kein Intel) auch die kuratierte c:node-Graph-Vorschau-Scheibe
         # einblenden — der Chat belegt daraus, also muss sie im Graph sichtbar sein.
         show_preview = PUBLIC_DEMO and not _entitlement(identity.tenant_id).get("intel")
         async with httpx.AsyncClient(timeout=T_LONG) as c:
@@ -1502,12 +1502,12 @@ def tenant_setup_put(req: TenantSetupReq, identity: Identity = Depends(current_i
 
 
 # --------------------------------------------------------------------------
-# Monetarisierung: Entitlement (NENA-Intel + Token-Tier) + Billing-Webhook
+# Monetarisierung: Entitlement (c:node-Graph-Intel + Token-Tier) + Billing-Webhook
 # --------------------------------------------------------------------------
 @app.get("/tenant/entitlement")
 def tenant_entitlement(identity: Identity = Depends(current_identity)):
     """Was dieser Tenant freigeschaltet hat — steuert Upsell-Banner + Feature-Gates im Frontend.
-    Liefert Tier, NENA-Flag und die geltenden Sandbox-Caps (nur in PUBLIC_DEMO relevant)."""
+    Liefert Tier, c:node-Graph-Flag und die geltenden Sandbox-Caps (nur in PUBLIC_DEMO relevant)."""
     ent = _entitlement(identity.tenant_id)
     caps = ratelimit.caps_for_tier(ent.get("tier"))
     return {
@@ -1866,7 +1866,7 @@ async def admin_mesh_seed(identity: Identity = Depends(require_super_admin)):
 
 @app.post("/admin/market/seed")
 async def admin_market_seed(identity: Identity = Depends(require_super_admin)):
-    """NENA-Markt-Ebene mit kuratiertem Marktwissen befüllen (nur Super-Admin).
+    """c:node-Graph-Markt-Ebene mit kuratiertem Marktwissen befüllen (nur Super-Admin).
     Das ist die bezahlte Ebene — im Chat erst mit intel=true / SHARED_LAYERS sichtbar."""
     try:
         async with httpx.AsyncClient(timeout=T_LONG) as c:
@@ -3211,7 +3211,7 @@ class AgentConsultReq(BaseModel):
 
 async def _agent_grounded_answer(agent: dict, question: str, gclient: str,
                                  intel: bool | None, tenant: str, provider: str) -> dict:
-    """Ein Fach-Agent beantwortet EINE Frage — geerdet auf NENA (tenant/workspace), mit
+    """Ein Fach-Agent beantwortet EINE Frage — geerdet auf dem c:node Graph (tenant/workspace), mit
     Persona-System. READ-only. Rückgabe: {answer, sources, grounding}."""
     body = {"text": question, "client_id": gclient, "provider": provider, "intel": intel,
             "system_override": domain_agents.render_system(agent, tenant)}
@@ -3388,7 +3388,7 @@ async def agent_run_stream(agent_id: str, req: AgentRunReq,
         raise HTTPException(
             status_code=402,
             detail={"error": "upgrade_required", "feature": "outreach",
-                    "message": ("Outreach (Mail/CRM) ist ein Pro-Feature — schalte NENA/Pro frei, "
+                    "message": ("Outreach (Mail/CRM) ist ein Pro-Feature — schalte c:node Graph/Pro frei, "
                                 "um aus gefundenen Startups direkt Entwürfe zu erzeugen.")})
     thread = db.ensure_thread(req.thread_id, tenant_id, title=req.goal[:60],
                               is_super=identity.is_super, created_by=identity.email)

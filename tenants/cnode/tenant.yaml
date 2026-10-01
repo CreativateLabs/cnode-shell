@@ -35,7 +35,7 @@ llm:
   rationale: true
 
 graph:
-  backend: nen             # graph-core (PG+pgvector) ist der souveräne Default
+  backend: graph-core      # graph-core (PG+pgvector) ist der souveräne Default · nen = optionaler externer c:node Graph
   url: http://graph-core:8010
   group_id: cnode          # isolierter Tenant-Graph dieser Instanz
 
@@ -55,8 +55,7 @@ connectors:                # Bibliothek: 29 recherchierte Integrationen (docs/CO
 
 auth:
   mode: magic-link         # SANDBOX/On-Prem: magic-link. CLOUD zusätzlich: API-Key (Service-Token).
-  admin_emails:
-    - leonardo@creativate.tech
+  admin_emails: []        # eigene Admin-E-Mail(s) eintragen (oder SUPERADMIN_EMAIL in .env)
 
 extensions: []             # additiv aus einem Tenant-Repo (cnode-sdk entry-points)
 

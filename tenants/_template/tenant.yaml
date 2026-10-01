@@ -27,8 +27,8 @@ llm:
   rationale: true
 
 graph:
-  backend: nen             # nen (CIG) | neo4j-local
-  url: http://nen:8001
+  backend: graph-core      # graph-core (in-repo, PG+pgvector) | nen (optionaler externer c:node Graph)
+  url: http://graph-core:8010
   group_id: _template      # Tenant-Isolation
 
 storage:

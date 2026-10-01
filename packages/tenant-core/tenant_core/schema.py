@@ -38,8 +38,10 @@ class LLM(BaseModel):
 
 
 class Graph(BaseModel):
-    backend: Literal["nen", "neo4j-local"] = "nen"
-    url: str = "http://nen:8001"
+    # graph-core = in-repo pgvector runtime (default, works out of the box);
+    # nen = optional external c:node Graph adapter (engine: GRAPH_BACKEND=nen-cig).
+    backend: Literal["graph-core", "nen", "neo4j-local"] = "graph-core"
+    url: str = "http://graph-core:8010"
     group_id: str = ""  # default = tenant.id (siehe TenantContext)
 
 

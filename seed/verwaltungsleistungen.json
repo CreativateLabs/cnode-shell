@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "note": "Repraesentativer Seed-Katalog (~200 Verwaltungsleistungen), gezogen aus dem echten data-foerder-Datensatz (leistung-Tabelle, LeiKa). Der volle ~10k/14k-Datensatz wird zur Laufzeit bevorzugt geladen, wenn FOERDER_DB_PATH bzw. eine lokale data-foerder-DB gefunden wird (siehe catalog.py).",
-  "source": "data-foerder/db/foerder.sqlite",
+  "note": "Repraesentativer Seed-Katalog (~200 Verwaltungsleistungen) aus dem oeffentlichen Leistungskatalog der Verwaltung (LeiKa). Ein eigener, vollstaendiger Katalog (SQLite, leistung-Tabelle) wird zur Laufzeit bevorzugt geladen, wenn FOERDER_DB_PATH gesetzt ist (siehe services/assets/catalog.py).",
+  "source": "LeiKa (Leistungskatalog der oeffentlichen Verwaltung)",
   "count": 200
  },
  "leistungen": [

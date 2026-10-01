@@ -7,7 +7,7 @@ import { useT, type TFn } from '../i18n'
  *
  * Zwei Modi:
  *  - `strip`  : schlanke Dauer-Leiste, wenn Free-Tier in der Public-Sandbox läuft
- *               (lädt zum Upgrade auf NENA-Intel / eigene Instanz / White-Label ein).
+ *               (lädt zum Upgrade auf c:node Graph / eigene Instanz / White-Label ein).
  *  - `modal`  : erscheint, wenn ein Cap gerissen wurde (HTTP 429) — mit denselben CTAs.
  *
  * Ziele kommen aus dem Entitlement (`upgrade.*`, Env-konfiguriert). Fehlt ein Stripe/IAP-Link,
@@ -59,7 +59,7 @@ export function UpgradeBanner({
   entitlement: EntitlementDTO | null
   capHit: boolean
   onDismissCap: () => void
-  // Von außen den Upgrade-Modal öffnen (z.B. Chat-CTA „Volle NENA-Tiefe freischalten"):
+  // Von außen den Upgrade-Modal öffnen (z.B. Chat-CTA „Volle c:node-Graph-Tiefe freischalten"):
   // jede Erhöhung dieses Zählers triggert das Öffnen.
   openSignal?: number
 }) {

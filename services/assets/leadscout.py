@@ -1,9 +1,9 @@
 """
 LeadScout-Adapter (ICP-basiert).
 
-Primär: echte LeadScout-API https://api.leadscout.creativate.tech
-  - env LEADSCOUT_API_URL (default oben), LEADSCOUT_API_KEY.
-  - Ohne Key / nicht erreichbar -> plausible Stub-Leads passend zum ICP aus seed/leads.json.
+Primär: optionale externe Lead-API (env LEADSCOUT_API_URL + LEADSCOUT_API_KEY, Default: keine).
+  - Ohne URL/Key oder nicht erreichbar -> fiktive Demo-Leads passend zum ICP aus seed/leads.json
+    (Antwort trägt source="stub", damit sie nie als echte Treffer erscheinen).
 
 `icp` darf ein Objekt (branche/region/groesse/keywords/...) ODER ein Freitext sein.
 Der Stub matcht die Seed-Leads gegen die ICP-Kriterien und liefert die Top-Treffer in
@@ -19,7 +19,7 @@ from typing import Any, Optional
 
 import httpx
 
-_LEADSCOUT_URL = os.getenv("LEADSCOUT_API_URL", "https://api.leadscout.creativate.tech").rstrip("/")
+_LEADSCOUT_URL = os.getenv("LEADSCOUT_API_URL", "").rstrip("/")
 _LEADSCOUT_KEY = os.getenv("LEADSCOUT_API_KEY", "").strip()
 
 _SEED_CANDIDATES = [
@@ -72,11 +72,11 @@ class LeadScout:
                 self._leads = doc.get("leads", [])
             except Exception:
                 self._leads = []
-        self.live_enabled = bool(_LEADSCOUT_KEY)
+        self.live_enabled = bool(_LEADSCOUT_URL and _LEADSCOUT_KEY)
 
     # ---------------------------------------------------------------- live
     async def _try_live(self, icp: Any, client_id: str) -> Optional[list[dict[str, Any]]]:
-        if not _LEADSCOUT_KEY:
+        if not (_LEADSCOUT_URL and _LEADSCOUT_KEY):
             return None
         headers = {"Authorization": f"Bearer {_LEADSCOUT_KEY}", "X-API-Key": _LEADSCOUT_KEY}
         payload = {"icp": icp, "client_id": client_id}

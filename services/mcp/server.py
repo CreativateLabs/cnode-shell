@@ -1,7 +1,7 @@
 """c:node Agents — MCP Server.
 
 Macht die benannten Fach-Agenten (Mara/Jonas/Lena/Viktor/Nora/Ben) als MCP-Skills verfügbar,
-mit IDENTISCHEM Verhalten wie die In-App-Fläche: geerdet auf NENA, belegt (Provenienz),
+mit IDENTISCHEM Verhalten wie die In-App-Fläche: geerdet auf dem c:node Graph, belegt (Provenienz),
 mandanten-isoliert, READ-only (WRITE bleibt hinter menschlicher Freigabe).
 
 Dünner, authentifizierter Proxy auf das c:node-BFF — die gesamte Fach-/Beleg-/Isolations-
@@ -67,7 +67,7 @@ def _friendly(exc: Exception) -> str:
         if code == 404:
             return "Unbekannter/inaktiver Agent — nutze cnode_list_agents für gültige IDs."
         if code == 402:
-            return "Feature erfordert ein Upgrade (NENA/Pro) für diesen Mandanten."
+            return "Feature erfordert ein Upgrade (c:node Graph/Pro) für diesen Mandanten."
         if code == 429:
             return "Sandbox-Limit erreicht — kurz warten und erneut versuchen."
         return f"BFF-Fehler {code}: {exc.response.text[:180]}"
@@ -97,7 +97,7 @@ async def cnode_list_agents() -> dict:
                  "idempotentHint": True, "openWorldHint": True})
 async def cnode_ask_agent(agent_id: str, question: str) -> dict:
     """Fragt EINEN c:node-Fach-Agenten (z. B. 'agent-finanzen'). Der Agent antwortet geerdet
-    auf das Mandanten-Gedächtnis (NENA) und liefert Belege (provenance). READ-only.
+    auf das Mandanten-Gedächtnis (c:node Graph) und liefert Belege (provenance). READ-only.
 
     agent_id: Agenten-ID aus cnode_list_agents (z. B. 'agent-einkauf').
     question: die fachliche Frage in natürlicher Sprache.

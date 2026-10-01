@@ -397,11 +397,11 @@ CREATE TABLE IF NOT EXISTS tenant_setup (
     PRIMARY KEY (tenant_id, workspace)
 );
 
--- Entitlements (Monetarisierung): je Tenant, ob NENA-Intel frei + welcher Tier + Token-Budget.
+-- Entitlements (Monetarisierung): je Tenant, ob c:node-Graph-Intel frei + welcher Tier + Token-Budget.
 -- Wird vom Stripe/IAP-Webhook gesetzt; steuert SHARED_LAYERS + die Caps.
 CREATE TABLE IF NOT EXISTS tenant_entitlements (
     tenant_id     TEXT PRIMARY KEY,
-    intel         BOOLEAN NOT NULL DEFAULT false,   -- NENA (market/mesh) frei?
+    intel         BOOLEAN NOT NULL DEFAULT false,   -- c:node Graph (market/mesh) frei?
     tier          TEXT NOT NULL DEFAULT 'free',      -- free | pro | team | enterprise
     stripe_customer TEXT,
     updated_at    TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -1789,7 +1789,7 @@ def save_tenant_setup(tenant_id: str, *, org_name: str, org_profile: str, source
             "updated_at": row.get("updated_at").isoformat() if row.get("updated_at") else None}
 
 
-# --- Entitlements (Monetarisierung: NENA-Intel + Tier) -----------------------
+# --- Entitlements (Monetarisierung: c:node-Graph-Intel + Tier) -----------------------
 def get_entitlement(tenant_id: str) -> dict:
     """→ {intel, tier, stripe_customer}. Default: free / kein Intel."""
     with _conn() as c, c.cursor() as cur:
@@ -1804,7 +1804,7 @@ def get_entitlement(tenant_id: str) -> dict:
 
 def set_entitlement(tenant_id: str, *, intel: bool, tier: str,
                     stripe_customer: str | None = None) -> dict:
-    """Upsert (vom Billing-Webhook). Schaltet NENA + Tier je Tenant."""
+    """Upsert (vom Billing-Webhook). Schaltet c:node Graph + Tier je Tenant."""
     with _conn() as c, c.cursor() as cur:
         cur.execute(
             """INSERT INTO tenant_entitlements (tenant_id, intel, tier, stripe_customer, updated_at)

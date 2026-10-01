@@ -131,7 +131,7 @@ export const api = {
     sources: { kind: string; value: string; status?: string }[]
     completed: boolean
   }) => jput<{ ok: boolean; completed: boolean }>('/tenant/setup', body),
-  // Entitlement (Monetarisierung): Tier + NENA-Flag + Upsell-Ziele — steuert Upgrade-Banner.
+  // Entitlement (Monetarisierung): Tier + c:node-Graph-Flag + Upsell-Ziele — steuert Upgrade-Banner.
   entitlement: () =>
     jfetch<EntitlementDTO>('/tenant/entitlement').catch(
       () => ({ tenant_id: '', tier: 'free', intel: false, public_demo: false,
@@ -444,7 +444,7 @@ export const api = {
   microsoftDisconnect: () =>
     jpost<{ ok: boolean; connected: boolean }>('/integrations/microsoft/disconnect'),
 
-  // NEN-Verarbeitungs-Queue-Snapshot (C: Sichtbarkeit der Ingest-Latenz).
+  // Graph-Verarbeitungs-Queue-Snapshot (C: Sichtbarkeit der Ingest-Latenz).
   queue: () =>
     jfetch<{ nen: { pending: number; processed: number; failed: number; processing?: string | null; ts?: string | null } | null }>(
       '/queue',

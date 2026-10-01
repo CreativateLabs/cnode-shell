@@ -1,7 +1,7 @@
 # c:node Assistant — local stack (v1 architecture).
 #   docker compose -f infra/docker-compose.yml up -d --build
-# Engine fronts the already-running NEN AI (:8001) + Ollama (:11434) on the host.
-# Graph lives in NEN AI; BFF keeps its own SQLite. Ports frozen per SCOPE.md.
+# The engine talks to the in-repo graph-core (pgvector) and to Ollama (:11434) on the host.
+# An external, hosted c:node Graph can be plugged in via GRAPH_BACKEND=nen-cig + NEN_AI_URL (optional).
 name: cnode-platform
 
 services:
@@ -77,6 +77,7 @@ services:
       GRAPH_BACKEND: ${GRAPH_BACKEND:-graph-core}
       GRAPH_CORE_URL: ${GRAPH_CORE_URL:-http://graph-core:8010}
       ASSETS_URL: ${ASSETS_URL:-http://assets:8030}
+      # Only used with GRAPH_BACKEND=nen-cig (optional external c:node Graph adapter).
       NEN_AI_URL: ${NEN_AI_URL:-http://host.docker.internal:8001}
       OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:7b}
@@ -100,7 +101,8 @@ services:
     container_name: cnode-assets
     environment:
       ENGINE_URL: ${ENGINE_URL:-http://engine:8020}
-      LEADSCOUT_API_URL: ${LEADSCOUT_API_URL:-https://api.leadscout.creativate.tech}
+      # Optional external lead API; without URL + key the scout uses the seed stub (seed/leads.json).
+      LEADSCOUT_API_URL: ${LEADSCOUT_API_URL:-}
       LEADSCOUT_API_KEY: ${LEADSCOUT_API_KEY:-}
       FOERDER_DB_PATH: ${FOERDER_DB_PATH:-/data/foerder.sqlite}
       LIBRARY_DIR: /data/library
@@ -110,8 +112,8 @@ services:
     volumes:
       - ../seed:/seed
       - assets_data:/data
-      # echter data-foerder-Datensatz (9.945 LeiKa-Leistungen), read-only eingehängt
-      - ${DATAFOERDER_DB:-../../data-foerder/db/foerder.sqlite}:/data/foerder.sqlite:ro
+      # Optional: own funding/services SQLite catalog → mount it read-only at /data/foerder.sqlite
+      # (or set FOERDER_DB_PATH). Without it, seed/verwaltungsleistungen.json is used.
     ports:
       - "8030:8030"
     extra_hosts:
@@ -197,7 +199,7 @@ services:
       # Langlebige Service-Keys (Bearer) für programmatischen Zugriff (z.B. MCP-Server):
       # "label:secret[:role], …". Rolle Default member. Tenant = Deployment-Org.
       CNODE_API_KEYS: ${CNODE_API_KEYS:-}
-      # Google Gmail/Drive — trage die Werte in creativate-shell/.env ein (oder exportiere sie).
+      # Google Gmail/Drive — trage die Werte in .env ein (oder exportiere sie).
       # Claudio-Namensschema (GMAIL_*) wird ebenfalls akzeptiert.
       GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:-}
       GOOGLE_OAUTH_CLIENT_SECRET: ${GOOGLE_OAUTH_CLIENT_SECRET:-}
@@ -205,7 +207,7 @@ services:
       GMAIL_CLIENT_SECRET: ${GMAIL_CLIENT_SECRET:-}
       GOOGLE_OAUTH_REDIRECT_URI: ${GOOGLE_OAUTH_REDIRECT_URI:-http://localhost:8080/integrations/google/oauth/callback}
       GOOGLE_OAUTH_SCOPES: ${GOOGLE_OAUTH_SCOPES:-https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.compose https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/calendar.events}
-      # Microsoft / Outlook (Graph) — Azure-App-Werte in creativate-shell/.env eintragen.
+      # Microsoft / Outlook (Graph) — Azure-App-Werte in .env eintragen.
       MICROSOFT_CLIENT_ID: ${MICROSOFT_CLIENT_ID:-}
       MICROSOFT_CLIENT_SECRET: ${MICROSOFT_CLIENT_SECRET:-}
       MICROSOFT_TENANT: ${MICROSOFT_TENANT:-common}

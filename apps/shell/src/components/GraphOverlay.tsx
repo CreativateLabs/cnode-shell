@@ -30,7 +30,7 @@ function collideForce(radius: (n: any) => number, strength = 0.9) {
   return force
 }
 
-// Ebenen-Labels für die optionale Layer-Legende. `preview` = kuratierte NENA-Vorschau-Scheibe
+// Ebenen-Labels für die optionale Layer-Legende. `preview` = kuratierte c:node-Graph-Vorschau-Scheibe
 // (Free-Sandbox-Teaser); die volle Market-/Mesh-Tiefe ist bezahlt.
 // Strings kommen zur Laufzeit aus dem Katalog (graph.layer.<id>); unbekannte Ebenen
 // fallen auf ihre rohe ID zurück.
