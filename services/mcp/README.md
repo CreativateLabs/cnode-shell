@@ -19,6 +19,15 @@ Bearer-Service-Key. Serverseitig in `CNODE_API_KEYS` registrieren
 (`"label:secret[:role]"`, Rolle ≥ `member`), clientseitig als `CNODE_API_KEY` setzen.
 Der Tenant ist immer die Deployment-Org (cnode) — ein Key greift nie darüber hinaus.
 
+## Welche URL?
+`CNODE_BFF_URL` zeigt auf den Gateway (BFF), mit dem der MCP-Server spricht:
+
+| Setup | `CNODE_BFF_URL` |
+|---|---|
+| Eigene Installation (Default, `make sandbox` / `docker compose up`) | `http://localhost:8080` |
+| MCP-Server im selben Compose-Netz wie der BFF | `http://bff:8080` |
+| c:node Cloud (gehostet, mit c:node Graph) | `https://api.app.c-node.ai` |
+
 ## Lokal einbinden (stdio) — Claude Desktop
 `claude_desktop_config.json`:
 ```json
@@ -29,7 +38,7 @@ Der Tenant ist immer die Deployment-Org (cnode) — ein Key greift nie darüber 
       "args": ["/ABS/PFAD/cnode-shell/services/mcp/server.py"],
       "env": {
         "MCP_TRANSPORT": "stdio",
-        "CNODE_BFF_URL": "https://api.try.c-node.ai",
+        "CNODE_BFF_URL": "http://localhost:8080",
         "CNODE_API_KEY": "<dein-service-key>"
       }
     }
@@ -42,7 +51,7 @@ Setup einmalig: `python -m venv venv && ./venv/bin/pip install -r requirements.t
 ```bash
 claude mcp add cnode-agents \
   -e MCP_TRANSPORT=stdio \
-  -e CNODE_BFF_URL=https://api.try.c-node.ai \
+  -e CNODE_BFF_URL=http://localhost:8080 \
   -e CNODE_API_KEY=<dein-service-key> \
   -- /ABS/PFAD/venv/bin/python /ABS/PFAD/cnode-shell/services/mcp/server.py
 ```

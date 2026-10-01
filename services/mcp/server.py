@@ -9,7 +9,8 @@ Logik lebt serverseitig, nicht hier. Auth via langlebigem Service-Key (Bearer ‚Ü
 Tenant = Deployment-Org).
 
 Config (env):
-  CNODE_BFF_URL   Basis-URL des BFF (Default: https://api.try.c-node.ai)
+  CNODE_BFF_URL   Basis-URL des BFF (Default: http://localhost:8080 = eure eigene Installation;
+                  c:node Cloud: https://api.app.c-node.ai)
   CNODE_API_KEY   Service-Key (muss serverseitig in CNODE_API_KEYS registriert sein)
   MCP_TRANSPORT   "stdio" (Default, lokale Clients) | "streamable-http" (Hosting)
   MCP_HOST/MCP_PORT  nur f√ºr streamable-http (Default 0.0.0.0:8090)
@@ -23,7 +24,7 @@ import httpx
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 
-BFF_URL = os.getenv("CNODE_BFF_URL", "https://api.try.c-node.ai").rstrip("/")
+BFF_URL = os.getenv("CNODE_BFF_URL", "http://localhost:8080").rstrip("/")
 API_KEY = os.getenv("CNODE_API_KEY", "").strip()
 TIMEOUT = float(os.getenv("CNODE_MCP_TIMEOUT", "150"))
 
