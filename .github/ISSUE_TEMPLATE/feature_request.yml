@@ -1,0 +1,41 @@
+name: ✨ Feature request
+description: Suggest an idea or improvement
+labels: ["enhancement", "🚦 status: awaiting triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the use case first — who needs it, and why.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How could it work? Mock-ups and examples welcome.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Chat / UI
+        - Knowledge-graph memory / retrieval
+        - Agents
+        - Connectors / plugins
+        - MCP
+        - LLM providers
+        - Desktop app
+        - Self-hosting / deployment
+        - Docs
+        - Other
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd be willing to open a pull request for this.

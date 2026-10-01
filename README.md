@@ -1,152 +1,238 @@
+<a name="readme-top"></a>
+
 <div align="center">
 
-# c:node
+<img src="apps/shell/src-tauri/icons/128x128.png" alt="c:node mark" width="96" height="96"/>
 
-**Sovereign, evidence-backed AI — chat + a knowledge-graph memory + named domain agents, self-hostable.**
+# c:node Shell
 
-**The surface is open. The intelligence is ours.** — *c:node steers · NENA thinks · the agents act.*
+**The open-source, self-hostable AI workspace where every answer shows its source.**
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
-[![Model: open core](https://img.shields.io/badge/model-open--core-6B5BCD.svg)](#open-core)
-[![Commercial license](https://img.shields.io/badge/commercial_license-available-7C3AED.svg)](COMMERCIAL.md)
-[![Self-hosted](https://img.shields.io/badge/self--hosted-docker--compose-2b90d9.svg)](#quickstart)
-[![EU AI Act](https://img.shields.io/badge/EU_AI_Act-source_per_statement-36c399.svg)](#why-cnode)
+Chat · knowledge-graph memory · named domain agents · MCP — runs on your machine with local models.
 
-[**Live demo → try.c-node.ai**](https://try.c-node.ai)
+[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](LICENSE)
+[![Latest tag](https://img.shields.io/github/v/tag/CreativateLabs/cnode-shell?label=release&sort=semver)](https://github.com/CreativateLabs/cnode-shell/tags)
+[![CI](https://github.com/CreativateLabs/cnode-shell/actions/workflows/ci.yml/badge.svg)](https://github.com/CreativateLabs/cnode-shell/actions/workflows/ci.yml)
+[![GitHub stars](https://img.shields.io/github/stars/CreativateLabs/cnode-shell?style=flat)](https://github.com/CreativateLabs/cnode-shell/stargazers)
+[![Self-hosted](https://img.shields.io/badge/self--hosted-docker_compose-2b90d9.svg)](#-quickstart)
+[![Local LLM](https://img.shields.io/badge/LLM-Ollama_·_BYOK-36c399.svg)](#bring-your-own-model)
+
+[**Live demo → try.c-node.ai**](https://try.c-node.ai) · [Quickstart](#-quickstart) · [Architecture](#-architecture) · [Roadmap](#-roadmap) · [Contributing](CONTRIBUTING.md)
 
 <br/>
 
-<img src="assets/screenshots/01-grounded-chat.png" alt="Grounded answer with a source and grounding badge" width="49%"/>
+<img src="assets/screenshots/01-grounded-chat.png" alt="A grounded answer with its source and a grounding badge" width="49%"/>
 <img src="assets/screenshots/02-agent-consult.png" alt="A domain-agent consultation with agent-to-agent delegation and provenance" width="49%"/>
 <br/>
-<img src="assets/screenshots/03-knowledge-graph.png" alt="The NENA knowledge graph — the memory the answers are grounded on" width="49%"/>
+<img src="assets/screenshots/03-knowledge-graph.png" alt="The knowledge-graph memory the answers are grounded on" width="49%"/>
 <img src="assets/screenshots/04-command-palette.png" alt="Invoking a domain agent from the chat command palette" width="49%"/>
 
 </div>
 
+> 🇩🇪 **Kurz auf Deutsch:** c:node Shell ist eine quelloffene (AGPL-3.0), selbst hostbare KI-Arbeitsumgebung:
+> Chat, Wissensgraph-Gedächtnis und Fach-Agenten — lokal mit Ollama, ohne Cloud-Zwang. Jede Aussage wird an
+> eine Quelle gebunden. Die Oberfläche ist auf Deutsch, Englisch und Französisch verfügbar. Fragen und Beiträge
+> gerne auch auf Deutsch.
+
 ---
 
-## Why c:node
+## Why c:node Shell
 
-Most assistants answer confidently and leave you guessing where it came from. c:node is built the
-other way around:
+Most AI assistants answer confidently and leave you guessing where the answer came from. c:node Shell is
+built the other way around:
 
-- **Evidence, not a black box.** Every factual claim is bound to a source (a document, a booking
-  line, a contract clause, a catalog entry) with provenance and an audit trail — the EU-AI-Act
-  stance of *source & reasoning per statement*. **No source → no claim.**
-- **A memory that grows (NENA).** A pgvector knowledge graph that learns from your **files,
-  artifacts, connectors and chats** — isolated per tenant/workspace, so nothing bleeds across users.
-- **Named domain agents** (Procurement, HR, Finance, Contracts, Admin, Ops) with **agent-to-agent
-  delegation**: the right agent pulls in siblings when a sub-question leaves its domain, and the
-  provenance travels with it. Anything with an outside effect goes through a **human-in-the-loop gate**.
-- **Sovereign by default.** Runs on local Ollama out of the box — no cloud call required. Cloud LLMs
-  are optional (BYOK).
-- **Two surfaces, one behavior.** The in-app chat **and** MCP skills (`cnode.agent.<slug>`) —
-  identical grounding and isolation on both.
+- **Evidence, not a black box.** Answers are grounded on your own sources (documents, notes, catalog
+  entries) and show them with provenance. The design rule is simple: *no source, no claim*.
+- **A memory that grows.** A pgvector knowledge graph learns from your files, artifacts, connectors and
+  chats — isolated per workspace, so nothing leaks between tenants.
+- **Named domain agents.** Procurement, HR, Finance, Contracts, Admin and Ops personas that can pull in
+  each other when a question crosses domains. Anything with an outside effect waits for a
+  **human-in-the-loop** approval.
+- **Sovereign by default.** Runs against local [Ollama](https://ollama.com) out of the box — no cloud call
+  required. Gemini or Claude are optional (bring your own key).
+- **One behavior, two surfaces.** Use the agents in the chat UI **or** from any MCP client
+  (`cnode_ask_agent`, `cnode_consult_agent`).
+- **Web and desktop.** Browser UI plus a native desktop app (Tauri v2) for macOS, Windows and Linux.
 
-## Quickstart
+## ✨ Features
 
-Requires Docker + Docker Compose. For local answers, run [Ollama](https://ollama.com) with a model
-(`ollama pull qwen2.5:7b`) — or bring your own key (see below).
+| | |
+|---|---|
+| 💬 **Grounded chat** | Streaming chat with sources and a grounding badge per answer |
+| 🕸️ **Knowledge-graph memory** | pgvector graph with lexical + semantic retrieval and provenance per edge |
+| 📥 **Ingest** | Upload PDF, DOCX, XLSX, CSV, Markdown or text — content is extracted and written to the graph |
+| 🤝 **Domain agents (A2A)** | `@agent` mentions and a `/` command palette; agent-to-agent delegation keeps provenance |
+| ✋ **Write gate** | Outbound actions (e.g. mail drafts) are prepared, never auto-executed |
+| 🔌 **Connectors** | Gmail / Google Drive, Microsoft Outlook (OAuth), generic webhook — via a plugin registry |
+| 🧩 **Plugin SDK** | Four plugin kinds: `connector`, `format`, `agent`, `system` ([platform/README.md](platform/README.md)) |
+| 🛰️ **MCP server** | Exposes the agents as MCP tools over stdio or streamable HTTP ([services/mcp](services/mcp/README.md)) |
+| 🎙️ **Voice** | Local speech-to-text (faster-whisper) |
+| 🎨 **Config-driven branding** | Tenants and themes live in `tenants/<slug>/tenant.yaml` — no fork needed |
+| 🌍 **Trilingual UI** | Deutsch · English · Français |
+
+## 🚀 Quickstart
+
+**Prerequisites:** Docker with Compose v2, Node.js 20+ with [pnpm](https://pnpm.io), and
+[Ollama](https://ollama.com) for local answers (or a cloud key, see below).
 
 ```bash
+# 0) a local model (skip if you bring your own key)
+ollama pull qwen2.5:7b
+
+# 1) backend: graph, engine, gateway — built from source
 git clone https://github.com/CreativateLabs/cnode-shell
 cd cnode-shell
-cp .env.example .env            # optional: adjust
-docker compose up --build       # builds from source; tenant defaults to `cnode`
+cp .env.example .env
+docker compose up --build -d
+
+# 2) web UI
+cd apps/shell
+pnpm install
+pnpm dev
 ```
 
-The root `compose.yaml` bundles the `infra/` overlays for you. Prefer them explicit
-(or to pick a different `TENANT`)? This is the exact equivalent:
+Open **http://localhost:3010** (UI) — the API gateway runs on **http://localhost:8080**.
+
+The root `compose.yaml` bundles three overlays. The explicit equivalent (handy to pick another tenant):
 
 ```bash
 TENANT=cnode docker compose \
   -f infra/docker-compose.yml \
   -f infra/docker-compose.tenant.yml \
-  -f infra/docker-compose.oss.yml up --build
+  -f infra/docker-compose.oss.yml up --build -d
 ```
 
-- **Shell:** http://localhost:3010 · **API:** http://localhost:8080
-- The `oss` overlay builds everything from source and enables **semantic memory** via a small
-  built-in CPU embedder (no GPU needed).
+The `oss` overlay builds everything from source and adds a small CPU embedder for semantic memory —
+no GPU needed. `make help` lists further shortcuts (`make health`, `make logs`, `make down`).
 
-### Bring your own LLM (optional)
+**Desktop app:** `make shell` runs the Tauri app in dev mode (needs the
+[Tauri prerequisites](https://v2.tauri.app/start/prerequisites/)). Tagged releases build installers
+(`.dmg`, `.msi`, `.AppImage`) via [`.github/workflows/release.yml`](.github/workflows/release.yml).
+
+### Bring your own model
 
 In `.env`:
 
 ```bash
-DEFAULT_PROVIDER=gemini          # or: claude | ollama (default)
-GOOGLE_API_KEY=AIza…             # for gemini
-ANTHROPIC_API_KEY=sk-ant-…       # for claude
+DEFAULT_PROVIDER=ollama          # ollama (default) | gemini | claude
+OLLAMA_MODEL=qwen2.5:7b
+GOOGLE_API_KEY=                  # for gemini
+ANTHROPIC_API_KEY=               # for claude
 ```
 
-## How it works
+Keys stay in your `.env` (gitignored) and are only sent to the provider you choose.
 
-```
-        files · artifacts · connectors · chats
-                        │  (ingest, per-tenant)
-                        ▼
-   ┌──────────────┐   grounded    ┌──────────────────────────┐
-   │  NENA graph  │◀────────────▶ │  engine (retrieval +      │
-   │  (pgvector)  │   retrieval   │  synthesis, provenance)   │
-   └──────────────┘               └────────────┬─────────────┘
-                                                │
-                        chat  ·  domain agents (A2A)  ·  MCP skills
-                                                │
-                                   human-in-the-loop gate → connectors
+## 🏗 Architecture
+
+```mermaid
+flowchart LR
+  subgraph Clients
+    UI["Web UI / Desktop app<br/>(apps/shell · React + Tauri)"]
+    MCPC["Any MCP client"]
+  end
+  MCP["services/mcp<br/>MCP server"]
+  BFF["services/bff<br/>gateway · auth · tenant isolation<br/>agents · write gate"]
+  ENG["services/engine<br/>retrieval + grounded synthesis"]
+  GC["services/graph-core<br/>knowledge-graph memory"]
+  DB[("pgvector")]
+  EMB["services/embed<br/>CPU embedder"]
+  AS["services/assets<br/>upload · extraction"]
+  LLM["LLM<br/>Ollama · Gemini · Claude"]
+  CON["Connectors<br/>Gmail · Outlook · webhook"]
+  CLOUD["c:node Cloud (optional)<br/>c:node Graph via public API"]
+
+  UI --> BFF
+  MCPC --> MCP --> BFF
+  BFF --> ENG
+  BFF --> AS --> ENG
+  BFF -. "human-in-the-loop" .-> CON
+  ENG --> GC --> DB
+  GC --> EMB
+  ENG --> LLM
+  ENG -. "optional adapter" .-> CLOUD
 ```
 
-| Service | Role |
+| Path | Role |
 |---|---|
-| `apps/shell` | React/Vite chat UI |
-| `services/bff` | Gateway: auth, routing, tenant isolation, agent orchestration, write-gate |
-| `services/engine` | LLM proxy + 3-layer retrieval + evidence-backed synthesis |
-| `services/graph-core` | pgvector graph runtime (the memory) |
-| `services/embed` | small CPU embedder (fastembed / ONNX, 768-dim) |
-| `services/assets` | library/upload + text extraction → graph |
-| `services/mcp` | MCP server exposing agents as `cnode.agent.<slug>` |
+| `apps/shell` | React + Vite + Tailwind UI, Tauri v2 desktop wrapper |
+| `services/bff` | Gateway: auth, routing, tenant isolation, agent orchestration, write gate |
+| `services/engine` | LLM proxy, retrieval, evidence-backed synthesis |
+| `services/graph-core` | pgvector knowledge-graph runtime (the memory) |
+| `services/embed` | Small CPU embedder (fastembed / ONNX, 768-dim) |
+| `services/assets` | Library, upload, text extraction into the graph |
+| `services/voice` | Local speech-to-text |
+| `services/mcp` | MCP server exposing the agents |
+| `services/domain-*` | Reference domain services built on `packages/cnode-sdk` |
+| `platform/` | Plugin framework (connectors, formats, agents, systems) |
+| `tenants/` | Tenant config + brand theme (`cnode` is the default; `_template` to start your own) |
 
-Tenants live as config under `tenants/` (`cnode` is the default). Extend via plugins, don't fork
-(`platform/`).
+## ⚙️ Configuration
 
-## Domain agents
+| Variable | Default | Purpose |
+|---|---|---|
+| `TENANT` | `cnode` | Which `tenants/<slug>/tenant.yaml` to mount |
+| `DEFAULT_PROVIDER` | `ollama` | LLM provider for new chats |
+| `OLLAMA_BASE_URL` | `http://host.docker.internal:11434` | Where Ollama runs |
+| `OLLAMA_MODEL` / `DEFAULT_MODEL` | `qwen2.5:7b` | Local model |
+| `AUTH_SECRET` | dev placeholder | **Set your own** before exposing the stack |
+| `SUPERADMIN_EMAIL` | empty | Email that becomes the instance super-admin — set your own |
+| `GOOGLE_OAUTH_*`, `MICROSOFT_*` | empty | Optional connector OAuth apps |
+| `VITE_GATEWAY_URL` | `http://localhost:8080` | Gateway the UI talks to |
 
-Six named personas ship live — **Procurement, HR, Finance, Contracts, Admin, Ops**. Ask one directly
-in the chat with `@<name> <question>` (or pick it from the `/` command palette). A consultation
-grounds on the tenant memory, cites its sources, delegates to sibling agents when the facts call for
-it, and prepares (never auto-executes) any outward action for your approval.
+Start a new tenant with `make tenant-new NAME=<slug>` and point `TENANT=<slug>` at it.
 
-## Open-core
+## ☁️ Open core: what's in this repo, and what isn't
 
-c:node is **open core**, not "everything for free". Three layers, cleanly separated:
+c:node is **open core**. This repository is a complete, working, self-hostable product — not a teaser.
 
-- **The surface — open (AGPL-3.0).** The shell/UI and the base graph runtime (`graph-core` with
-  provenance per edge, lexical + semantic retrieval) are in this repo. A working, air-gapped
-  baseline you can self-host and audit end to end.
-- **The intelligence — commercial.** The trained NENA engine (accumulated ontology & extraction
-  quality, curated data assets, domain tuning, EU-AI-Act conformity, operations & SLA) is **not**
-  in this repo — the open core calls it through an adapter. That is the licensed value.
+| | **c:node Shell** (this repo, AGPL-3.0) | **c:node Cloud** (hosted, commercial) |
+|---|---|---|
+| Chat UI, desktop app, MCP server | ✅ | ✅ |
+| Knowledge-graph memory on your own data | ✅ `graph-core` | ✅ |
+| Domain agents, write gate, connectors, plugin SDK | ✅ | ✅ |
+| Local models (Ollama) / bring your own key | ✅ | ✅ |
+| **c:node Graph** — curated, continuously maintained market & domain knowledge | — | ✅ via API / MCP |
+| Managed hosting, multi-tenant operations, SSO, support & SLA | — | ✅ |
 
-The hosted offering (cloud LLM included, shared market/mesh intelligence, multi-tenant, billing,
-analytics, SLA) runs on the same open core. For closed-source or white-label use, a **commercial
-license** lifts the AGPL copyleft — see [COMMERCIAL.md](COMMERCIAL.md).
+The shell talks to c:node Graph only through a public API adapter; it is fully usable without it.
+For closed-source, OEM or white-label use that the AGPL does not permit, see [COMMERCIAL.md](COMMERCIAL.md).
 
-## Contributing
+## 🔒 Privacy & telemetry
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). In short: extend via plugins (not forks), keep the evidence
-requirement and hard tenant isolation, never commit secrets or customer data. Because c:node is
-dual-licensed, contributions require agreeing to the [CLA](CLA.md) (so we can offer the commercial
-license alongside the AGPL).
+The shell collects **no usage telemetry**. Network calls go only to the LLM provider you configure and to
+integrations you explicitly enable (connectors, optional scout features). Your data stays in the Docker
+volumes on your machine.
 
-## License
+## 🗺 Roadmap
+
+Direction, not promises — vote with 👍 on issues or open a feature request.
+
+- [ ] OpenAI-compatible provider (vLLM, LM Studio, LiteLLM, llama.cpp server)
+- [ ] One-command install script and prebuilt container images
+- [ ] More connectors (Nextcloud, SharePoint, Confluence, IMAP, local folders)
+- [ ] Shareable agent templates (YAML) and a template gallery
+- [ ] MCP *client* support: use external MCP servers as tools inside the chat
+- [ ] Reusable citation / evidence UI component
+- [ ] Signed desktop builds (macOS notarization, Windows code signing)
+- [ ] Docs site with deployment guides (Docker, Kubernetes)
+
+## 👪 Community & support
+
+- **Questions & bugs:** [GitHub Issues](https://github.com/CreativateLabs/cnode-shell/issues)
+- **Security:** please report privately — see [SECURITY.md](SECURITY.md)
+- **Contributing:** start with [CONTRIBUTING.md](CONTRIBUTING.md) and issues labelled
+  [`good first issue`](https://github.com/CreativateLabs/cnode-shell/labels/good%20first%20issue)
+- **Code of conduct:** [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- **Changes:** [CHANGELOG.md](CHANGELOG.md)
+
+## 📚 License
 
 **Dual-licensed.**
 
-- **[AGPL-3.0](LICENSE)** for open-source / self-hosted use — if you run c:node as a network
-  service, share your changes under the same terms.
-- **[Commercial license](COMMERCIAL.md)** for closed-source, OEM or white-label use that the AGPL's
-  copyleft does not permit.
+- **[AGPL-3.0](LICENSE)** for open-source and self-hosted use. If you run a modified version as a network
+  service, you must make your changes available under the same terms.
+- **[Commercial license](COMMERCIAL.md)** for closed-source, OEM or white-label use.
 
-Same code, your choice of terms — contact us for the commercial path.
+Contributions are accepted under the [CLA](CLA.md), so both licenses can be offered.
 
-<div align="center"><sub>A project by <a href="https://creativate.tech">Creativate Labs</a>.</sub></div>
+<div align="center"><sub>Built by <a href="https://creativate.tech">Creativate Labs</a> · <a href="https://c-node.ai">c-node.ai</a> · <a href="#readme-top">back to top ↑</a></sub></div>

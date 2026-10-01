@@ -1,0 +1,66 @@
+name: 🐛 Bug report
+description: Something doesn't work as expected
+labels: ["bug", "🚦 status: awaiting triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please **don't** include secrets, API keys or personal data.
+        Security issues go to [SECURITY.md](https://github.com/CreativateLabs/cnode-shell/blob/main/SECURITY.md), not here.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start the stack with `docker compose up --build -d`
+        2. Open http://localhost:3010
+        3. …
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where does it happen?
+      multiple: true
+      options:
+        - Web UI (apps/shell)
+        - Desktop app (Tauri)
+        - Backend services (bff / engine / graph-core / …)
+        - MCP server
+        - Connectors / plugins
+        - Docker Compose / setup
+        - Docs
+    validations:
+      required: true
+  - type: dropdown
+    id: llm
+    attributes:
+      label: LLM provider
+      options:
+        - Ollama (local)
+        - Gemini
+        - Claude
+        - Not relevant
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      placeholder: "v0.1.0 or commit SHA"
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "macOS 15, Docker Desktop 4.x, Node 20, Chrome 130"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: e.g. output of `make logs` or `docker compose logs bff engine`. Remove secrets first.
+      render: shell

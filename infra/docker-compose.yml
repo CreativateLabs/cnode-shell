@@ -178,7 +178,7 @@ services:
       VOICE_URL: ${VOICE_URL:-http://voice:8060}
       DATABASE_URL: ${DATABASE_URL:-postgresql://cnode:cnode@postgres:5432/cnode}
       AUTH_SECRET: ${AUTH_SECRET:-dev-only-change-me-please-32bytes-min}
-      SUPERADMIN_EMAIL: ${SUPERADMIN_EMAIL:-leonardo@creativate.tech}
+      SUPERADMIN_EMAIL: ${SUPERADMIN_EMAIL:-}
       DB_PATH: /data/bff.db
       PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8080}
       DEFAULT_PROVIDER: ${DEFAULT_PROVIDER:-ollama}

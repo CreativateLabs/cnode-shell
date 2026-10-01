@@ -19,8 +19,9 @@ self-hosted and internal use. You need a commercial license if you want to:
 
 - Use of the open core **without** the AGPL's source-disclosure obligation.
 - Rights for white-label branding and redistribution, as agreed.
-- Optional access to the components that are **not** in this repository — the trained **NENA**
-  intelligence engine, curated data assets, domain tuning — plus operations, support and SLA.
+- Optional access to the components that are **not** in this repository — the hosted **c:node Graph**
+  (curated, continuously maintained knowledge), data assets and domain tuning — plus operations, support
+  and SLA.
 
 The open core stays the same code either way; the commercial license only changes the *terms* under
 which you may use it, and can bundle the proprietary intelligence layer on top.
